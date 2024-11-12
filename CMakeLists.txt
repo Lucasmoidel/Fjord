@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.10)
 project(Fjord)
 
 set(CMAKE_BUILD_TYPE Release)
@@ -10,13 +10,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 
 #--------------------------------------------------------------------------
 
-add_library(Fjord STATIC lib/test.cpp)
+add_library(Fjord STATIC lib/init.cpp)
 
 include_directories(${PROJECT_SOURCE_DIR}/lib)
-
-set(EXTRA_LIBS ${EXTRA_LIBS} HD44780Lcd)
 
 #--------------------------------------------------------------------------
 
 add_executable(example example/main.cpp)
-target_link_libraries(example Fjord)
+target_link_libraries(example Fjord SDL2)

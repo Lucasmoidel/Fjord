@@ -4,6 +4,6 @@
 using namespace std;
 
 int main(){
-    test();
+    initSDL("test", 500, 500);
     return 0;
 }
