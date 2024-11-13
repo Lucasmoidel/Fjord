@@ -18,12 +18,8 @@ void Engine::processInput(){ // process keyboard inputs
     SDL_Event event;
     SDL_PollEvent(&event);
 
-    switch (event.type) {
-        case SDL_QUIT:
-            gameRuning = false;
-            break;
-        default:
-            break;
+    if (event.type == SDL_QUIT){
+        gameRuning = false;
     }
 }
 
