@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 #include "datatypes/Vector2.h"
 
-class Node{ // default node class
+class Node{ // Base Class of Every Node
     public:
         Node(int xPos, int yPos, int width, int height, int zIndex);// add constructor with vars for rendering
         void update(); // update function
