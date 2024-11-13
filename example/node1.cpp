@@ -2,12 +2,12 @@
 
 #include "../Fjord.h"
 
-bool Engine::initObjs(){
+bool Engine::initObjs(){// define initObjs
     engine.createObject();
     return true;
 }
 
-void Node::update(){
+void Node::update(){ // update stuff
     std::cout << "shdflkjsd" << std::endl;
 }
 
