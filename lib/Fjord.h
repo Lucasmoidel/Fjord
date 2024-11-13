@@ -6,8 +6,11 @@
 
 class Engine{ // game engine that will provide functions    
     public:
-        bool gameRuning;
+        bool gameRuning = false;
         bool initWin(int Win_width, int Win_height, std::string name); //intitilize sdl2 window with the width, height, and name of window
+        void processInput();
+        void render();
+       
         void destroyWindow(); // destroy window when game exits
 
         SDL_Window* window = NULL; // SDL window object

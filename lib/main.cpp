@@ -7,8 +7,34 @@ Engine engine; // makes the engine object available globaly part2
 
 int main(){
     if (engine.initWin(500, 500, "test")){engine.gameRuning = true;} // check if everything initilizing ojects and SDL2 succeded and store that in gameRunning
+    while(engine.gameRuning){
+        engine.processInput();
+        engine.render();
+    }
     return 0;// exit program
 }
+
+void Engine::processInput(){ // process keyboard inputs
+    SDL_Event event;
+    SDL_PollEvent(&event);
+
+    switch (event.type) {
+        case SDL_QUIT:
+            gameRuning = false;
+            break;
+        default:
+            break;
+    }
+}
+
+void Engine::render(){ // render objects
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //sets background color
+    SDL_RenderClear(renderer); // clear screen
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // sets object color
+    
+    SDL_RenderPresent(renderer); // shows render changes
+}
+
 
 void Engine::destroyWindow(){ // destroy window when game exits
         SDL_DestroyRenderer(renderer);
