@@ -9,7 +9,8 @@ class Node{ // default node class
     public:
         Node(int xPos, int yPos, int width, int height, int zIndex);// add constructor with vars for rendering
         void update(); // update function
-        Vector2 position, scale;
+        Vector2 position();
+        Vector2 scale();
         int zIndex; // create vars that go in rect
         SDL_Rect rect; // sdl rect for rendering
 };
