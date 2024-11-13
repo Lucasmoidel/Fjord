@@ -24,11 +24,7 @@ int main(){
 
 void Engine::gameLoop(){// main game loop
     for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and calls there update functions
-        try {
-            engine.nodes[i].update();
-        } catch (std::exception& e) { // Catch the function not being present in the code file
-            std::cout << "Update Function Not Included: Skipped!";
-        }
+        engine.nodes[i].update();
     }
     processInput();
     engine.render();
