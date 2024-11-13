@@ -5,63 +5,11 @@
 #include "Fjord.h"
 Engine engine; // makes the engine object available globaly part2
 
-
-Node::Node(int xPos, int yPos, int width, int height, int zIndex){
-    position.x = xPos; position.y = yPos;
-    scale.x = width; scale.y = height;
-    zIndex = zIndex;
-    rect = {position.x, position.y, scale.x, scale.y};
-    std::cout << "obj created" << std::endl;
-}
-
-Node Engine::createObject(){ // create object from the basic Node class and append it to the nodes array
-    Node node(0, 0, 200, 200, 0);
-    engine.nodes.push_back(node);
-    return node;
-}
-
-
 int main(){
-    if (engine.initWin(500, 500, "test") && engine.initObjs()){engine.gameRuning = true;} // check if everything initilizing ojects and SDL2 succeded and store that in gameRunning
-    while(engine.gameRuning){// run the gameLoop while the gameRunning is set to true
-        engine.gameLoop();
-    }
-    engine.destroyWindow();
+    if (engine.initWin(500, 500, "test")){
+    engine.gameRuning = true;
+    } // check if everything initilizing ojects and SDL2 succeded and store that in gameRunning
     return 0;// exit program
-}
-
-
-
-void Engine::gameLoop(){// main game loop
-    for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and calls their update functions
-        engine.nodes[i].Update();
-    }
-    processInput(); // process keyboard inputs
-    engine.render();// render objects
-}
-
-void Engine::processInput(){ // process keyboard inputs
-    SDL_Event event;
-    SDL_PollEvent(&event);
-
-    switch (event.type) {
-        case SDL_QUIT:
-            gameRuning = false;
-            break;
-        default:
-            break;
-    }
-}
-
-void Engine::render(){ // render objects
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //sets background color
-    SDL_RenderClear(renderer); // clear screen
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // sets object color
-    for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and renders them
-        nodes[i].rect = {nodes[i].position.x, nodes[i].position.y, nodes[i].scale.x, nodes[i].scale.y};
-        SDL_RenderFillRect(renderer, &nodes[i].rect);
-    }
-    SDL_RenderPresent(renderer); // shows render changes
 }
 
 void Engine::destroyWindow(){ // destroy window when game exits

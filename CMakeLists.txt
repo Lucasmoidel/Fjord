@@ -10,11 +10,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 
 #--------------------------------------------------------------------------
 
-add_library(Fjord STATIC lib/main.cpp lib/datatypes/Vector2.cpp)
+add_library(Fjord STATIC lib/main.cpp)
 
 include_directories(${PROJECT_SOURCE_DIR}/lib)
 
 #--------------------------------------------------------------------------
 
-add_executable(example example/node1.cpp)
-target_link_libraries(example Fjord SDL2)
+#add_executable(example example/node1.cpp)
+target_link_libraries(#[===[exaple]===] Fjord SDL2)
