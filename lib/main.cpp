@@ -7,16 +7,15 @@ Engine engine; // makes the engine object available globaly part2
 
 
 Node::Node(int xPos, int yPos, int width, int height, int zIndex){
-    Vector2 position(xPos, yPos);
-    Vector2 scale(width, height);
-
+    position.x = xPos; position.y = yPos;
+    scale.x = width; scale.y = height;
     zIndex = zIndex;
     rect = {position.x, position.y, scale.x, scale.y};
     std::cout << "obj created" << std::endl;
 }
 
 Node Engine::createObject(){ // create object from the basic Node class and append it to the nodes array
-    Node node(200, 200, 200, 200, 0);
+    Node node(0, 0, 200, 200, 0);
     engine.nodes.push_back(node);
     return node;
 }
@@ -59,6 +58,7 @@ void Engine::render(){ // render objects
     SDL_RenderClear(renderer); // clear screen
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // sets object color
     for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and renders them
+        nodes[i].rect = {nodes[i].position.x, nodes[i].position.y, nodes[i].scale.x, nodes[i].scale.y};
         SDL_RenderFillRect(renderer, &nodes[i].rect);
     }
     SDL_RenderPresent(renderer); // shows render changes
