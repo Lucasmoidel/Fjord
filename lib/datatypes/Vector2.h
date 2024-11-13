@@ -5,9 +5,9 @@
 
 class Vector2 {
     public:
+        Vector2(int xValue, int yValue);
         int x;
         int y;
-        Vector2(int xValue, int yValue);
 };
 
 #endif

@@ -6,9 +6,9 @@
 Engine engine; // makes the engine object available globaly part2
 
 
-Node::Node(int xPos, int yPos, int width, int height, int zIndex){// add constructor with vars for rendering
-    Vector2 position(xPos,yPos);
-    Vector2 scale(width,height);
+Node::Node(int xPos, int yPos, int width, int height, int zIndex){
+    Vector2 position(xPos, yPos);
+    Vector2 scale(width, height);
 
     zIndex = zIndex;
     rect = {position.x, position.y, scale.x, scale.y};
