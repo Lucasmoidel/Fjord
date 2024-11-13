@@ -8,7 +8,7 @@
 class Node{ // Base Class of Every Node
     public:
         Node(int xPos, int yPos, int width, int height, int zIndex);// add constructor with vars for rendering
-        void update(); // update function
+        void Update(); // update function
         Vector2 position = Vector2(0, 0);
         Vector2 scale = Vector2(50, 50);
         int zIndex; // create vars that go in rect

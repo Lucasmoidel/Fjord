@@ -34,7 +34,7 @@ int main(){
 
 void Engine::gameLoop(){// main game loop
     for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and calls their update functions
-        engine.nodes[i].update();
+        engine.nodes[i].Update();
     }
     processInput(); // process keyboard inputs
     engine.render();// render objects
