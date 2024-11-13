@@ -1,6 +1,6 @@
 #include <iostream> 
 
-#include "../Fjord.h"
+#include "../lib/Fjord.h"
 
 
 bool Engine::initObjs(){// define initObjs
