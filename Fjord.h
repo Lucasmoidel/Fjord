@@ -15,9 +15,14 @@ class Engine{
         
     public:
         std::vector<Node> nodes;
-        int createObject();
+        void createObject();
+        bool gameRuning;
+        void gameLoop();
+        bool initObjs();
 };
 
 extern Engine engine;
+
+
 
 #endif // MYHEADER_H
