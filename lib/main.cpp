@@ -5,6 +5,17 @@
 #include "../Fjord.h"
 Engine engine; // makes the engine object available globaly part2
 
+
+Node::Node(int xPos, int yPos, int width, int height, int zIndex){// add constructor with vars for rendering
+    x = xPos;
+    y = yPos;
+    w = width;
+    h = height;
+    zIndex = zIndex;
+    rect = {x, y, w, h};
+    std::cout << "obj created" << std::endl;
+}
+
 void Engine::createObject(){ // create object from the basic Node class and append it to the nodes array
     Node node(200, 200, 200, 200, 0);
     engine.nodes.push_back(node);

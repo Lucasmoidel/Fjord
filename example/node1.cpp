@@ -2,15 +2,6 @@
 
 #include "../Fjord.h"
 
-Node::Node(int xPos, int yPos, int width, int height, int zIndex){// add constructor with vars for rendering
-    x = xPos;
-    y = yPos;
-    w = width;
-    h = height;
-    zIndex = zIndex;
-    rect = {x, y, w, h};
-    std::cout << "obj created" << std::endl;
-}
 
 bool Engine::initObjs(){// define initObjs
     engine.createObject();
