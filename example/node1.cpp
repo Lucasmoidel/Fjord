@@ -2,7 +2,7 @@
 
 #include "../Fjord.h"
 
-Node::Node(int xPos, int yPos, int width, int height, int zIndex){
+Node::Node(int xPos, int yPos, int width, int height, int zIndex){// add constructor with vars for rendering
     x = xPos;
     y = yPos;
     w = width;

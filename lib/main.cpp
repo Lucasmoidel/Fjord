@@ -24,11 +24,11 @@ void Engine::gameLoop(){// main game loop
     for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and calls tere update functions
         engine.nodes[i].update();
     }
-    processInput();
-    engine.render();
+    processInput(); // process keyboard inputs
+    engine.render();// render objects
 }
 
-void Engine::processInput(){
+void Engine::processInput(){ // process keyboard inputs
     SDL_Event event;
     SDL_PollEvent(&event);
 
@@ -41,18 +41,17 @@ void Engine::processInput(){
     }
 }
 
-void Engine::render(){
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+void Engine::render(){ // render objects
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //sets background color
+    SDL_RenderClear(renderer); // clear screen
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // sets object color
     for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and renders them
         SDL_RenderFillRect(renderer, &nodes[i].rect);
     }
-    SDL_RenderPresent(renderer);
-
+    SDL_RenderPresent(renderer); // shows render changes
 }
 
-void Engine::destroyWindow(){
+void Engine::destroyWindow(){ // destroy window when game exits
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_Quit();
