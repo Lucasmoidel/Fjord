@@ -6,7 +6,7 @@
 Engine engine; // makes the engine object available globaly part2
 
 void Engine::createObject(){ // create object from the basic Node class and append it to the nodes array
-    Node node;
+    Node node(200, 200, 200, 200, 0);
     engine.nodes.push_back(node);
 }
 
@@ -16,6 +16,7 @@ int main(){
     while(engine.gameRuning){// run the gameLoop while the gameRunning is set to true
         engine.gameLoop();
     }
+    engine.destroyWindow();
     return 0;// exit program
 }
 
@@ -29,6 +30,38 @@ void Engine::gameLoop(){// main game loop
             std::cout << "Update Function Not Included: Skipped!";
         }
     }
+    processInput();
+    engine.render();
+}
+
+void Engine::processInput(){
+    SDL_Event event;
+    SDL_PollEvent(&event);
+
+    switch (event.type) {
+        case SDL_QUIT:
+            gameRuning = false;
+            break;
+        default:
+            break;
+    }
+}
+
+void Engine::render(){
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and renders them
+        SDL_RenderFillRect(renderer, &nodes[i].rect);
+    }
+    SDL_RenderPresent(renderer);
+
+}
+
+void Engine::destroyWindow(){
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
 }
 
 bool Engine::initWin(int Win_width, int Win_height, std::string name) { // initilize all SDL2 componets and makes sure that it succedes
