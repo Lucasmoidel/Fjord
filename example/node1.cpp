@@ -11,6 +11,6 @@ Vector2 direction = Vector2(0,1);
 //}
 
 void Node::update(){ // update stuff
-    square.position.y += direction.y;
+    //std::cout << position;
 }
 
