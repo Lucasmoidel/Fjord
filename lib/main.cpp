@@ -1,8 +1,10 @@
 #include <iostream> 
 #include <string> 
 #include <vector> 
+#include <stdexcept>
 #include "../Fjord.h"
 Engine engine; // makes the engine object available globaly part2
+
 void Engine::createObject(){ // create object from the basic Node class and append it to the nodes array
     Node node;
     engine.nodes.push_back(node);
@@ -20,8 +22,12 @@ int main(){
 
 
 void Engine::gameLoop(){// main game loop
-    for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and calls tere update functions
-        engine.nodes[i].update();
+    for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and calls there update functions
+        try {
+            engine.nodes[i].update();
+        } catch (std::exception& e) { // Catch the function not being present in the code file
+            std::cout << "Update Function Not Included: Skipped!";
+        }
     }
 }
 
