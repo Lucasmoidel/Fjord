@@ -1,12 +1,8 @@
-#include <iostream>
+#include <stdio.h>
+#include <Vector2.h>
+#include <../Fjord.h>
 
-class Vector2 {
-    public:
-        int x;
-        int y;
-
-        Vector2(int xValue, int yValue){
-            x = xValue;
-            y = yValue;
-        }
-};
+Vector2::Vector2(int xValue, int yValue){
+    x = xValue;
+    y = yValue;
+}

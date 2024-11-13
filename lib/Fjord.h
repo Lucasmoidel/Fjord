@@ -1,10 +1,9 @@
 #ifndef Fjord_H
 #define Fjord_H
-#include <iostream> 
-#include <string> 
+
 #include <vector> 
 #include <SDL2/SDL.h>
-
+#include <datatypes/Vector2.h>
 
 class Node{ // default node class
     public:
