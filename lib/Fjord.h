@@ -8,10 +8,10 @@
 
 class Node{ // default node class
     public:
-        Node(int xPos, int yPos, int width, int height, int zIndex);
-        void update();
-        int x, y, w, h, zIndex;
-        SDL_Rect rect;
+        Node(int xPos, int yPos, int width, int height, int zIndex);// add constructor with vars for rendering
+        void update(); // update function
+        int x, y, w, h, zIndex; // create vars that go in rect
+        SDL_Rect rect; // sdl rect for rendering
 };
 
 class Engine{ // game engine that will provide functions
@@ -24,9 +24,10 @@ class Engine{ // game engine that will provide functions
         bool initWin(int Win_width, int Win_height, std::string name); //intitilize sdl2 window with the width, height, and name of window
         bool gameRuning; // var that controlls if the game is running
         void gameLoop(); // The main game loop
-        void processInput();
-        void destroyWindow();
-        void render();
+        void processInput(); // process keyboard inputs
+        void render(); // render objects
+        void destroyWindow(); // destroy window when game exits
+
         SDL_Window* window = NULL; // SDL window object
         SDL_Renderer* renderer = NULL; //SDL renderer object
 
