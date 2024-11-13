@@ -7,18 +7,18 @@ Engine engine; // makes the engine object available globaly part2
 
 
 Node::Node(int xPos, int yPos, int width, int height, int zIndex){// add constructor with vars for rendering
-    x = xPos;
-    y = yPos;
-    w = width;
-    h = height;
+    Vector2 position = Vector2(xPos,yPos);
+    Vector2 scale = Vector2(width,height);
+
     zIndex = zIndex;
-    rect = {x, y, w, h};
+    rect = {position.x, position.y, scale.x, scale.y};
     std::cout << "obj created" << std::endl;
 }
 
-void Engine::createObject(){ // create object from the basic Node class and append it to the nodes array
+Node Engine::createObject(){ // create object from the basic Node class and append it to the nodes array
     Node node(200, 200, 200, 200, 0);
     engine.nodes.push_back(node);
+    return node;
 }
 
 
@@ -34,7 +34,7 @@ int main(){
 
 
 void Engine::gameLoop(){// main game loop
-    for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and calls there update functions
+    for (int i = 0; i < (int)engine.nodes.size(); i++){ // loops throuch the objects int the nodes array and calls their update functions
         engine.nodes[i].update();
     }
     processInput(); // process keyboard inputs

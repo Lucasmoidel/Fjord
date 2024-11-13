@@ -9,7 +9,8 @@ class Node{ // default node class
     public:
         Node(int xPos, int yPos, int width, int height, int zIndex);// add constructor with vars for rendering
         void update(); // update function
-        int x, y, w, h, zIndex; // create vars that go in rect
+        Vector2 position, scale;
+        int zIndex; // create vars that go in rect
         SDL_Rect rect; // sdl rect for rendering
 };
 
@@ -18,7 +19,7 @@ class Engine{ // game engine that will provide functions
     public:
         std::vector<Node> nodes; // create array to store all Node objects
         void createTilemap();
-        void createObject(); // creates a Node object
+        Node createObject(); // creates a Node object
         bool initObjs(); // Dev difined: run createObjects and do stuff
         bool initWin(int Win_width, int Win_height, std::string name); //intitilize sdl2 window with the width, height, and name of window
         bool gameRuning; // var that controlls if the game is running
