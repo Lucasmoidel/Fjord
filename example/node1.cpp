@@ -11,7 +11,7 @@ bool Engine::initObjs(){// define initObjs
 
 int direction = 1;
 
-void Node::update(){ // update stuff
+void Node::Update(){ // update stuff
     if (engine.nodes[0].position.x > 500){
         direction = -1;
     }
