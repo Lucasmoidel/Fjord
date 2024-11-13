@@ -2,8 +2,8 @@
 #include <string> 
 #include <vector> 
 #include "../Fjord.h"
-
-int createObject(){
+Engine engine;
+int Engine::createObject(){
     Node node;
     engine.nodes.push_back(node);
     return engine.nodes.size()-1;
