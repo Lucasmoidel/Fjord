@@ -3,7 +3,7 @@
 
 int initSDL(std::string windowname, int Win_width, int Win_height, SDL_Window* window, SDL_Renderer* renderer){
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0 ) {
-        std::cout << "init sdl failed\n";
+        std::cout << "Fatal Error: Sdl initialization failed\n";
         return 0;
     }
 
@@ -12,14 +12,14 @@ int initSDL(std::string windowname, int Win_width, int Win_height, SDL_Window* w
     
 
     if (!window) {
-        std::cout << "failed to create window\n";
+        std::cout << "Fatal Error: Failed to create window\n";
         return 0;
     }
 
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     if (!renderer) {
-        std::cout << "failed to create renderer\n";
+        std::cout << "Fatal Error: Failed to create renderer\n";
         return 0;
     }
 
