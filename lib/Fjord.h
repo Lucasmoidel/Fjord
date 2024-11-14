@@ -2,16 +2,20 @@
 #define Fjord_H
 
 #include <iostream> 
+#include <vector>
 #include <SDL2/SDL.h>
 
 #include "dat/Vector2.h"
-
+#include "dat/Transform.h"
+#include "Node.h"
 class Engine{ // game engine that will provide functions    
     public:
-        bool gameRuning = false;
+        std::vector<Node> nodes;
+
+        bool gameRuning = false; // keeps tract of weather the game is running
         bool initWin(int Win_width, int Win_height, std::string name); //intitilize sdl2 window with the width, height, and name of window
-        void processInput();
-        void render();
+        void processInput(); // proccess user input
+        void render(); // render objects
        
         void destroyWindow(); // destroy window when game exits
 

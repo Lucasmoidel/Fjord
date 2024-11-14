@@ -8,12 +8,14 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 
 #--------------------------------------------------------------------------
+file(GLOB Fjord_src "lib/dat/*.cpp" "lib/*.cpp")
+file(GLOB example_src "example/*.cpp")
 
-add_library(Fjord STATIC lib/main.cpp lib/dat/Vector2.cpp)
+add_library(Fjord STATIC ${Fjord_src})
 
 include_directories(${PROJECT_SOURCE_DIR}/lib)
 
 #--------------------------------------------------------------------------
 
-add_executable(example example/node.cpp)
+add_executable(example ${example_src})
 target_link_libraries(example Fjord SDL2)

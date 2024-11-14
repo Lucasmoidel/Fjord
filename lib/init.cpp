@@ -1,27 +1,27 @@
 #include <iostream>
-#include <SDL2/SDL.h>
+#include "Fjord.h"
 
-int initSDL(std::string windowname, int Win_width, int Win_height, SDL_Window* window, SDL_Renderer* renderer){
+bool Engine::initWin(int Win_width, int Win_height, std::string name) { // initilize all SDL2 componets and makes sure that it succedes
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0 ) {
-        std::cout << "Fatal Error: Sdl initialization failed\n";
-        return 0;
+        printf("init sdl failed\n");
+        return false;
     }
 
 
-    window = SDL_CreateWindow(windowname.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Win_width, Win_height, 0);
+    window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Win_width, Win_height, 0);
     
 
     if (!window) {
-        std::cout << "Fatal Error: Failed to create window\n";
-        return 0;
+        printf ("failed to create window\n");
+        return false;
     }
 
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     if (!renderer) {
-        std::cout << "Fatal Error: Failed to create renderer\n";
-        return 0;
+        printf ("failed to create renderer\n");
+        return false;
     }
 
-    return 1;
+    return true;
 }
