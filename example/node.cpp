@@ -9,7 +9,11 @@ class Node1 : public Node {
 };
 
 void thing(){
-    Node1* node;
+    Node1* node = new Node1();
+
+    if (node == nullptr){
+        printf("NULL\n");
+    }
 
     engine.nodes.push_back(node);
     Vector2 vec = Vector2(2,3);

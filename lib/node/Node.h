@@ -3,9 +3,9 @@
 
 #include <iostream> 
 #include <SDL2/SDL.h>
-#include "Fjord.h"
+#include "../Fjord.h"
 
-class Node{ // game engine that will provide functions    
+class Node { // game engine that will provide functions    
     public:
         Transform transform;
         virtual void Update();
