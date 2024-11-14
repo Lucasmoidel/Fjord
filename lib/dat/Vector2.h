@@ -6,7 +6,7 @@ class Vector2 {
         float x;
         float y;
 
-        Vector2(float xPos,float yPos);
+        Vector2(float xPos=0,float yPos=0);
 
         Vector2 operator+(const Vector2& other) const;
         Vector2 operator-(const Vector2& other) const;

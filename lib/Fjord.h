@@ -15,6 +15,8 @@ class Engine{ // game engine that will provide functions
        
         void destroyWindow(); // destroy window when game exits
 
+    private:
+
         SDL_Window* window = NULL; // SDL window object
         SDL_Renderer* renderer = NULL; //SDL renderer object
 
