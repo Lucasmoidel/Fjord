@@ -3,13 +3,29 @@
 
 class Node1 : public Node {
     public:
+
+        Vector2 direction = Vector2(1,1);
+
         void Update() override {
-            std::cout << "Hello!" << std::endl;
+
+            transform.position += direction;
+            std::cout << direction << std::endl;
+            if (transform.position.x > 300){
+                direction.x = -1;
+            } else if (transform.position.x < 0){
+                direction.x = 1;
+            }
+            if (transform.position.y > 300){
+                direction.y = -1;
+            } else if (transform.position.y < 0){
+                direction.y = 1;
+            }
         }
 };
 
 void thing(){
     Node1* node = new Node1();
+    node->transform.position = Vector2(150,50);
 
     if (node == nullptr){
         printf("NULL\n");

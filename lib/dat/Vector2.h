@@ -10,6 +10,11 @@ class Vector2 {
 
         Vector2 operator+(const Vector2& other) const;
         Vector2 operator-(const Vector2& other) const;
+
+        Vector2& operator=(const Vector2& other);
+
+        Vector2& operator+=(const Vector2& other);
+        Vector2& operator-=(const Vector2& other);
         
         friend std::ostream& operator<<(std::ostream& os, const Vector2& vec);
 };
