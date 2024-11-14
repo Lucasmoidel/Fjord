@@ -1,11 +1,16 @@
 #include <iostream>
 #include "Fjord.h"
 
-class Node1 : public Node{};
-
+class Node1 : public Node {
+    public:
+        void Update() override {
+            std::cout << "Hello!" << std::endl;
+        }
+};
 
 void thing(){
-    Node1 node;
+    Node1* node;
+
     engine.nodes.push_back(node);
     Vector2 vec = Vector2(2,3);
     Vector2 vec2 = Vector2(10,5);

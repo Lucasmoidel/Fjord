@@ -8,7 +8,7 @@
 class Node{ // game engine that will provide functions    
     public:
         Transform transform;
-        void update();
+        virtual void Update();
 
         SDL_Rect rect;
         
