@@ -2,6 +2,8 @@
  
 Fjord is a 2D game/graphics engine being primarily developed by lucasmoidel and JStudios6118 in C++ and SDL2. This repository contains the base Fjord library and example game. At the time of writing, we have very little done.
 
+<img src="fjord_logo.png" width="100px">
+
 # Why is Fjord?
 
 Fjord has been created to present users with an easier way to create graphical programs and games. This is mostly just a fun project for us to test our skills as programmers. If you would like to add your own code or improve our code, feel free to create a pull request or issue. Help on this project would be greatly appreciated!
