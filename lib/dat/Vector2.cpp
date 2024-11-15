@@ -6,6 +6,15 @@ Vector2::Vector2(float xPos, float yPos) : x(xPos), y(yPos) {
     y = yPos;
 }
 
+Vector2::Vector2(VectorEnum vecEnum){
+    switch (vecEnum) {
+        case VectorEnum::ZERO:
+            x,y=0;
+    }
+}
+
+const Vector2 Vector2::ZERO(Vector2::ZERO);
+
 Vector2 Vector2::operator+(const Vector2& other) const { // Vector2 Add Operation
     return Vector2(x+other.x, y+other.y);
 }

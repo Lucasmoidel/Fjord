@@ -29,6 +29,10 @@ void Start(){
     Node1* node_two = new Node1(200,100);
     node_two->direction = Vector2(-1,-1);
 
+    Vector2 vecTest = Vector2::ZERO;
+
+    std::cout << vecTest << std::endl;
+
     //engine.nodes.push_back(node);
     //engine.nodes.push_back(node_two);
 

@@ -1,12 +1,20 @@
 #ifndef Vector2_H
 #define Vector2_H
 
+enum class VectorEnum {
+    ZERO
+};
+
 class Vector2 {
     public:
         float x;
         float y;
 
         Vector2(float xPos=0,float yPos=0);
+
+        Vector2(VectorEnum vecEnum);
+
+        static const Vector2 ZERO;
 
         Vector2 operator+(const Vector2& other) const;
         Vector2 operator-(const Vector2& other) const;
