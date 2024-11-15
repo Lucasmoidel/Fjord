@@ -1,14 +1,15 @@
 #include "Fjord.h"
 
-void Engine::processInput(){ // process keyboard inputs
+SDL_Event Engine::processInput(){ // process keyboard inputs
     SDL_Event event;
     SDL_PollEvent(&event);
     if (event.type == SDL_QUIT){
         gameRuning = false;
     }
+    return event;
 }
 
-void Engine::update(){
+void Engine::update(SDL_Event events){
     int timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - Time::last_frame_time);
 
     if (timeToWait > 0 && timeToWait <= engine.FRAME_TARGET_TIME){
@@ -18,6 +19,7 @@ void Engine::update(){
     Time::deltaTime =  (SDL_GetTicks() - Time::last_frame_time) / 1000.0f;
     Time::last_frame_time = SDL_GetTicks();
     for (size_t i = 0; i < engine.nodes.size(); i++){
+        nodes[i]->Input(events);
         nodes[i]->Update();
         nodes[i]->rect = {(int)nodes[i]->transform.position.x, (int)nodes[i]->transform.position.y, 200, 200};
     }
