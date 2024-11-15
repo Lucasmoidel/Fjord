@@ -22,6 +22,9 @@ void Engine::update(){
         nodes[i]->rect = {(int)nodes[i]->transform.position.x, (int)nodes[i]->transform.position.y, 200, 200};
     }
 }
+void Engine::crateNode(Node* node){
+    nodes.push_back(node);
+}
 
 void Engine::render(){ // render objects
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //sets background color
