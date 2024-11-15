@@ -23,14 +23,14 @@ class Node1 : public Node {
 };
 
 void thing(){
-    
+
     Node1* node = new Node1(); // Create a new node
     Node1* node_two = new Node1();
     node->transform.position = Vector2(200,100); // Offset the position by a little bit
     node_two->transform.position = Vector2(100,200);
     node_two->direction = Vector2(-1,-1);
 
-    engine.nodes.push_back(node);
-    engine.nodes.push_back(node_two);
+    //engine.nodes.push_back(node);
+    //engine.nodes.push_back(node_two);
 
 }
