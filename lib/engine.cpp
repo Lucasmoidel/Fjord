@@ -11,7 +11,7 @@ void Engine::processInput(){ // process keyboard inputs
 
 void Engine::update(){
     int timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - Time::last_frame_time);
-    if (timeToWait > 0 && timeToWait <= engine.TARGET_FPS){SDL_Delay(timeToWait);}
+    //if (timeToWait > 0 && timeToWait <= engine.TARGET_FPS){SDL_Delay(timeToWait);}
     for (int i = 0; i < engine.nodes.size(); i++){
         nodes[i]->Update();
     }

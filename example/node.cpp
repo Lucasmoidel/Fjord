@@ -23,7 +23,7 @@ class Node1 : public Node {
         }
 };
 
-void thing(){
+void Start(){
 
     Node1* node = new Node1(); // Create a new node
     Node1* node_two = new Node1();
