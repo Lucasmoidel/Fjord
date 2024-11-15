@@ -14,6 +14,18 @@ Vector2 Vector2::operator-(const Vector2& other) const { // Vector2 Subtract Ope
     return Vector2(x-other.x, y-other.y);
 }
 
+Vector2 Vector2::operator*(const Vector2& other) const {
+    return Vector2(x*other.x, y*other.y);
+}
+
+Vector2 Vector2::operator*(int scalar) const { // Vector2 Multiply by Int
+    return Vector2(this->x*scalar,this->y*scalar);
+}
+
+Vector2 Vector2::operator*(float scalar) const { // Vector2 Multiply by Int
+    return Vector2(this->x*scalar,this->y*scalar);
+}
+
 Vector2& Vector2::operator=(const Vector2& other) {
     if (this != &other){
         x = other.x;

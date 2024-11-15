@@ -20,6 +20,7 @@ class Engine{ // game engine that will provide functions
         void destroyWindow(); // destroy window when game exits
 
         int TARGET_FPS = 120;
+        int FRAME_TARGET_TIME = 1000 / TARGET_FPS;
 
 
 
