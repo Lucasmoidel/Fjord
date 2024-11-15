@@ -5,6 +5,11 @@ if [[ $1 == "clean" ]]
 then
     rm * -r
 fi
-cmake ..
-make -j4
-./example
+if [[ $1 == "run" ]]
+then
+    ./example
+else
+    cmake ..
+    make -j4
+    ./example
+fi
