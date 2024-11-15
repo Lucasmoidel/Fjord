@@ -5,7 +5,7 @@ class Node1 : public Node {
     public:
 
         Vector2 direction = Vector2(1,1); // Create a direction Vector
-
+        using Node::Node;
         void Update() override { // Main loop for Node
             //std::cout << Time::deltaTime << std::endl;
             int speed = 250;
@@ -25,10 +25,8 @@ class Node1 : public Node {
 
 void Start(){
 
-    Node1* node = new Node1(); // Create a new node
-    Node1* node_two = new Node1();
-    node->transform.position = Vector2(100,200); // Offset the position by a little bit
-    node_two->transform.position = Vector2(200,100);
+    Node1* node = new Node1(100,200); // Create a new node
+    Node1* node_two = new Node1(200,100);
     node_two->direction = Vector2(-1,-1);
 
     //engine.nodes.push_back(node);

@@ -6,5 +6,5 @@ then
     rm * -r
 fi
 cmake ..
-make
+make -j4
 ./example

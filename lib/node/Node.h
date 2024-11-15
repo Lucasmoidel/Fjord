@@ -7,7 +7,7 @@
 
 class Node { // game engine that will provide functions    
     public:
-        Node();
+        Node(int xVar=0, int yVar=0);
         Transform transform;
         virtual void Update(){};
 
