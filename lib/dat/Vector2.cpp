@@ -9,7 +9,8 @@ Vector2::Vector2(float xPos, float yPos) : x(xPos), y(yPos) {
 Vector2::Vector2(VectorEnum vecEnum){
     switch (vecEnum) {
         case VectorEnum::ZERO:
-            x,y=0;
+            x = 0;
+            y = 0;
     }
 }
 

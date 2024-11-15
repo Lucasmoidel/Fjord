@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Fjord.h"
+#include "../lib/Fjord.h"
 
 class Node1 : public Node {
     public:
