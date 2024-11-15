@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
-#if $1 
 cd build
+if [ $1 == "clean" ]
+then
+    rm * -r
 cmake ..
 make
 ./example
