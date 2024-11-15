@@ -22,6 +22,6 @@ bool Engine::initWin(int Win_width, int Win_height, std::string name) { // initi
         printf ("failed to create renderer\n");
         return false;
     }
-
+    SDL_SetWindowResizable(window, SDL_TRUE);
     return true;
 }
