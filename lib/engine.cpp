@@ -3,7 +3,6 @@
 void Engine::processInput(){ // process keyboard inputs
     SDL_Event event;
     SDL_PollEvent(&event);
-    std::cout << "check\n";
     if (event.type == SDL_QUIT){
         gameRuning = false;
     }
@@ -18,7 +17,6 @@ void Engine::update(){
 
     Time::deltaTime =  (SDL_GetTicks() - Time::last_frame_time) / 1000.0f;
     Time::last_frame_time = SDL_GetTicks();
-    //if (timeToWait > 0 && timeToWait <= engine.TARGET_FPS){SDL_Delay(timeToWait);}
     for (int i = 0; i < engine.nodes.size(); i++){
         nodes[i]->Update();
     }
