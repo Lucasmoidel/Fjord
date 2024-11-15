@@ -10,7 +10,6 @@ class Node { // game engine that will provide functions
         Node(int xVar=0, int yVar=0);
         Transform transform;
         virtual void Update(){};
-
         SDL_Rect rect;
         
 };
