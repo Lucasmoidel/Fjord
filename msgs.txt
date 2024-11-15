@@ -1,0 +1,11 @@
+--- MESSAGE BOARD ---
+
+- JStudios6118 -
+
+I added more functionality to the Vector2 class and got a demo working with a bouncing square. Compile it to try it out.
+
+- JStudios6118 -
+I fixed the issue with the nodes. We had to use Node1 node = new Node1();. Just what you've been saying we don't need to use lol.
+The script works now and it displays the square and the Update(); function works even!
+
+--- OLD ---
