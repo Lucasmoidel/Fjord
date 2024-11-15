@@ -37,6 +37,6 @@ namespace Time{
 extern Engine engine; // makes the engine object available globaly part1 see main.cpp for part 2
 
 void Start();
-
+void createWindow(int x, int y, std::string winName);
 
 #endif // MYHEADER_H

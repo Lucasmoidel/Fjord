@@ -24,7 +24,7 @@ class Node1 : public Node {
 };
 
 void Start(){
-
+    createWindow(500, 500, "example");
     Node1* node = new Node1(100,200); // Create a new node
     Node1* node_two = new Node1(200,100);
     engine.crateNode(node);

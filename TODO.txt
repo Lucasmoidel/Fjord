@@ -1,2 +1,1 @@
-//TODO: Make window init function available to user
 //TODO: MAke iser defined input stuff
