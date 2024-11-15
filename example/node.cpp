@@ -27,6 +27,8 @@ void Start(){
 
     Node1* node = new Node1(100,200); // Create a new node
     Node1* node_two = new Node1(200,100);
+    engine.crateNode(node);
+    engine.crateNode(node_two);
     node_two->direction = Vector2(-1,-1);
 
     //engine.nodes.push_back(node);
