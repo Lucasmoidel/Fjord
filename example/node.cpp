@@ -24,22 +24,14 @@ class Node1 : public Node {
 };
 
 void thing(){
+
     Node1* node = new Node1(); // Create a new node
     Node1* node_two = new Node1();
     node->transform.position = Vector2(0,0); // Offset the position by a little bit
     node_two->transform.position = Vector2(300,300);
     node_two->direction = Vector2(-1,-1);
 
-    engine.nodes.push_back(node);
-    engine.nodes.push_back(node_two);
-    Vector2 vec = Vector2(2,3);
-    Vector2 vec2 = Vector2(10,5);
-    Vector2 vec3;
+    //engine.nodes.push_back(node);
+    //engine.nodes.push_back(node_two);
 
-    std::cout << vec << std::endl;
-    std::cout << vec2 << std::endl;
-
-    vec3 = vec-vec2;
-
-    std::cout << vec3 << std::endl;
 }
