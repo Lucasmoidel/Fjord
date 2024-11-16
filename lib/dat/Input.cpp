@@ -33,6 +33,17 @@ bool Input::isDown(const std::string actionName){
     return false;
 }
 
+bool Input::isUp(const std::string actionName){
+    std::vector<SDL_Keycode> keycodes = getAction(actionName);
+    for (int i = 0; i < keycodes.size(); i++){
+        if (event.type == SDL_KEYUP){
+        if (event.key.keysym.sym == keycodes[i]){
+            return true;
+        }}
+    }
+    return false;
+}
+
 std::vector<SDL_Keycode> Input::getAction(const std::string actionName) {
     Json::Value keys = keyMap["actions"][actionName];
     std::vector<SDL_Keycode> keycodes;

@@ -30,7 +30,6 @@ void Start(){
 void Node1::Update() {
     //std::cout << Time::deltaTime << std::endl;
     int speed = 250;
-    transform.position += direction * Time::deltaTime * speed; // Add the direction Vector to the position of the node
     /*if (transform.position.x > 300 || transform.position.x < 0){ // Check for right edge
     direction.x = 0;
     }
@@ -41,7 +40,21 @@ void Node1::Update() {
 }
 
 void Node1::Input(){
-    if (input.isDown("Jump")){
-		std::cout << "jump\n";
+    int speed = 1000;
+    if (input.isDown("Up")){
+        
+		transform.position -= Vector2(0, 5) * Time::deltaTime * speed;
+	}
+        if (input.isDown("Down")){
+        
+		transform.position += Vector2(0, 5) * Time::deltaTime * speed;
+	}
+        if (input.isDown("Left")){
+        
+		transform.position -= Vector2(5, 0) * Time::deltaTime * speed;
+	}
+        if (input.isDown("Right")){
+        
+		transform.position += Vector2(5, 0) * Time::deltaTime * speed;
 	}
 }
