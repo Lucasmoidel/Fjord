@@ -12,7 +12,6 @@ class Input{
         bool isDown(const std::string actionName);
         bool isUp(const std::string actionName);
 
-    private:
 
         Json::Value keyMap;
         Json::Value initKeyMap();

@@ -1,8 +1,17 @@
 #ifndef Fjord_H
 #define Fjord_H
 
+#ifdef LINUX_UBUNTU
+#include "jsoncpp/json/json.h"
+#elif defined(LINUX_ARCH)
+#include "json/json.h"
+#else
+#include "jsoncpp/json/json.h"
+#endif
+
 #include <iostream> 
 #include <vector>
+#include <array>
 #include <SDL2/SDL.h>
 #include "dat/Input.h"
 #include "dat/Vector2.h"
