@@ -1,5 +1,11 @@
 #include "../Fjord.h"
-#include <json/json.h>
+#define arch Arch
+#if DISTRO_ID == arch
+    #include <json/json.h>
+#else
+    #include <jsoncpp/json/json.h>
+#endif
+
 #include <fstream>
 void Input::initKeyMap(){
     std::ifstream keyMap_file("example/keyMap.json", std::ifstream::binary);
