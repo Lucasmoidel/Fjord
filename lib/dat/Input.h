@@ -6,15 +6,15 @@ class Input{
     public:
         //Input();
 
+        Json::Value keyMap;
+        Json::Value initKeyMap();
+
         Input();
 
         bool isHeld(const std::string actionName);
         bool isDown(const std::string actionName);
         bool isUp(const std::string actionName);
 
-
-        Json::Value keyMap;
-        Json::Value initKeyMap();
-        std::array<SDL_Keysym,10> getAction(const std::string actionName);
+       SDL_Keycode getAction(const std::string actionName);
 };
 #endif

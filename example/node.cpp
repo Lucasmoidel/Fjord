@@ -40,22 +40,5 @@ void Node1::Update() {
 }
 
 void Node1::Input(SDL_Event event){
-    if (event.type == SDL_KEYDOWN){
-        switch (event.key.keysym.sym){
-            case SDLK_UP:
-                direction.y = -1;
-                break;
-            case SDLK_DOWN:
-                direction.y = 1;
-                break;
-            case SDLK_LEFT:
-                direction.x = -1;
-                break;
-            case SDLK_RIGHT:
-                direction.x = 1;
-                break;
-            default:
-            break;
-        }
-    }
+    input.isDown("Jump");
 }
