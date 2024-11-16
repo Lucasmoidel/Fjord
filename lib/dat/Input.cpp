@@ -1,6 +1,7 @@
 #include "../Fjord.h"
-#include <json/json.h>
+#include <jsoncpp/json/json.h>
 #include <fstream>
+
 void Input::initKeyMap(){
     std::ifstream keyMap_file("example/keyMap.json", std::ifstream::binary);
     Json::Value keyMap;
