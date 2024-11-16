@@ -31,7 +31,7 @@ bool Input::isDown(const std::string actionName){
             break;
         }
     }
-    return true;
+    return down;
 }
 
 std::vector<SDL_Keycode> Input::getAction(const std::string actionName) {
