@@ -11,11 +11,22 @@
 
 #include <fstream>
 
-void Input::initKeyMap(){
+Input::Input(){
+    keyMap = initKeyMap();
+}
+
+Json::Value Input::initKeyMap(){
+    Json::Value keys;
     std::ifstream keyMap_file("../example/keyMap.json", std::ifstream::binary);
-    Json::Value keyMap;
-    keyMap_file >> keyMap;
+    keyMap_file >> keys;
+    return keys;
+}
 
-    std::cout << keyMap["Jump"]["sdl_key"]; //This will print the entire json object.
+bool Input::isDown(const std::string actionName){
+    getAction(actionName);
+    std::cout << "hello" << std::endl; 
+}
 
+std::array<SDL_Keysym,10> Input::getAction(const std::string actionName) {
+    std::string keys[] = keyMap["actions"][actionName];
 }

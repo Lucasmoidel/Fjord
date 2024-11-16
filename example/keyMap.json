@@ -1,1 +1,5 @@
-{"Jump" : {"sdl_key": "SDLK_SPACE"}}
+{
+    "actions":{
+        "Jump" : ["SDLK_SPACE"]
+    }
+}
