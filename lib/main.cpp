@@ -8,9 +8,10 @@ Input input;
 float Time::deltaTime = 0;
 int Time::last_frame_time = 0;
 int main(){
-
+    input.initKeyMap();
     Start();
     while(engine.gameRuning){
+        
         SDL_Event events = engine.processInput(); // proccess key presses
         engine.update(events); // update the engine every tick
 

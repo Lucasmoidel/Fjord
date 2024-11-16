@@ -12,10 +12,10 @@
 #include <fstream>
 
 void Input::initKeyMap(){
-    std::ifstream keyMap_file("example/keyMap.json", std::ifstream::binary);
+    std::ifstream keyMap_file("../example/keyMap.json", std::ifstream::binary);
     Json::Value keyMap;
     keyMap_file >> keyMap;
 
-    std::cout << keyMap; //This will print the entire json object.
+    std::cout << keyMap["Jump"]["sdl_key"]; //This will print the entire json object.
 
 }
