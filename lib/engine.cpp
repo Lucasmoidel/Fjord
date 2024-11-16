@@ -2,8 +2,8 @@
 
 void Engine::processInput(){ // process keyboard inputs
     
-    SDL_PollEvent(&input.event);
-    if (input.event.type == SDL_QUIT){
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    if (keystates[SDL_SCANCODE_]){ //FIXME: Find the quit scancode
         gameRuning = false;
     }
 }

@@ -34,12 +34,10 @@ bool Input::isDown(const std::string actionName){
 }
 
 bool Input::isUp(const std::string actionName){
+    
     std::vector<SDL_Keycode> keycodes = getAction(actionName);
-    for (int i = 0; i < keycodes.size(); i++){
-        if (event.type == SDL_KEYUP){
-        if (event.key.keysym.sym == keycodes[i]){
-            return true;
-        }}
+    for (int i = 0; i < keycodes.size(); i++){ // Use keyboard start in engine.cpp to get bools factoring in the keycodes.
+        
     }
     return false;
 }
