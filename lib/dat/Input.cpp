@@ -7,6 +7,7 @@
 #endif
 
 #include <fstream>
+
 void Input::initKeyMap(){
     std::ifstream keyMap_file("example/keyMap.json", std::ifstream::binary);
     Json::Value keyMap;
