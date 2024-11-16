@@ -18,4 +18,4 @@ include_directories(${PROJECT_SOURCE_DIR}/lib)
 #--------------------------------------------------------------------------
 
 add_executable(example ${example_src})
-target_link_libraries(example Fjord SDL2)
+target_link_libraries(example Fjord SDL2 jsoncpp)

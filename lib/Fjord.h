@@ -4,7 +4,7 @@
 #include <iostream> 
 #include <vector>
 #include <SDL2/SDL.h>
-
+#include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
 #include "node/Node.h"
@@ -35,6 +35,7 @@ namespace Time{
     extern int last_frame_time;
 }
 extern Engine engine; // makes the engine object available globaly part1 see main.cpp for part 2
+extern Input input;
 
 void Start();
 void createWindow(int x, int y, std::string winName);

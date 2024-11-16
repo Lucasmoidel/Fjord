@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include "Fjord.h"
 Engine engine; // makes the engine object available globaly part2
+Input input;
 float Time::deltaTime = 0;
 int Time::last_frame_time = 0;
 int main(){
