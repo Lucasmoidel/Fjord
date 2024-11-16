@@ -12,7 +12,7 @@ class Input{
         bool isHeld(const std::string actionName);
         bool isDown(const std::string actionName);
         bool isUp(const std::string actionName);
-
-       std::vector<SDL_Keycode> getAction(const std::string actionName);
+        const Uint8* keystates = SDL_GetKeyboardState(NULL);
+        std::vector<SDL_Keycode> getAction(const std::string actionName);
 };
 #endif

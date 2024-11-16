@@ -1,9 +1,9 @@
 #include "Fjord.h"
 
 void Engine::processInput(){ // process keyboard inputs
-    
-    const Uint8* keystates = SDL_GetKeyboardState(NULL);
-    if (keystates[SDL_SCANCODE_]){ //FIXME: Find the quit scancode
+    SDL_Event event;
+    SDL_PollEvent(&event);
+    if (event.type == SDL_QUIT){
         gameRuning = false;
     }
 }

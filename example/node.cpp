@@ -40,7 +40,7 @@ void Node1::Update() {
 }
 
 void Node1::Input(){
-    int speed = 1000;
+    int speed = 250;
     if (input.isDown("Up")){
         
 		transform.position -= Vector2(0, 5) * Time::deltaTime * speed;

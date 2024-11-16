@@ -25,19 +25,10 @@ Json::Value Input::initKeyMap(){
 bool Input::isDown(const std::string actionName){
     std::vector<SDL_Keycode> keycodes = getAction(actionName);
     for (int i = 0; i < keycodes.size(); i++){
-        if (event.type == SDL_KEYDOWN){
-        if (event.key.keysym.sym == keycodes[i]){
+        if (keystates[SDL_GetScancodeFromKey(keycodes[i])]){
+            
             return true;
-        }}
-    }
-    return false;
-}
-
-bool Input::isUp(const std::string actionName){
-    
-    std::vector<SDL_Keycode> keycodes = getAction(actionName);
-    for (int i = 0; i < keycodes.size(); i++){ // Use keyboard start in engine.cpp to get bools factoring in the keycodes.
-        
+        }
     }
     return false;
 }
