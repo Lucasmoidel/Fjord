@@ -23,16 +23,19 @@ Json::Value Input::initKeyMap(){
 }
 
 bool Input::isDown(const std::string actionName){
-    getAction(actionName);
-    std::cout << "hello" << std::endl;
-    return true;
+    for (int i = 0; i < 1; i++){
+        if (event.key.keysym.sym == getAction(actionName)->at(i)){
+            return true;
+        }
+    }
+    return false;
 }
 
-SDL_Keycode Input::getAction(const std::string actionName) {
+std::vector<SDL_Keycode>* Input::getAction(const std::string actionName) {
     Json::Value keys = keyMap["actions"][actionName];
-    SDL_Keycode keycodes[10];
-    for (int i=0; i<keys.size();i++){
-        keycodes[i] = SDL_GetKeyFromName(keys[i].asCString());
+    std::vector<SDL_Keycode>* keycodes = new std::vector<SDL_Keycode>;
+    for (int i=0; i<1;i++){
+        keycodes->push_back(SDL_GetKeyFromName(keys[i].asCString()));
     }
-    return ;
+    return keycodes;
 }

@@ -8,7 +8,7 @@ class Node1 : public Node {
         using Node::Node;
         void Update() override; // Main loop for Node
 
-        void Input(SDL_Event event) override;
+        void Input() override;
 };
 
 void Start(){
@@ -37,8 +37,11 @@ void Node1::Update() {
     if (transform.position.y > 300 || transform.position.y < 0){ // Check for bottom edge
     direction.y = 0;
     }*/
+
 }
 
-void Node1::Input(SDL_Event event){
-    input.isDown("Jump");
+void Node1::Input(){
+    if (input.isDown("Jump")){
+		std::cout << "jump\n";
+	}
 }

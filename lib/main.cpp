@@ -12,8 +12,8 @@ int main(){
     Start();
     while(engine.gameRuning){
         
-        SDL_Event events = engine.processInput(); // proccess key presses
-        engine.update(events); // update the engine every tick
+        engine.processInput(); // proccess key presses
+        engine.update(); // update the engine every tick
 
         engine.render();// render objects and stuff
     }

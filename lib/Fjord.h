@@ -23,11 +23,11 @@
 class Engine{ // game engine that will provide functions    
     public:
         std::vector<Node*> nodes;
-        void update(SDL_Event events);
+        void update();
         void crateNode(Node* node);
         bool gameRuning = false; // keeps tract of weather the game is running
         bool initWin(int Win_width, int Win_height, std::string name); //intitilize sdl2 window with the width, height, and name of window
-        SDL_Event processInput(); // proccess user input
+        void processInput(); // proccess user input
         void render(); // render objects
         void destroyWindow(); // destroy window when game exits
 

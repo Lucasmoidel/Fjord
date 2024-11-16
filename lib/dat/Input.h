@@ -4,17 +4,15 @@
 
 class Input{
     public:
-        //Input();
+        Input();
 
         Json::Value keyMap;
         Json::Value initKeyMap();
-
-        Input();
-
+        SDL_Event event;
         bool isHeld(const std::string actionName);
         bool isDown(const std::string actionName);
         bool isUp(const std::string actionName);
 
-       SDL_Keycode getAction(const std::string actionName);
+       std::vector<SDL_Keycode>* getAction(const std::string actionName);
 };
 #endif
