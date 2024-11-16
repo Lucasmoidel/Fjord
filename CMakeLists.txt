@@ -1,14 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 project(Fjord)
-if(LSB_RELEASE_CMD)
-    # Execute lsb_release -is to get the distribution ID
-    execute_process(
-        COMMAND ${LSB_RELEASE_CMD} -is
-        OUTPUT_VARIABLE DISTRO_ID
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
-    set(ENV{arch} "Arch")
-    set(ENV{ubuntu} "Ubuntu")
+if(EXISTS "/etc/os-release")
+    file(READ "/etc/os-release" os_release_content)
+    if(os_release_content MATCHES "ID=ubuntu")
+        add_definitions(-DLINUX_UBUNTU)
+    elseif(os_release_content MATCHES "ID=arch")
+        add_definitions(-DLINUX_ARCH)
+    endif()
 endif()
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")

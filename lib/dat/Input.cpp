@@ -1,8 +1,10 @@
+#include <iostream>
 #include "../Fjord.h"
-#if DISTRO_ID == arch
-    #include <json/json.h>
-#elif DISTRO_ID == ubuntu
-    #include <jsoncpp/json/json.h>
+//#include "../../config.h"
+#ifdef LINUX_UBUNTU
+#include "jsoncpp/json/json.h"
+#elif defined(LINUX_ARCH)
+#include "json/json.h"
 #endif
 
 #include <fstream>
