@@ -1,8 +1,7 @@
 #include "../Fjord.h"
-#define arch Arch
 #if DISTRO_ID == arch
     #include <json/json.h>
-#else
+#elif DISTRO_ID == ubuntu
     #include <jsoncpp/json/json.h>
 #endif
 

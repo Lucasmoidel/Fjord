@@ -7,6 +7,8 @@ if(LSB_RELEASE_CMD)
         OUTPUT_VARIABLE DISTRO_ID
         OUTPUT_STRIP_TRAILING_WHITESPACE
     )
+    set(ENV{arch} "Arch")
+    set(ENV{ubuntu} "Ubuntu")
 endif()
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
