@@ -29,6 +29,7 @@ bool Input::isDown(const std::string actionName){
         if (keystates[SDL_GetScancodeFromKey(keycodes[i])]){
             
             down = true;
+            break;
         }
     }
     return down;
