@@ -13,6 +13,6 @@ class Input{
         bool isDown(const std::string actionName);
         bool isUp(const std::string actionName);
 
-       std::vector<SDL_Keycode>* getAction(const std::string actionName);
+       std::vector<SDL_Keycode> getAction(const std::string actionName);
 };
 #endif
