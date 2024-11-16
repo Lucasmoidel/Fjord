@@ -38,6 +38,7 @@ class Engine{ // game engine that will provide functions
 
     private:
 
+        int timeToWait;
         SDL_Window* window = NULL; // SDL window object
         SDL_Renderer* renderer = NULL; //SDL renderer object
 

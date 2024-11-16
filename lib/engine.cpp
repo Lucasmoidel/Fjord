@@ -9,7 +9,7 @@ void Engine::processInput(){ // process keyboard inputs
 }
 
 void Engine::update(){
-    int timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - Time::last_frame_time);
+    timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - Time::last_frame_time);
 
     if (timeToWait > 0 && timeToWait <= engine.FRAME_TARGET_TIME){
         SDL_Delay(timeToWait);
