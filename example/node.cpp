@@ -1,13 +1,14 @@
 #include <iostream>
 #include "../lib/Fjord.h"
 
+using namespace Utilities;
+
 class Node1 : public Node {
     public:
 
         Vector2 direction = Vector2::ZERO; // Create a direction Vector
         using Node::Node;
         void Update() override; // Main loop for Node
-
         void Input() override;
 };
 
@@ -27,8 +28,9 @@ void Start(){
 
 void Node1::Update() {
     transform.position += direction * speed * Time::deltaTime;
-    //std::cout << SDL_GetError() << std::endl;
-
+    transform.position.x = ClampF(transform.position.x,0,300);
+    transform.position.y = ClampF(transform.position.y,0,300);
+    //std::cout << ClampI(transform.position.x,0,300) << std::endl;
 }
 
 void Node1::Input(){

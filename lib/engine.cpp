@@ -9,14 +9,14 @@ void Engine::processInput(){ // process keyboard inputs
 }
 
 void Engine::update(){
-    timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - Time::last_frame_time);
+    timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - Engine::last_frame_time);
 
     if (timeToWait > 0 && timeToWait <= engine.FRAME_TARGET_TIME){
         SDL_Delay(timeToWait);
     }
 
-    Time::deltaTime =  (SDL_GetTicks() - Time::last_frame_time) / 1000.0f;
-    Time::last_frame_time = SDL_GetTicks();
+    Time::deltaTime =  (SDL_GetTicks() - Engine::last_frame_time) / 1000.0f;
+    Engine::last_frame_time = SDL_GetTicks();
     for (size_t i = 0; i < engine.nodes.size(); i++){
         nodes[i]->Input();
         nodes[i]->Update();

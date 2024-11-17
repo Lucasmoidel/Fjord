@@ -13,6 +13,9 @@
 #include <vector>
 #include <array>
 #include <SDL2/SDL.h>
+
+#include "utilities.h"
+
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
@@ -42,10 +45,11 @@ class Engine{ // game engine that will provide functions
         SDL_Window* window = NULL; // SDL window object
         SDL_Renderer* renderer = NULL; //SDL renderer object
 
+        int last_frame_time = 0;
+
 };
-namespace Time{
+namespace Time {
     extern float deltaTime;
-    extern int last_frame_time;
 }
 extern Engine engine; // makes the engine object available globaly part1 see main.cpp for part 2
 extern Input input;
