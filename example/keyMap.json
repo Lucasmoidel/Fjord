@@ -4,6 +4,7 @@
         "Down" : ["S", "DOWN"],
         "Left" : ["A", "LEFT"],
         "Right" : ["D", "RIGHT"],
-        "Jump" : ["SPACE"]
+        "Jump" : ["SPACE"],
+        "Run" : ["LEFT SHIFT"]
     }
 }

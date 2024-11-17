@@ -26,13 +26,12 @@ void Start(){
 }
 
 void Node1::Update() {
-    int speed = 250;
     transform.position += direction * speed * Time::deltaTime;
+    //std::cout << SDL_GetError() << std::endl;
 
 }
 
 void Node1::Input(){
-    int speed = 250;
     if (input.isDown("Up")){
 		direction.y = -1;
 	} else if (input.isDown("Down")){
@@ -46,5 +45,10 @@ void Node1::Input(){
 		direction.x = 1;
 	} else {
         direction.x = 0;
+    }
+    if (input.isDown("Run")){
+        speed = 500;
+    } else{
+        speed = 250;
     }
 }
