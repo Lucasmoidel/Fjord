@@ -3,19 +3,17 @@
 
 using namespace Utilities;
 
-class Node1 : public Node {
+class Paddle : public Node {
     public:
-
-        Vector2 direction = Vector2::ZERO; // Create a direction Vector
-        using Node::Node;
-        void Update() override; // Main loop for Node
+        int direction = 0;
+        void Update() override;
         void Input() override;
 };
 
 void Start(){
-    createWindow(500, 500, "example");
-    Node1* node = new Node1(100,200); // Create a new node
-    engine.crateNode(node);
+    createWindow(800, 500, "Pong");
+    Paddle* paddle1 = new Paddle(10,50); // Create a new node
+    engine.crateNode(paddle1);
 
     Vector2 vecTest = Vector2::ZERO;
 
@@ -26,31 +24,6 @@ void Start(){
 
 }
 
-void Node1::Update() {
-    transform.position += direction * speed * Time::deltaTime;
-    transform.position.x = ClampF(transform.position.x,0,300);
-    transform.position.y = ClampF(transform.position.y,0,300);
-    //std::cout << ClampI(transform.position.x,0,300) << std::endl;
-}
+Paddle::Input(){
 
-void Node1::Input(){
-    if (input.isDown("Up")){
-		direction.y = -1;
-	} else if (input.isDown("Down")){
-		direction.y = 1;
-	} else {
-        direction.y = 0;
-    }
-    if (input.isDown("Left")){
-		direction.x = -1;
-	} else if (input.isDown("Right")){
-		direction.x = 1;
-	} else {
-        direction.x = 0;
-    }
-    if (input.isDown("Run")){
-        speed = 500;
-    } else{
-        speed = 250;
-    }
 }

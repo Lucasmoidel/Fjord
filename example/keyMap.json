@@ -1,10 +1,8 @@
 {
     "actions":{
-        "Up" : ["W", "UP"],
-        "Down" : ["S", "DOWN"],
-        "Left" : ["A", "LEFT"],
-        "Right" : ["D", "RIGHT"],
-        "Jump" : ["SPACE"],
-        "Run" : ["LEFT SHIFT"]
+        "Player1_Up":["W"],
+        "Player1_Down":["S"],
+        "Player2_Up":["Down"],
+        "Player2_Down":["Up"]
     }
 }
