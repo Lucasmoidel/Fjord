@@ -12,7 +12,7 @@ class Vector2 {
 
         Vector2(float xPos=0,float yPos=0);
 
-        Vector2(VectorEnum vecEnum);
+        Vector2(VectorEnum VectorEnum);
 
         static const Vector2 ZERO;
 

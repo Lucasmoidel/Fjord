@@ -7,7 +7,7 @@
 
 class Node { // game engine that will provide functions    
     public:
-        Node(int xVar=0, int yVar=0);
+        Node(int xVar=0, int yVar=0, int xSize=1, int ySize=1);
         Transform transform;
         int speed = 250;
         virtual void Update(){}; // Definition of Update Function. Called once every frame
