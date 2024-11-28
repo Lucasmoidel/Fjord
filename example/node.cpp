@@ -5,15 +5,19 @@ using namespace Utilities;
 
 class Paddle : public Node {
     public:
-        int direction = 0;
-        void Update() override;
+        using Node::Node;
+        int side = 0;
+        int speed = 100;
+        //void Update() override;
         void Input() override;
 };
 
 void Start(){
-    createWindow(800, 500, "Pong");
-    Paddle* paddle1 = new Paddle(10,50); // Create a new node
-    engine.crateNode(paddle1);
+    createWindow(800, 600, "Pong");
+    Paddle* paddle1 = engine.crateNode<Paddle>(10,50, 30, 150); // Create a new node
+    Paddle* paddle2 = engine.crateNode<Paddle>(10,50, 30, 150); // Create a new node
+    paddle1->side = 0;
+    paddle2->side = 1;
 
     Vector2 vecTest = Vector2::ZERO;
 
@@ -24,6 +28,18 @@ void Start(){
 
 }
 
-Paddle::Input(){
-
+void Paddle::Input(){
+    if(side==0){
+        if(input.isDown("Player1_Up")){
+            transform.position.y -= speed*Time::deltaTime;
+        } else if(input.isDown("Player1_Down")){
+            transform.position.y += speed*Time::deltaTime;
+        }
+    } if(side==1){
+        if(input.isDown("Player2_Up")){
+            transform.position.y -= speed*Time::deltaTime;
+        } else if(input.isDown("Player2_Down")){
+            transform.position.y += speed*Time::deltaTime;
+        }
+    }
 }

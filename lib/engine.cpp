@@ -23,8 +23,10 @@ void Engine::update(){
         nodes[i]->rect = {(int)nodes[i]->transform.position.x, (int)nodes[i]->transform.position.y, 200, 200};
     }
 }
-void Engine::crateNode(Node* node){
+template <typename T> T* Engine::crateNode(int xPos, int yPos, int xSize, int ySize){
+    T* node = new T(xPos, yPos, xSize, ySize);
     nodes.push_back(node);
+    return node;
 }
 
 void Engine::render(){ // render objects
@@ -36,6 +38,10 @@ void Engine::render(){ // render objects
         //SDL_RenderDrawLine(renderer, 500, 0, nodes[i]->rect.x+200, nodes[i]->rect.y);
         //SDL_RenderDrawLine(renderer, 500, 500, nodes[i]->rect.x+200, nodes[i]->rect.y+200);
         //SDL_RenderDrawLine(renderer, 0, 500, nodes[i]->rect.x, nodes[i]->rect.y+200);
+        nodes[i]->rect.x = nodes[i]->transform.position.x;
+        nodes[i]->rect.y = nodes[i]->transform.position.y;
+        nodes[i]->rect.w = nodes[i]->transform.size.x;
+        nodes[i]->rect.h = nodes[i]->transform.size.y;
         SDL_RenderDrawRect(renderer, &nodes[i]->rect);
     }
     SDL_RenderPresent(renderer); // shows render changes
