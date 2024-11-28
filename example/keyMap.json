@@ -2,7 +2,7 @@
     "actions":{
         "Player1_Up":["W"],
         "Player1_Down":["S"],
-        "Player2_Up":["Down"],
-        "Player2_Down":["Up"]
+        "Player2_Up":["Up"],
+        "Player2_Down":["Down"]
     }
 }
