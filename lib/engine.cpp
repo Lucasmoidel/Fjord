@@ -32,6 +32,10 @@ void Engine::render(){ // render objects
     SDL_RenderClear(renderer); // clear screen
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // sets object color
     for (size_t i = 0; i < engine.nodes.size(); i++){
+        //SDL_RenderDrawLine(renderer, 0, 0, nodes[i]->rect.x, nodes[i]->rect.y);
+        //SDL_RenderDrawLine(renderer, 500, 0, nodes[i]->rect.x+200, nodes[i]->rect.y);
+        //SDL_RenderDrawLine(renderer, 500, 500, nodes[i]->rect.x+200, nodes[i]->rect.y+200);
+        //SDL_RenderDrawLine(renderer, 0, 500, nodes[i]->rect.x, nodes[i]->rect.y+200);
         SDL_RenderDrawRect(renderer, &nodes[i]->rect);
     }
     SDL_RenderPresent(renderer); // shows render changes
