@@ -2,8 +2,8 @@
 #define UTILITIES_H
 
 namespace Utilities {
-    void ClampI(int numberToClamp,int minValue, int maxValue);
-    void ClampF(float numberToClamp,float minValue, float maxValue);
+    int ClampI(int numberToClamp,int minValue, int maxValue);
+    float ClampF(float numberToClamp,float minValue, float maxValue);
 }
 
 #endif

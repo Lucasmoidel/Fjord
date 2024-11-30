@@ -29,7 +29,7 @@ void Start(){
 }
 
 void Paddle::Update(){
-    Utilities::ClampF(&transform.position.y, 0, 600-transform.size.y);
+    transform.position.y = Utilities::ClampF(transform.position.y, 0, 600-transform.size.y);
 }
 
 
