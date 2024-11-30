@@ -12,10 +12,17 @@ class Paddle : public Node {
         void Input() override;
 };
 
+/*class Ball : public Node {
+    public:
+        using Node::Node;
+        int speed = 200;
+        void Update() override;
+};*/
+
 void Start(){
     createWindow(800, 600, "Pong");
-    Paddle* paddle1 = engine.crateNode<Paddle>(10,50, 30, 150); // Create a new node
-    Paddle* paddle2 = engine.crateNode<Paddle>(760,50, 30, 150); // Create a new node
+    Paddle* paddle1 = engine.crateNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
+    Paddle* paddle2 = engine.crateNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
     paddle1->side = 0;
     paddle2->side = 1;
 

@@ -35,11 +35,13 @@ class Engine{ // game engine that will provide functions
         void render(); // render objects
         void destroyWindow(); // destroy window when game exits
 
+        std::vector<Node*> getRectColisions(std::string name);
+
         int TARGET_FPS = 120;
         int FRAME_TARGET_TIME = 1000 / TARGET_FPS;
 
-        template <typename T> T* crateNode(int xPos, int yPos, int xSize, int ySize){
-            T* node = new T(xPos, yPos, xSize, ySize);
+        template <typename T> T* crateNode(int xPos, int yPos, int xSize, int ySize, std::string name){
+            T* node = new T(xPos, yPos, xSize, ySize, name);
             nodes.push_back(node);
             return node;
         }
