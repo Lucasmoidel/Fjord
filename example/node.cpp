@@ -1,8 +1,12 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "../lib/Fjord.h"
 
 using namespace Utilities;
 
+int Lscore = 0;
+int Rscore = 0;
 class Paddle : public Node {
     public:
         using Node::Node;
@@ -11,13 +15,28 @@ class Paddle : public Node {
         void Update() override;
         void Input() override;
 };
-
-/*class Ball : public Node {
+class Ball : public Node {
     public:
         using Node::Node;
+        Vector2 direction = Vector2(1, 1);
         int speed = 200;
-        void Update() override;
-};*/
+        void Update() override{
+            transform.position.x += direction.x * speed * Time::deltaTime;
+            transform.position.y += direction.y * speed * Time::deltaTime;
+            if(transform.position.y <= 0 || transform.position.y >= 600-transform.size.y){
+                direction.y *= -1;
+            }
+            if(transform.position.x <= 0 || transform.position.x >= 800-transform.size.x){
+                direction.x *= -1;
+                if (transform.position.x > 400){
+                    Rscore++;
+                } else {
+                    Lscore++;
+                }
+            }
+            std::cout << Lscore << ", " << Rscore << std::endl;
+        }
+};
 
 void Start(){
     createWindow(800, 600, "Pong");
@@ -25,13 +44,8 @@ void Start(){
     Paddle* paddle2 = engine.crateNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
     paddle1->side = 0;
     paddle2->side = 1;
-
-    Vector2 vecTest = Vector2::ZERO;
-
-    std::cout << vecTest << std::endl;
-
-    //engine.nodes.push_back(node);
-    //engine.nodes.push_back(node_two);
+    Ball* ball = engine.crateNode<Ball>(300, 400, 30, 30, "Ball");
+    
 
 }
 
