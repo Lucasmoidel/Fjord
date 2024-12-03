@@ -19,7 +19,7 @@ void Engine::update(){
     Engine::last_frame_time = SDL_GetTicks();
     for (size_t i = 0; i < nodes.size(); i++){
         nodes[i]->Input();
-        nodes[i]->Update();
+        nodes[i]->Update(Time::deltaTime);
         nodes[i]->rect = {(int)nodes[i]->transform.position.x, (int)nodes[i]->transform.position.y, 200, 200};
     }
 }
