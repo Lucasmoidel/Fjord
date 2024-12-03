@@ -24,7 +24,7 @@ class Ball : public Node {
         using Node::Node;
         Vector2 direction = Vector2(1, 1);
         int speed = 200;
-        void Update() override{
+        void Update(float delta) override{
             transform.position.x += direction.x * speed * Time::deltaTime;
             transform.position.y += direction.y * speed * Time::deltaTime;
             if(transform.position.y <= 0 || transform.position.y >= 600-transform.size.y){
@@ -48,7 +48,7 @@ void Start(){
     Paddle* paddle2 = engine.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
     paddle1->side = 0;
     paddle2->side = 1;
-    Ball* ball = engine.crateNode<Ball>(300, 400, 30, 30, "Ball");
+    Ball* ball = engine.createNode<Ball>(300, 400, 30, 30, "Ball");
     
 
 }
