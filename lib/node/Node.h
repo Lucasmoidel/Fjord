@@ -21,6 +21,8 @@ class Label : public Node{
     private:
         std::string text = "";
     public:
+        SDL_Surface* textSurface = NULL;
+        SDL_Color color;
         TTF_Font* Font = NULL;
         using Node::Node;
         void setText(std::string = "");

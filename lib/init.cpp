@@ -2,7 +2,8 @@
 #include "Fjord.h"
 
 bool Engine::initWin(int Win_width, int Win_height, std::string name) { // initilize all SDL2 componets and makes sure that it succedes
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0 ) {
+
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0  && TTF_Init() != 0) {
         printf("init sdl failed\n");
         return false;
     }
