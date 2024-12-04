@@ -21,6 +21,7 @@ class Label : public Node{
     private:
         std::string text = "";
     public:
+        TTF_Font* Font = NULL;
         using Node::Node;
         void setText(std::string = "");
         void Reload();

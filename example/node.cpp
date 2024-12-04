@@ -46,7 +46,9 @@ void Start(){
     createWindow(800, 600, "Pong");
     Paddle* paddle1 = engine.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
     Paddle* paddle2 = engine.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
-    engine.createNode<Label>(0, 0, 0, 0, "Label");
+    Label* Lpts = engine.createNode<Label>(0, 0, 0, 0, "Label");
+    Lpts->Font = TTF_OpenFont("comic.ttf", 24);
+
     paddle1->side = 0;
     paddle2->side = 1;
     Ball* ball = engine.createNode<Ball>(300, 400, 30, 30, "Ball");
