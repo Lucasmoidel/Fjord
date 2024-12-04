@@ -13,9 +13,18 @@ class Node { // game engine that will provide functions
         int speed = 250;
         virtual void Update(float delta){}; // Definition of Update Function. Called once every frame
         virtual void Input(){}; // Definition of Input Function. Called once very frame.
-
+        virtual void Render(SDL_Renderer* renderer);
         SDL_Rect rect;
         
+};
+class Label : public Node{
+    private:
+        std::string text = "";
+    public:
+        using Node::Node;
+        void setText(std::string = "");
+        void Reload();
+        void Render(SDL_Renderer* renderer) override; 
 };
 
 #endif // MYHEADER_H
