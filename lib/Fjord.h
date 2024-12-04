@@ -15,6 +15,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+#include "box2d/box2d.h"
+
 #include "utilities.h"
 
 #include "dat/Input.h"
