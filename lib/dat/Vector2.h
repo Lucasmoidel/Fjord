@@ -2,6 +2,7 @@
 #define Vector2_H
 
 enum class VectorEnum {
+    BOX,
     ZERO
 };
 
@@ -15,6 +16,7 @@ class Vector2 {
         Vector2(VectorEnum VectorEnum);
 
         static const Vector2 ZERO;
+        static const b2Vec2 BOX;
 
         Vector2 operator+(const Vector2& other) const;
         Vector2 operator-(const Vector2& other) const;

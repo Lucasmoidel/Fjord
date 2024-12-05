@@ -14,6 +14,7 @@
 #include <array>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <yaml-cpp/yaml.h>
 
 #include "box2d/box2d.h"
 
@@ -33,6 +34,10 @@ class Engine{ // game engine that will provide functions
 
         //void crateNode(Node* node);
         bool gameRuning = false; // keeps tract of weather the game is running
+        b2WorldId worldId;
+
+        void Initialize();
+
         bool initWin(int Win_width, int Win_height, std::string name); //intitilize sdl2 window with the width, height, and name of window
         void processInput(); // proccess user input
         void render(); // render objects

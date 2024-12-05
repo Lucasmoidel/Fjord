@@ -10,6 +10,7 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
+    engine.Initialize();
     input.initKeyMap();
     Start();
     while(engine.gameRuning){
