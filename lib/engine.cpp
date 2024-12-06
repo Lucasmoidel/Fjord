@@ -8,6 +8,10 @@ void Engine::processInput(){ // process keyboard inputs
     }
 }
 
+void Engine::Initialize(){
+    root = Node();
+}
+
 void Engine::update(){
     timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - Engine::last_frame_time);
 
@@ -43,7 +47,7 @@ std::vector<Node*> Engine::getRectColisions(std::string name){
     std::vector<Node*> intersecting;
     int index = -999;
     for (int i = 0; i < nodes.size(); i++){
-        if (nodes[i]->ID == name){
+        if (nodes[i]->id == name){
             index = i;
         }
     }

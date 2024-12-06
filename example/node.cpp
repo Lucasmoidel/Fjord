@@ -46,8 +46,8 @@ class Ball : public Node {
 
 void Start(){
     createWindow(800, 600, "Pong");
-    Paddle* paddle1 = engine.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
-    Paddle* paddle2 = engine.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
+    Paddle* paddle1 = engine.root.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
+    Paddle* paddle2 = engine.root.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
 
     paddle1->side = 0;
     paddle2->side = 1;
