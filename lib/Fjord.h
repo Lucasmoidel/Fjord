@@ -16,7 +16,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <yaml-cpp/yaml.h>
 
-#include "box2d/box2d.h"
+#include <box2d/box2d.h>
 
 #include "utilities.h"
 
