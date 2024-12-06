@@ -17,17 +17,5 @@ class Node { // game engine that will provide functions
         SDL_Rect rect;
         
 };
-class Label : public Node{
-    private:
-        std::string text = "";
-    public:
-        SDL_Surface* textSurface = NULL;
-        SDL_Color color;
-        TTF_Font* Font = NULL;
-        using Node::Node;
-        void setText(std::string = "");
-        void Reload();
-        void Render(SDL_Renderer* renderer) override; 
-};
 
 #endif // MYHEADER_H

@@ -46,10 +46,6 @@ void Start(){
     createWindow(800, 600, "Pong");
     Paddle* paddle1 = engine.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
     Paddle* paddle2 = engine.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
-    //Label* Lpts = engine.createNode<Label>(0, 0, 0, 0, "Label");
-    //Lpts->Font = TTF_OpenFont("comic.ttf", 24);
-    //Lpts->color.a = 255; Lpts->color.r = 255; Lpts->color.g = 255; Lpts->color.b = 255;
-    //Lpts->setText("12345");
 
     paddle1->side = 0;
     paddle2->side = 1;
