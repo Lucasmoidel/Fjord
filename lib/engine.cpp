@@ -8,10 +8,6 @@ void Engine::processInput(){ // process keyboard inputs
     }
 }
 
-void Engine::Initialize(){
-    root = Node();
-}
-
 void Engine::update(){
     timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - Engine::last_frame_time);
 

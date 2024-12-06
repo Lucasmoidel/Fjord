@@ -12,7 +12,7 @@ class Node { // game engine that will provide functions
         std::string name;
         std::string id;
         Transform transform;
-
+        std::string type;
         virtual void Update(float delta){}; // Definition of Update Function. Called once every frame
         virtual void Input(){}; // Definition of Input Function. Called once very frame.
         virtual void Render(SDL_Renderer* renderer);
