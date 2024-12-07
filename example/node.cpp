@@ -51,7 +51,7 @@ void Start(){
 
     paddle1->side = 0;
     paddle2->side = 1;
-    Ball* ball = engine.createNode<Ball>(300, 400, 30, 30, "Ball");
+    Ball* ball = engine.root.createNode<Ball>(300, 400, 30, 30, "Ball");
     
 
 }
