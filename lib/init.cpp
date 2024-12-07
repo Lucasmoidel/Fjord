@@ -35,5 +35,6 @@ void Engine::Initialize(){
     worldDef.gravity = (b2Vec2){0.0f, physics_defaults["gravity"].as<float>()}; // Set the gravity to default gravity
 
     worldId = b2CreateWorld(&worldDef); // Create the box2d world and set to world id defined in fjord.h
-    root = Node();
+    root = Node(0,0,1,1,"root");
+    nodes.push_back(&root);
 }

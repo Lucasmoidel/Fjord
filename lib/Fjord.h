@@ -50,12 +50,6 @@ class Engine{ // game engine that will provide functions
         int TARGET_FPS = 120;
         int FRAME_TARGET_TIME = 1000 / TARGET_FPS;
 
-        template <typename T> T* createNode(int xPos, int yPos, int xSize, int ySize, std::string name){
-            T* node = new T(xPos, yPos, xSize, ySize, name);
-            nodes.push_back(node);
-            return node;
-        }
-
     private:
 
         int timeToWait;
