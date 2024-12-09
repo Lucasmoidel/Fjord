@@ -19,8 +19,14 @@ class Node { // game engine that will provide functions
         SDL_Rect rect;
         
         std::vector<Node*> get_children();
+        int get_children_count();
 
-        template <typename T> T* createNode(int xPos, int yPos, int xSize, int ySize, std::string name);
+        template <typename T> T* createNode(int xPos, int yPos, int xSize, int ySize, std::string name){
+            T* node = new T(xPos, yPos, xSize, ySize, name);
+            //engine.nodes.push_back(node);
+            children.push_back(node);
+            return node;
+        }
 
     private:
 

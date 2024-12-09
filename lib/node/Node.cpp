@@ -13,11 +13,8 @@ std::vector<Node*> Node::get_children(){
     return children;
 }
 
-template <typename T> T* Node::createNode(int xPos, int yPos, int xSize, int ySize, std::string name){
-    T* node = new T(xPos, yPos, xSize, ySize, name);
-    engine.nodes.push_back(node);
-    children.push_back(node);
-    return node;
+int Node::get_children_count(){
+    return children.size();
 }
 
 void Node::Render(SDL_Renderer* renderer){

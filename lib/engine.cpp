@@ -17,6 +17,8 @@ void Engine::update(){
 
     Time::deltaTime =  (SDL_GetTicks() - Engine::last_frame_time) / 1000.0f;
     Engine::last_frame_time = SDL_GetTicks();
+
+    
     for (size_t i = 0; i < nodes.size(); i++){
         nodes[i]->Input();
         nodes[i]->Update(Time::deltaTime);
