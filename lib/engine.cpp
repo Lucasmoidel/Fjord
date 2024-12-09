@@ -19,11 +19,6 @@ void Engine::update(){
     Engine::last_frame_time = SDL_GetTicks();
 
     
-    for (size_t i = 0; i < nodes.size(); i++){
-        nodes[i]->Input();
-        nodes[i]->Update(Time::deltaTime);
-        nodes[i]->rect = {(int)nodes[i]->transform.position.x, (int)nodes[i]->transform.position.y, 200, 200};
-    }
 }
 
 
@@ -38,6 +33,7 @@ void Engine::render(){ // render objects
         //SDL_RenderDrawLine(renderer, 500, 500, nodes[i]->rect.x+200, nodes[i]->rect.y+200);
         //SDL_RenderDrawLine(renderer, 0, 500, nodes[i]->rect.x, nodes[i]->rect.y+200);
     }
+    //root.Render(renderer);
     SDL_RenderPresent(renderer); // shows render changes
 }
 

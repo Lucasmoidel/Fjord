@@ -18,7 +18,7 @@ class Paddle : public Node {
 
         Vector2 testing = Vector2(5,3);
 
-        void Update(float delta) override;
+        void Update() override;
         void Input() override;
 };
 class Ball : public Node {
@@ -26,7 +26,7 @@ class Ball : public Node {
         using Node::Node;
         Vector2 direction = Vector2(1, 1);
         int speed = 200;
-        void Update(float delta) override{
+        void Update() override{
             transform.position.x += direction.x * speed * Time::deltaTime;
             transform.position.y += direction.y * speed * Time::deltaTime;
             if(transform.position.y <= 0 || transform.position.y >= 600-transform.size.y){
@@ -56,8 +56,8 @@ void Start(){
 
 }
 
-void Paddle::Update(float delta){
-    transform.position.y += speed * direction * delta; // Update the position
+void Paddle::Update(){
+    transform.position.y += speed * direction * Time::deltaTime; // Update the position
     transform.position.y = ClampF(transform.position.y, 0, 600-transform.size.y); // No need to use Utilities::ClampF. Utilities is being used at the top of the file
 }
 
