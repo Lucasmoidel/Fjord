@@ -10,7 +10,7 @@ class Vector2 {
         float x;
         float y;
 
-        b2Vec2* BOX = {reinterpret_cast<float*>(&x),reinterpret_cast<float*>(&y)};
+        //b2Vec2* BOX = {reinterpret_cast<float*>(&x),reinterpret_cast<float*>(&y)};
 
         Vector2(float xPos=0,float yPos=0);
 
