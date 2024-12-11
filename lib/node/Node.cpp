@@ -19,8 +19,10 @@ int Node::get_children_count(){
 
 Node* Node::get_node(std::string path){
     std::vector<std::string> splitPath = Utilities::SplitString(path,"/");
-    Node* searchPointer;
+    std::cout << splitPath[0] << "\n";
+    Node* searchPointer = this;
     for (int i = 0; i<splitPath.size(); i++){
+        std::cout << searchPointer->name << "\n";
         if (splitPath[i] == ".."){
             searchPointer = parent;
         } else {
@@ -37,6 +39,7 @@ Node* Node::get_node(std::string path){
             }
         }
     }
+    std::cout << "Returning\n";
     return searchPointer;
 }
 
