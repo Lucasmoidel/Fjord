@@ -40,7 +40,7 @@ class Ball : public Node {
                     Lscore++;
                 }
             }
-            std::cout << Lscore << ", " << Rscore << std::endl;
+            //std::cout << Lscore << ", " << Rscore << std::endl;
         }
 };
 
@@ -52,7 +52,10 @@ void Start(){
     paddle1->side = 0;
     paddle2->side = 1;
     engine.root.createNode<Ball>(300, 400, 30, 30, "Ball");
-    
+    std::vector<std::string> thing = SplitString("asdeqweryterty", "e");
+    for (int i = 0; i < thing.size(); i++){
+        std::cout << thing[i] << std::endl;
+    }
 
 }
 
@@ -67,7 +70,7 @@ void Paddle::Input(){ // Please keep updating the transform out of the input fun
         if(input.isDown("Player1_Up")){
             direction = -1;
         } else if(input.isDown("Player1_Down")){
-            std::cout << testing.BOX.x << "\n";
+            //std::cout << testing.BOX.x << "\n";
             direction = 1;
         } else {
             direction = 0;
