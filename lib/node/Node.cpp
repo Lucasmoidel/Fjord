@@ -17,6 +17,16 @@ int Node::get_children_count(){
     return children.size();
 }
 
+Node* get_node(std::string path){
+    std::vector<std::string> splitPath = Utilities::SplitString(path,"/");
+    Node* searchPointer;
+    for (int i = 0; i<splitPath.size(); i++){
+        if (splitPath[i] == ".."){
+            
+        }
+    }
+}
+
 void Node::Render(SDL_Renderer* renderer){
     for (int i = 0; i < children.size(); i++){
         children[i]->Render(renderer);

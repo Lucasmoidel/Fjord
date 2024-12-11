@@ -14,6 +14,8 @@ class Node { // game engine that will provide functions
         Transform transform;
         std::string type;
 
+        Node* parent;
+
         std::vector<Node*> children;
 
         virtual void Update(){}; // Definition of Update Function. Called once every frame
@@ -24,7 +26,7 @@ class Node { // game engine that will provide functions
         // Children operations
         std::vector<Node*> get_children();
         int get_children_count();
-        Node get_node(std::string path);
+        Node* get_node(std::string path);
 
         template <typename T> T* createNode(int xPos, int yPos, int xSize, int ySize, std::string name){
             T* node = new T(xPos, yPos, xSize, ySize, name);
