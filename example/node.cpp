@@ -51,11 +51,12 @@ void Start(){
 
     paddle1->side = 0;
     paddle2->side = 1;
-    engine.root.createNode<Ball>(300, 400, 30, 30, "Ball");
+    Ball* ball = engine.root.createNode<Ball>(300, 400, 30, 30, "Ball");
     std::vector<std::string> thing = SplitString("asdeqweryterty", "e");
     for (int i = 0; i < thing.size(); i++){
         std::cout << thing[i] << std::endl;
     }
+    std::cout << ball->get_node("../Lpaddle")->name << "\n";
 
 }
 

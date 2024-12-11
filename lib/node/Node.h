@@ -32,6 +32,7 @@ class Node { // game engine that will provide functions
             T* node = new T(xPos, yPos, xSize, ySize, name);
             //engine.nodes.push_back(node);
             children.push_back(node);
+            node->parent = this;
             return node;
         }
 };
