@@ -36,8 +36,11 @@ class Ball : public Node {
                 direction.x *= -1;
                 if (transform.position.x > 400){
                     Rscore++;
+                    engine.root.kill_child("Lpaddle");
                 } else {
                     Lscore++;
+                    engine.root.kill_child("Rpaddle");
+                    engine.root.kill_child("Ball");
                 }
             }
             //std::cout << Lscore << ", " << Rscore << std::endl;

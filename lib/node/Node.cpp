@@ -44,6 +44,17 @@ Node* Node::get_node(std::string path){
     return searchPointer;
 }
 
+void Node::kill_child(std::string namein){
+    Node* child = NULL;
+    for (int i = 0; i < children.size(); i++){
+        if (children[i]->name == namein){
+            child = children[i];
+            children.erase(children.begin() + i);
+            delete child;// sus
+        }
+    }
+}
+
 void Node::Render(SDL_Renderer* renderer){
     for (int i = 0; i < children.size(); i++){
         children[i]->Render(renderer);
