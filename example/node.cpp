@@ -35,15 +35,17 @@ class Ball : public Node {
             if(transform.position.x <= 0 || transform.position.x >= 800-transform.size.x){
                 direction.x *= -1;
                 if (transform.position.x > 400){
+                    Lscore++;
+                   //engine.root.kill_child("Lpaddle");
+                } else {
                     Rscore++;
                     engine.root.kill_child("Lpaddle");
-                } else {
-                    Lscore++;
-                    engine.root.kill_child("Rpaddle");
-                    engine.root.kill_child("Ball");
+                    //engine.root.kill_child("Ball");
                 }
             }
+            if (get_node("../Lpaddle") != NULL){
             get_node("../Lpaddle")->transform.position.y += direction.y * Time::deltaTime * speed;
+            }
             //std::cout << Lscore << ", " << Rscore << std::endl;
         }
 };
