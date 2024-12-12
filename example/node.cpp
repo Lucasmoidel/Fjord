@@ -40,6 +40,7 @@ class Ball : public Node {
                     Lscore++;
                 }
             }
+            get_node("../Lpaddle")->transform.position.y += direction.y * Time::deltaTime * speed;
             //std::cout << Lscore << ", " << Rscore << std::endl;
         }
 };
@@ -52,8 +53,6 @@ void Start(){
     paddle1->side = 0;
     paddle2->side = 1;
     Ball* ball = engine.root.createNode<Ball>(300, 400, 30, 30, "Ball");
-
-    std::cout << ball->get_node("../Lpaddle")->name << "\n";
 
 }
 
