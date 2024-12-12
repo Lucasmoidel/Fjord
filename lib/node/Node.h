@@ -9,8 +9,8 @@ class Node { // game engine that will provide functions
     public:
         Node(int xVar=0, int yVar=0, int xSize=1, int ySize=1, std::string name = "Node2D");
 
-        std::string name;
-        std::string id;
+        std::string name = "NONAME";
+        std::string id = "NOID";
         Transform transform;
         std::string type;
 

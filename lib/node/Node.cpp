@@ -1,7 +1,7 @@
 #include "../Fjord.h"
 
-Node::Node(int xPos, int yPos, int xSize, int ySize, std::string name){
-    id = name;
+Node::Node(int xPos, int yPos, int xSize, int ySize, std::string nameIn){
+    name = nameIn;
     transform.position.x = xPos;
     transform.position.y = yPos;
     transform.size.x = xSize;
@@ -33,6 +33,7 @@ Node* Node::get_node(std::string path){
                 }
             }
             if (!found){
+                printf("null ptr !!!!!!!!!");
                 return NULL;
             }
         }
