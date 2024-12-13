@@ -59,7 +59,7 @@ void Start(){
     paddle2->side = 1;
     Ball* ball = paddle2->createNode<Ball>(300, 400, 30, 30, "Ball");
     Ball* ball2 = ball->createNode<Ball>(300, 400, 80, 40, "Ball2");
-    //paddle1->kill_child("Rpaddle");
+    paddle1->kill_child("Rpaddle");
     printf("%d\n", ball2->transform.position.x);
 
 }

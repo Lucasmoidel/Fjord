@@ -44,13 +44,13 @@ Node* Node::get_node(std::string path){
     return searchPointer;
 }
 
-void Node::kill_child(std::string namein){
+void Node::kill_child(std::string namein, int killall){
     Node* child = NULL;
     for (int i = 0; i < children.size(); i++){
-        if (namein == "" || children[i]->name == namein){
+        if (killall = 1 || children[i]->name == namein){
             child = children[i];
             children.erase(children.begin() + i);
-            child->kill_child("");
+            child->kill_child("", 1);
             delete child;// sus
         }
     }
