@@ -39,13 +39,13 @@ class Ball : public Node {
                    //engine.root.kill_child("Lpaddle");
                 } else {
                     Rscore++;
-                    engine.root.kill_child("Lpaddle");
+                    //engine.root.kill_child("Lpaddle");
                     //engine.root.kill_child("Ball");
                 }
             }
-            if (get_node("../Lpaddle") != NULL){
-            get_node("../Lpaddle")->transform.position.y += direction.y * Time::deltaTime * speed;
-            }
+            //if (get_node("../Lpaddle") != NULL){
+            //get_node("../Lpaddle")->transform.position.y += direction.y * Time::deltaTime * speed;
+            //}
             //std::cout << Lscore << ", " << Rscore << std::endl;
         }
 };
@@ -53,11 +53,14 @@ class Ball : public Node {
 void Start(){
     createWindow(800, 600, "Pong");
     Paddle* paddle1 = engine.root.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
-    Paddle* paddle2 = engine.root.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
+    Paddle* paddle2 = paddle1->createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
 
     paddle1->side = 0;
     paddle2->side = 1;
-    Ball* ball = engine.root.createNode<Ball>(300, 400, 30, 30, "Ball");
+    Ball* ball = paddle2->createNode<Ball>(300, 400, 30, 30, "Ball");
+    Ball* ball2 = ball->createNode<Ball>(300, 400, 80, 40, "Ball2");
+    //paddle1->kill_child("Rpaddle");
+    printf("%d\n", ball2->transform.position.x);
 
 }
 

@@ -47,9 +47,10 @@ Node* Node::get_node(std::string path){
 void Node::kill_child(std::string namein){
     Node* child = NULL;
     for (int i = 0; i < children.size(); i++){
-        if (children[i]->name == namein){
+        if (namein == "" || children[i]->name == namein){
             child = children[i];
             children.erase(children.begin() + i);
+            child->kill_child("");
             delete child;// sus
         }
     }
