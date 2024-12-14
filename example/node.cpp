@@ -26,7 +26,13 @@ class Ball : public Node {
         using Node::Node;
         Vector2 direction = Vector2(1, 1);
         int speed = 200;
+        int side = 0;
         void Update() override{
+            if (transform.position.x < 400){
+                side = 0;
+            }else{
+                side = 1;
+            }
             transform.position.x += direction.x * speed * Time::deltaTime;
             transform.position.y += direction.y * speed * Time::deltaTime;
             if(transform.position.y <= 0 || transform.position.y >= 600-transform.size.y){
@@ -34,7 +40,7 @@ class Ball : public Node {
             }
             if(transform.position.x <= 0 || transform.position.x >= 800-transform.size.x){
                 direction.x *= -1;
-                if (transform.position.x > 400){
+                if (side == 1 ){
                     Lscore++;
                    //engine.root.kill_child("Lpaddle");
                 } else {
@@ -59,7 +65,7 @@ void Start(){
     paddle2->side = 1;
     Ball* ball = paddle2->createNode<Ball>(300, 400, 30, 30, "Ball");
     Ball* ball2 = ball->createNode<Ball>(300, 400, 80, 40, "Ball2");
-    paddle1->kill_child("Rpaddle");
+    //paddle1->kill_child("Rpaddle");
     printf("%d\n", ball2->transform.position.x);
 
 }
