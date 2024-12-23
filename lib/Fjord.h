@@ -2,11 +2,11 @@
 #define Fjord_H
 
 #ifdef LINUX_UBUNTU
-#include "jsoncpp/json/json.h"
+#include <jsoncpp/json/json.h>
 #elif defined(LINUX_ARCH)
-#include "json/json.h"
+#include <json/json.h>
 #else
-#include "jsoncpp/json/json.h"
+#include <jsoncpp/json/json.h>
 #endif
 
 #include <iostream> 
