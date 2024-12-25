@@ -59,11 +59,12 @@ class Engine{ // game engine that will provide functions
 
 
         std::unique_ptr<RendererGL> rendererGL;
+        SDL_Window* window = NULL; // SDL window object
     private:
 
         int timeToWait;
         
-        SDL_Window* window = NULL; // SDL window object
+        
         SDL_GLContext glContext; //SDL renderer object
 
         int last_frame_time = 0;

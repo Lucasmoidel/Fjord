@@ -24,8 +24,10 @@ void Start(){
 void Box::Update(){
     transform.position.x += speed * direction.x * Time::deltaTime; // Update the position
     transform.position.y += speed * direction.y * Time::deltaTime; // Update the position
-    transform.position.x = ClampF(transform.position.x, 0, 800-transform.size.x); // No need to use Utilities::ClampF. Utilities is being used at the top of the file
-    transform.position.y = ClampF(transform.position.y, 0, 600-transform.size.y);
+    int windowWidth = 0, windowHeight = 0;
+	SDL_GetWindowSize(engine.window, &windowWidth, &windowHeight);
+    transform.position.x = ClampF(transform.position.x, 0, windowWidth-transform.size.x); // No need to use Utilities::ClampF. Utilities is being used at the top of the file
+    transform.position.y = ClampF(transform.position.y, 0, windowHeight-transform.size.y);
 }
 
 
