@@ -228,9 +228,3 @@ void RendererGL::fillShape(const SDL_Rect * rect, int shapeType) {
 		}
 	}
 }
-
-
-
-void RendererGL::swapWindow() {
-	SDL_GL_SwapWindow(window);
-}

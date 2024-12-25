@@ -36,7 +36,7 @@ void Engine::render(RendererGL* renderer){ // render objects
         //SDL_RenderDrawLine(renderer, 0, 500, nodes[i]->rect.x, nodes[i]->rect.y+200);
     }
     //root.Render(renderer);
-    rendererGL->swapWindow(); // shows render changes
+    SDL_GL_SwapWindow(window); // shows render changes
 }
 
 std::vector<Node*> Engine::getRectColisions(std::string name){

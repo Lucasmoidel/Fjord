@@ -15,7 +15,6 @@ public:
 	void setDrawColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 	void fillRect(const SDL_Rect* rect);
 	void fillOval(const SDL_Rect* rect);
-	void swapWindow();
 
 
 private:
