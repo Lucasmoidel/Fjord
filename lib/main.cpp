@@ -18,7 +18,7 @@ int main(){
         engine.processInput(); // proccess key presses
         engine.update(); // update the engine every tick
 
-        engine.render();// render objects and stuff
+        engine.render(engine.rendererGL.get());// render objects and stuff
     }
     engine.destroyWindow();// destroy window
     return 0;// exit program

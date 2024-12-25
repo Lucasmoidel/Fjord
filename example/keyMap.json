@@ -1,7 +1,7 @@
 {
     "actions":{
-        "Up":["W"],
-        "Down":["S"],
+        "Up":["Up"],
+        "Down":["Down"],
         "Left":["Left"],
         "Right":["Right"]
     }

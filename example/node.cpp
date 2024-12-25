@@ -18,7 +18,7 @@ class Box : public Node {
 
 void Start(){
     createWindow(800, 600, "Pong");
-    Box* box = engine.root.createNode<Box>(10,50, 30, 150, "LBox"); // Create a new node
+    Box* box = engine.root.createNode<Box>(300, 300, 300, 300, "Box"); // Create a new node
 }
 
 void Box::Update(){

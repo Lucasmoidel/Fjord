@@ -56,7 +56,7 @@ void Node::kill_child(std::string namein, int killall){
     }
 }
 
-void Node::Render(SDL_Renderer* renderer){
+void Node::Render(RendererGL* renderer){
     for (int i = 0; i < children.size(); i++){
         children[i]->Render(renderer);
         children[i]->Update();
@@ -66,5 +66,5 @@ void Node::Render(SDL_Renderer* renderer){
     rect.y = transform.position.y;
     rect.w = transform.size.x;
     rect.h = transform.size.y;
-    SDL_RenderDrawRect(renderer, &rect);
+    renderer->fillRect(&rect);
 }
