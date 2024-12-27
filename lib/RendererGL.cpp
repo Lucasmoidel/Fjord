@@ -1,4 +1,4 @@
-#include "RendererGL.h"
+#include "Fjord.h"
 
 
 const char* RendererGL::vertexShaderSource = "#version 330 core\n"
