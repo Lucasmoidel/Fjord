@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Fjord.h"
 
 bool Engine::initWin(int Win_width, int Win_height, std::string name) { // initilize all SDL2 componets and makes sure that it succedes

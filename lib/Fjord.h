@@ -12,6 +12,10 @@
 #include <iostream> 
 #include <vector>
 #include <array>
+#include <fstream>
+#include <stdexcept>
+#include <sstream>
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <yaml-cpp/yaml.h>

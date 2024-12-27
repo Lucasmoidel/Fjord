@@ -1,15 +1,4 @@
-#include <iostream>
 #include "../Fjord.h"
-//#include "../../config.h"
-#ifdef LINUX_UBUNTU
-#include "jsoncpp/json/json.h"
-#elif defined(LINUX_ARCH)
-#include "json/json.h"
-#else
-#include "jsoncpp/json/json.h"
-#endif
-
-#include <fstream>
 
 Input::Input(){
     keyMap = initKeyMap();
