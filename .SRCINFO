@@ -1,4 +1,4 @@
-pkgbase = Fjord-engine-git
+pkgbase = fjord-engine-git
 	pkgdesc = A simple 2d game engine based off of SDL2
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = Fjord-engine-git
 	source = git+https://github.com/Lucasmoidel/Fjord.git
 	sha256sums = SKIP
 
-pkgname = Fjord-engine-git
+pkgname = fjord-engine-git

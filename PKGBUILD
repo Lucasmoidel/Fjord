@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Lucas Moidel <lucas122133@gmail.com>
-pkgname=Fjord-engine-git
+pkgname=fjord-engine-git
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="A simple 2d game engine based off of SDL2"
