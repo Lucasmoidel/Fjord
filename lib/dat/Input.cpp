@@ -6,7 +6,7 @@ Input::Input(){
 
 Json::Value Input::initKeyMap(){
     Json::Value keys;
-    std::ifstream keyMap_file("../example/keyMap.json", std::ifstream::binary);
+    std::ifstream keyMap_file("keyMap.json", std::ifstream::binary);
     keyMap_file >> keys;
     return keys;
 }
