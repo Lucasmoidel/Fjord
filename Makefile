@@ -5,8 +5,12 @@ build:
 run:
 	cd build && ./example
 install: build
-	sudo cp build libFjord.a /usr/local/lib
+	echo copy lib file
+	sudo cp build/libFjord.a /usr/local/lib
+	echo make dir
+	sudo rm /usr/include/fjord -r
 	sudo mkdir /usr/include/fjord
-	sudo cp lib/fjordusr.h /usr/include/fjord/fjord.h
+	echo copy header
+	sudo cp lib/Fjord.h /usr/include/fjord/
 clean:
 	rm -r build
