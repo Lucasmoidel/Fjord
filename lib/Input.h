@@ -6,8 +6,8 @@ class Input{
     public:
         Input();
 
-        Json::Value keyMap;
-        Json::Value initKeyMap();
+        nlohmann::json keyMap;
+        nlohmann::json initKeyMap();
         SDL_Event event;
         bool isHeld(const std::string actionName);
         bool isDown(const std::string actionName);

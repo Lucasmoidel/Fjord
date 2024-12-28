@@ -1,7 +1,7 @@
 #ifndef Fjord_H
 #define Fjord_H
 
-#include <json/json.h>
+#include <nlohmann/json.hpp>
 
 #include <iostream> 
 #include <vector>

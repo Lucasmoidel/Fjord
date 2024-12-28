@@ -4,8 +4,8 @@ Input::Input(){
     keyMap = initKeyMap();
 }
 
-Json::Value Input::initKeyMap(){
-    Json::Value keys;
+nlohmann::json Input::initKeyMap(){
+    nlohmann::json keys;
     std::ifstream keyMap_file("keyMap.json", std::ifstream::binary);
     keyMap_file >> keys;
     return keys;
@@ -24,10 +24,11 @@ bool Input::isDown(const std::string actionName){
 }
 
 std::vector<SDL_Keycode> Input::getAction(const std::string actionName) {
-    Json::Value keys = keyMap["actions"][actionName];
+    nlohmann::json keys = keyMap["actions"][actionName];
     std::vector<SDL_Keycode> keycodes;
     for (int i=0; i<keys.size();i++){
-        keycodes.push_back(SDL_GetKeyFromName(keys[i].asCString()));
+        std::cout < keys.array().at(i).
+        keycodes.push_back(SDL_GetKeyFromName(keys[i]));
     }
     return keycodes;
 }
