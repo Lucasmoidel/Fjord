@@ -8,7 +8,7 @@ install: build
 	echo copy lib file
 	sudo cp build/libFjord.a /usr/local/lib
 	echo make dir
-	sudo rm /usr/include/fjord -r
+	-sudo rm /usr/include/fjord -r
 	sudo mkdir /usr/include/fjord
 	echo copy header
 	sudo cp lib/*.h /usr/include/fjord/
