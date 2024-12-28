@@ -5,6 +5,8 @@ build:
 run:
 	cd build && ./example
 install: build
-	echo instyle------------------------------------------------------------------------------------------------
+	sudo cp build libFjord.a /usr/local/lib
+	sudo mkdir /usr/include/fjord
+	sudo cp lib/fjordusr.h /usr/include/fjord/fjord.h
 clean:
 	rm -r build

@@ -1,36 +1,6 @@
 #ifndef Fjord_H
 #define Fjord_H
 
-#ifdef LINUX_UBUNTU
-#include <jsoncpp/json/json.h>
-#elif defined(LINUX_ARCH)
-#include <json/json.h>
-#else
-#include <jsoncpp/json/json.h>
-#endif
-
-#include <iostream> 
-#include <vector>
-#include <array>
-#include <fstream>
-#include <stdexcept>
-#include <sstream>
-
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <yaml-cpp/yaml.h>
-
-#include <box2d/box2d.h>
-
-#include "utilities.h"
-
-#include "dat/Input.h"
-#include "dat/Vector2.h"
-#include "dat/Transform.h"
-#include "node/Node.h"
-
-
-
 class Engine{ // game engine that will provide functions    
     public:
         Node root;
