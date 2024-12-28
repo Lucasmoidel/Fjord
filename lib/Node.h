@@ -1,7 +1,7 @@
 #ifndef Node_H
 #define Node_H
 
-#include "../Fjord.h"
+#include "Fjord.h"
 
 class Node { // game engine that will provide functions    
     public:

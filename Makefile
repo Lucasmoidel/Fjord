@@ -11,7 +11,7 @@ install: build
 	sudo rm /usr/include/fjord -r
 	sudo mkdir /usr/include/fjord
 	echo copy header
-	sudo cp lib/Fjord.h /usr/include/fjord/
+	sudo cp lib/*.h /usr/include/fjord/
 clean:
 	-rm -r build
 	make

@@ -1,7 +1,7 @@
 #ifndef Transform_H
 #define Transform_H
 
-#include "../Fjord.h"
+#include "Fjord.h"
 
 class Transform {
     public:
