@@ -1,7 +1,3 @@
-#include <iostream> 
-#include <string> 
-#include <vector> 
-#include <stdexcept>
 #include "Fjord.h"
 
 Engine engine; // makes the engine object available globaly part2

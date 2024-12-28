@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../Fjord.h"
 
 Vector2::Vector2(float xPos, float yPos) : x(xPos), y(yPos) {}

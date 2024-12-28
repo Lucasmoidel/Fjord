@@ -8,19 +8,25 @@
 #else
 #include <jsoncpp/json/json.h>
 #endif
+
 //cpp libs
 #include <iostream> 
 #include <vector>
 #include <array>
+#include <fstream>
+#include <stdexcept>
+#include <sstream>
+
 //SDL libs
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+
 //opengl libs
 #include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
 
+//box libs
 #include <yaml-cpp/yaml.h>
-
 #include <box2d/box2d.h>
 
 //Fjord libs
