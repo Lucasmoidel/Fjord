@@ -12,10 +12,13 @@ install: compile
 	-sudo mkdir /usr/include/fjord
 	-sudo mkdir /usr/include/fjord/dat
 	-sudo mkdir /usr/include/fjord/node
+	-sudo mkdr /usr/include/fjord/node/physics
 	echo copy header
 	sudo cp lib/*.h /usr/include/fjord/
 	sudo cp lib/dat/*.h /usr/include/fjord/dat/
 	sudo cp lib/node/*.h /usr/include/fjord/node/
+	sudo cp lib/node/*.h /usr/include/fjord/node/physics
+
 clean:
 	-rm -r build
 	make
