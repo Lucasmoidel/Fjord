@@ -4,7 +4,7 @@ compile:
 	cd build && cmake .. && make -j4 && cp ../example/keyMap.json .	
 run:
 	cd build && ./example
-install: build
+install: compile
 	echo copy lib file
 	sudo cp build/libFjord.a /usr/local/lib
 	echo make dir
