@@ -1,6 +1,6 @@
 all: compile run
 compile:
-	mkdir build
+	-mkdir build
 	cd build && cmake .. && make -j4 && cp ../example/keyMap.json .	
 run:
 	cd build && ./example
@@ -9,9 +9,9 @@ install: build
 	sudo cp build/libFjord.a /usr/local/lib
 	echo make dir
 	-sudo rm /usr/include/fjord -r
-	sudo mkdir /usr/include/fjord
-	sudo mkdir /usr/include/fjord/dat
-	sudo mkdir /usr/include/fjord/node
+	-sudo mkdir /usr/include/fjord
+	-sudo mkdir /usr/include/fjord/dat
+	-sudo mkdir /usr/include/fjord/node
 	echo copy header
 	sudo cp lib/*.h /usr/include/fjord/
 	sudo cp lib/dat/*.h /usr/include/fjord/dat/
