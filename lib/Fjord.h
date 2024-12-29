@@ -21,6 +21,7 @@
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
 #include "node/Node.h"
+#include "node/physics/collision_object.h"
 
 
 
