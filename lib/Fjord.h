@@ -17,11 +17,10 @@
 #include <box2d/box2d.h>
 
 #include "utilities.h"
-
-#include "Input.h"
-#include "Vector2.h"
-#include "Transform.h"
-#include "Node.h"
+#include "dat/Input.h"
+#include "dat/Vector2.h"
+#include "dat/Transform.h"
+#include "node/Node.h"
 
 
 
