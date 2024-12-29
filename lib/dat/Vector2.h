@@ -1,7 +1,7 @@
 #ifndef Vector2_H
 #define Vector2_H
 
-#include "Fjord.h"
+#include "../Fjord.h"
 
 enum class VectorEnum {
     ZERO
