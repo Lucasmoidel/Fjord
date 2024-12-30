@@ -6,7 +6,7 @@ run:
 	cd build && ./example
 install: compile
 	echo copy lib file
-	sudo cp build/libFjord.a /usr/local/lib
+	sudo cp build/libFjord.a /usr/lib
 	echo make dir
 	-sudo rm /usr/include/fjord -r
 	-sudo mkdir /usr/include/fjord
