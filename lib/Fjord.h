@@ -24,13 +24,12 @@
 #include <box2d/box2d.h>
 
 //Fjord libs
+#include "RendererGL.h"
 #include "utilities.h"
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
 #include "node/Node.h"
-
-#include "RendererGL.h"
 
 #include "node/physics/collision_object.h"
 #include "node/physics/static_body.h"
