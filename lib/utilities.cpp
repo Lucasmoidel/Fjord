@@ -1,6 +1,5 @@
 #include "Fjord.h"
 
-
 namespace Utilities
 {
     int ClampI(int numberToClamp,int minValue, int maxValue){

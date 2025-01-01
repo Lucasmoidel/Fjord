@@ -1,13 +1,7 @@
 #ifndef Fjord_H
 #define Fjord_H
 
-#ifdef LINUX_UBUNTU
-#include <jsoncpp/json/json.h>
-#elif defined(LINUX_ARCH)
-#include <json/json.h>
-#else
-#include <jsoncpp/json/json.h>
-#endif
+#include <nlohmann/json.hpp>
 
 //cpp libs
 #include <iostream> 
@@ -30,13 +24,16 @@
 #include <box2d/box2d.h>
 
 //Fjord libs
-#include "RendererGL.h"
 #include "utilities.h"
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
 #include "node/Node.h"
+
 #include "RendererGL.h"
+
+#include "node/physics/collision_object.h"
+#include "node/physics/static_body.h"
 
 
 
