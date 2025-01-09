@@ -13,7 +13,7 @@ Vector2::Vector2(VectorEnum vecEnum){
 const Vector2 Vector2::ZERO(Vector2::ZERO);
 
 b2Vec2 Vector2::box() {
-    return (b2Vec2){x,y}
+    return (b2Vec2){x,y};
 }
 
 Vector2 Vector2::operator+(const Vector2& other) const { // Vector2 Add Operation
