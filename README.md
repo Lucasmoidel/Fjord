@@ -9,11 +9,11 @@ Fjord is a 2D game/graphics engine being primarily developed by lucasmoidel and 
 Fjord has been created to present users with an easier way to create graphical programs and games. This is mostly just a fun project for us to test our skills as programmers. If you would like to add your own code or improve our code, feel free to create a pull request or issue. Help on this project would be greatly appreciated!
 
 # Planned Additions
-
+- ~~-opengl~~
 - Camera System
 - Sprite Rendering
 - Tilemap System
-- Input Mapping
+- ~~Input Mapping~~
 - Basic Physics
 - Particle System
 - Sounds
