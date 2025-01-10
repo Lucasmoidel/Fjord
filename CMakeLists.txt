@@ -27,5 +27,5 @@ include_directories(${PROJECT_SOURCE_DIR}/lib)
 #--------------------------------------------------------------------------
 
 add_executable(example ${example_src})
-target_link_libraries(example Fjord SDL2 SDL2_ttf yaml-cpp box2d)
+target_link_libraries(example Fjord SDL2 SDL2_ttf yaml-cpp box2d GL GLEW)
 find_program(LSB_RELEASE_CMD lsb_release)

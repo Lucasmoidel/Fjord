@@ -2,6 +2,7 @@
 #define UTILITIES_H
 
 #include "Fjord.h"
+
 namespace Utilities {
     int ClampI(int numberToClamp,int minValue, int maxValue);
     float ClampF(float numberToClamp,float minValue, float maxValue);

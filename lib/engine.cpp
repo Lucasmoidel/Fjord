@@ -22,10 +22,12 @@ void Engine::update(){
 }
 
 
-void Engine::render(){ // render objects
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //sets background color
-    SDL_RenderClear(renderer); // clear screen
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // sets object color
+void Engine::render(RendererGL* renderer){ // render objects
+	//Set the background color.
+	glClearColor(0.0f, 0.25f, 0.75f, 1.0f);
+	//Clear the screen.
+	glClear(GL_COLOR_BUFFER_BIT);
+    renderer->setDrawColor(255, 255, 255, 255); // sets object color
     for (size_t i = 0; i < nodes.size(); i++){
         nodes[i]->Render(renderer);
         //SDL_RenderDrawLine(renderer, 0, 0, nodes[i]->rect.x, nodes[i]->rect.y);
@@ -34,7 +36,7 @@ void Engine::render(){ // render objects
         //SDL_RenderDrawLine(renderer, 0, 500, nodes[i]->rect.x, nodes[i]->rect.y+200);
     }
     //root.Render(renderer);
-    SDL_RenderPresent(renderer); // shows render changes
+    SDL_GL_SwapWindow(window); // shows render changes
 }
 
 std::vector<Node*> Engine::getRectColisions(std::string name){
@@ -55,7 +57,7 @@ std::vector<Node*> Engine::getRectColisions(std::string name){
 }
 
 void Engine::destroyWindow(){ // destroy window when game exits
-        SDL_DestroyRenderer(renderer);
+        SDL_GL_DeleteContext(glContext);
         SDL_DestroyWindow(window);
         SDL_Quit();
 }
