@@ -1,7 +1,7 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#include "../fjord.h"
+#include "../Fjord.h"
 
 class Shape {
     public:

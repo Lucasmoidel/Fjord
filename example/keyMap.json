@@ -1,8 +1,8 @@
 {
     "actions":{
-        "Up":["Up"],
-        "Down":["Down"],
-        "Left":["Left"],
-        "Right":["Right"]
+        "Player1_Up":["W"],
+        "Player1_Down":["S"],
+        "Player2_Up":["Up"],
+        "Player2_Down":["Down"]
     }
 }

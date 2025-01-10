@@ -66,5 +66,5 @@ void Node::Render(RendererGL* renderer){
     rect.y = transform.position.y;
     rect.w = transform.size.x;
     rect.h = transform.size.y;
-    renderer->fillOval(&rect);
+    renderer->fillRect(&rect);
 }

@@ -24,7 +24,7 @@ void Engine::update(){
 
 void Engine::render(RendererGL* renderer){ // render objects
 	//Set the background color.
-	glClearColor(0.0f, 0.25f, 0.75f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	//Clear the screen.
 	glClear(GL_COLOR_BUFFER_BIT);
     renderer->setDrawColor(255, 255, 255, 255); // sets object color
