@@ -7,7 +7,7 @@ set -e
 UNKNOWN="echo your distro is not on this list, feel free to add it. The needed pakages are sdl2, jsoncpp, yamlcpp, box2d, and cmake"
 
 PACMAN="sudo pacman -S sdl2 sdl2_ttf nlohmann-json yaml-cpp box2d cmake"
-APT="sudo apt install libsdl2-dev nlohmann-json3-dev yaml-cpp box2d cmake"
+APT="sudo apt install libsdl2-dev nlohmann-json3-dev yaml-cpp box2d cmake glew"
 DNF=$UNKNOWN
 
 if [ $(lsb_release -is) == "Arch" ]

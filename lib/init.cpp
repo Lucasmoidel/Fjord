@@ -48,13 +48,12 @@ bool Engine::initWin(int Win_width, int Win_height, std::string name) { // initi
 
 void Engine::Initialize(){
     
-    YAML::Node physics_defaults = YAML::LoadFile("../lib/def/physics-defaults.yaml"); // Load the defaults
+    //::Node physics_defaults = YAML::LoadFile("../lib/def/physics-defaults.yaml"); // Load the defaults
 
-    b2WorldDef worldDef = b2DefaultWorldDef(); // Create new box2d world
-    worldDef.gravity = (b2Vec2){0.0f, physics_defaults["gravity"].as<float>()}; // Set the gravity to default gravity
-    worldId = b2CreateWorld(&worldDef); // Create the box2d world and set to world id defined in fjord.h
-
+    //b2WorldDef worldDef = b2DefaultWorldDef(); // Create new box2d world
+    //worldDef.gravity = (b2Vec2){0.0f, physics_defaults["gravity"].as<float>()}; // Set the gravity to default gravity
     //worldId = b2CreateWorld(&worldDef); // Create the box2d world and set to world id defined in fjord.h
+
     root = Node(0,0,1,1,"root");
     nodes.push_back(&root);
 }
