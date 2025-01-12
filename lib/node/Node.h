@@ -12,11 +12,11 @@ class Node { // game engine that will provide functions
         Transform transform;
         std::string type;
 
-        Node* parent;
+        Node* parent = NULL;
 
         std::vector<Node*> children;
 
-        void update_node_position(){};
+        void update_node_position();
 
         virtual void Update(){}; // Definition of Update Function. Called once every frame
         virtual void Input(){}; // Definition of Input Function. Called once very frame.

@@ -40,7 +40,6 @@ class Engine{ // game engine that will provide functions
     public:
         Node root;
 
-        std::vector<Node*> nodes;
         void update();
 
         //void crateNode(Node* node);

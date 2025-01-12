@@ -55,5 +55,4 @@ void Engine::Initialize(){
     //worldId = b2CreateWorld(&worldDef); // Create the box2d world and set to world id defined in fjord.h
 
     root = Node(0,0,1,1,"root");
-    nodes.push_back(&root);
 }

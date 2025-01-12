@@ -18,8 +18,10 @@ int Node::get_children_count(){
 }
 
 void Node::update_node_position(){
-    transform.global_position = parent->transform.global_position + this->transform.position;
+    if (parent != NULL){
+        transform.global_position = parent->transform.global_position + this->transform.position;
     }
+}
 
 // "../../hello/path"
 
