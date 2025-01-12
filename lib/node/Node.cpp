@@ -17,6 +17,12 @@ int Node::get_children_count(){
     return children.size();
 }
 
+void Node::update_node_position(){
+    transform.global_position = parent->transform.global_position + this->transform.position;
+    }
+
+// "../../hello/path"
+
 Node* Node::get_node(std::string path){
     std::vector<std::string> splitPath = Utilities::SplitString(path,"/");
     std::cout << splitPath[0] << "\n";

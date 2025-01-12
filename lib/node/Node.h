@@ -16,6 +16,8 @@ class Node { // game engine that will provide functions
 
         std::vector<Node*> children;
 
+        void update_node_position(){};
+
         virtual void Update(){}; // Definition of Update Function. Called once every frame
         virtual void Input(){}; // Definition of Input Function. Called once very frame.
         virtual void Render(RendererGL* renderer);
@@ -26,6 +28,7 @@ class Node { // game engine that will provide functions
         int get_children_count();
         Node* get_node(std::string path);
         void kill_child(std::string namein, int killall = 0);
+
         template <typename T> T* createNode(int xPos, int yPos, int xSize, int ySize, std::string name){
             T* node = new T(xPos, yPos, xSize, ySize, name);
             //engine.nodes.push_back(node);
