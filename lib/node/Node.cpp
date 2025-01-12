@@ -19,7 +19,7 @@ int Node::get_children_count(){
 
 void Node::update_node_position(){
     transform.global_position = parent->transform.global_position + this->transform.position;
-    }
+}
 
 // "../../hello/path"
 
@@ -63,6 +63,7 @@ void Node::kill_child(std::string namein, int killall){
 }
 
 void Node::Render(RendererGL* renderer){
+    update_node_position();
     for (int i = 0; i < children.size(); i++){
         children[i]->Render(renderer);
         children[i]->Update();
