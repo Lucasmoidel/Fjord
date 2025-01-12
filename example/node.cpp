@@ -23,11 +23,14 @@ class Paddle : public Node {
 };
 class Ball : public Node {
     public:
+        bool can_move = true;
         using Node::Node;
         Vector2 direction = Vector2(1, 1);
         int speed = 200;
         int side = 0;
         void Update() override{
+            if (!can_move){ return; }
+            std::cout << transform.global_position << std::endl;
             if (transform.position.x < 400){
                 side = 0;
             }else{
@@ -59,13 +62,18 @@ class Ball : public Node {
 void Start(){
     createWindow(800, 600, "Pong");
     Paddle* paddle1 = engine.root.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
-    Paddle* paddle2 = paddle1->createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
+    Paddle* paddle2 = engine.root.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
 
     paddle1->side = 0;
     paddle2->side = 1;
     
     //Ball* ball = engine.root.createNode<Ball>(100, 100, 30, 30, "Ball");
-    Ball* ball = paddle2->createNode<Ball>(100, 100, 30, 30, "Ball");
+    Ball* ball = engine.root.createNode<Ball>(100, 100, 30, 30, "Ball");
+    Ball* ball2 = ball->createNode<Ball>(-50,10,30,30,"Balls");
+    Ball* ball3 = ball2->createNode<Ball>(100,50,30,30,"Ballsy");
+
+    ball2->can_move = false;
+    ball3->can_move = false;
 
 }
 

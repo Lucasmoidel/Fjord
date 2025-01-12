@@ -19,7 +19,7 @@ int Node::get_children_count(){
 
 void Node::update_node_position(){
     if (parent != NULL){
-        transform.global_position = parent->transform.global_position + this->transform.position;
+        transform.global_position = parent->transform.global_position + transform.position;
     }
 }
 
@@ -65,14 +65,14 @@ void Node::kill_child(std::string namein, int killall){
 }
 
 void Node::Render(RendererGL* renderer){
-    update_node_position();
     for (int i = 0; i < children.size(); i++){
         children[i]->Render(renderer);
         children[i]->Update();
         children[i]->Input();
     }
-    rect.x = transform.position.x;
-    rect.y = transform.position.y;
+    update_node_position();
+    rect.x = transform.global_position.x;
+    rect.y = transform.global_position.y;
     rect.w = transform.size.x;
     rect.h = transform.size.y;
     renderer->fillRect(&rect);
