@@ -17,12 +17,14 @@ private:
 	bool checkShaderForCompileErrors(GLuint shader, std::string shaderType);
 	bool checkShaderProgramForCompileErrors(GLuint shaderProgram);
 	void loadBuffers();
-	void fillShape(const SDL_Rect* rect, int shapeType);
+	void fillShape(const std::vector<float>* polygon, int shapeType);
 
 
 	SDL_Window* window = nullptr;
 	GLuint shaderProgramID = 0, VAO = 0, VBO = 0, EBO = 0;
 	GLuint VAOHex = 0;
+
+	std::vector<unsigned int> RendererGL::generateHexIndices(const std::vector<float>& vertices);
 
 	static const char* vertexShaderSource;
 	static const char* fragmentShaderSource;

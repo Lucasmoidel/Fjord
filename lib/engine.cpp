@@ -28,7 +28,7 @@ void Engine::render(RendererGL* renderer){ // render objects
 	//Clear the screen.
 	glClear(GL_COLOR_BUFFER_BIT);
     renderer->setDrawColor(255, 255, 255, 255); // sets object color
-    root.Render(renderer);
+    root.Render();
     SDL_GL_SwapWindow(window); // shows render changes
 }
 

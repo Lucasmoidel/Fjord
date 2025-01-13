@@ -64,16 +64,11 @@ void Node::kill_child(std::string namein, int killall){
     }
 }
 
-void Node::Render(RendererGL* renderer){
+void Node::engine_update_node(){ // Try to find a way that only engine class can call this function. should not be usuable by user
+    update_node_position();
     for (int i = 0; i < children.size(); i++){
-        children[i]->Render(renderer);
+        children[i]->engine_update_node();
         children[i]->Update();
         children[i]->Input();
     }
-    update_node_position();
-    rect.x = transform.global_position.x;
-    rect.y = transform.global_position.y;
-    rect.w = transform.size.x;
-    rect.h = transform.size.y;
-    renderer->fillRect(&rect);
 }

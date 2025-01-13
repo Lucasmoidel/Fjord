@@ -190,33 +190,36 @@ void RendererGL::setDrawColor(unsigned char r, unsigned char g, unsigned char b,
 
 
 void RendererGL::fillRect(const SDL_Rect* rect) {
-	fillShape(rect, 0);
+	//fillShape(rect, 0);
 }
 
 
 void RendererGL::fillOval(const SDL_Rect* rect) {
-	fillShape(rect, 1);
+	//fillShape(rect, 1);
+}
+
+std::vector<unsigned int> RendererGL::generateHexIndices(const std::vector<float>& vertices) {
+    std::vector<unsigned int> indices;
+    
+    int numVertices = vertices.size() / 2; // Assuming each vertex has x and y components
+
+    // Generate indices based on the vertices for hexagon
+    for (int i = 0; i < numVertices - 2; ++i) {
+        indices.push_back(0);
+        indices.push_back(i + 1);
+        indices.push_back(i + 2);
+    }
+
+    return indices;
 }
 
 
-void RendererGL::fillShape(const SDL_Rect * rect, int shapeType) {
-	// Hexagon vertices and indices
-	float hexVertices[] = {
-		// Positions
-		0.0f,  0.5f,  // Top
-		0.4f,  0.25f,  // Top-right
-		0.4f, -0.25f,  // Bottom-right
-		0.0f, -0.5f,  // Bottom
-	-0.4f, -0.25f,  // Bottom-left
-	-0.4f,  0.25f  // Top-left
-	};
 
-	unsigned int hexIndices[] = {
-		0, 1, 5, // First Triangle
-		1, 4, 5, // Second Triangle
-		1, 2, 4, // Third Triangle
-		2, 3, 4  // Fourth Triangle
-	};
+
+void RendererGL::fillShape(const std::vector<float>* polygon, int shapeType) {
+	// Hexagon vertices and indices
+
+	std::vector<unsigned int> indices = generateHexIndices(*polygon);
 
 	// Loading data into buffers and setting VAO if not already
 	glGenVertexArrays(1, &VAOHex);
@@ -226,7 +229,7 @@ void RendererGL::fillShape(const SDL_Rect * rect, int shapeType) {
 	glBindVertexArray(VAOHex);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(hexVertices), hexVertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(polygon), polygon, GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(hexIndices), hexIndices, GL_STATIC_DRAW);
