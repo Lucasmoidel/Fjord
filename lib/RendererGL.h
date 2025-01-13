@@ -22,6 +22,7 @@ private:
 
 	SDL_Window* window = nullptr;
 	GLuint shaderProgramID = 0, VAO = 0, VBO = 0, EBO = 0;
+	GLuint VAOHex = 0;
 
 	static const char* vertexShaderSource;
 	static const char* fragmentShaderSource;

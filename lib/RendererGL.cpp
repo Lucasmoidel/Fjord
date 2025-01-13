@@ -200,31 +200,45 @@ void RendererGL::fillOval(const SDL_Rect* rect) {
 
 
 void RendererGL::fillShape(const SDL_Rect * rect, int shapeType) {
-	if (rect != nullptr && rect->w > 0 && rect->h > 0 && window != nullptr) {
+	// Hexagon vertices and indices
+	float hexVertices[] = {
+		// Positions
+		0.0f,  0.5f,  // Top
+		0.4f,  0.25f,  // Top-right
+		0.4f, -0.25f,  // Bottom-right
+		0.0f, -0.5f,  // Bottom
+	-0.4f, -0.25f,  // Bottom-left
+	-0.4f,  0.25f  // Top-left
+	};
 
-		//Get the dimensions of the window.
-		int windowWidth = 0, windowHeight = 0;
-		SDL_GetWindowSize(window, &windowWidth, &windowHeight);
-		if (windowWidth > 0 && windowHeight > 0) {
+	unsigned int hexIndices[] = {
+		0, 1, 5, // First Triangle
+		1, 4, 5, // Second Triangle
+		1, 2, 4, // Third Triangle
+		2, 3, 4  // Fourth Triangle
+	};
 
-			//The width and height of the rectangle in OpenGL's coordinate system.
-			float widthGL = (float)rect->w / windowWidth;
-			float heightGL = (float)rect->h / windowHeight;
+	// Loading data into buffers and setting VAO if not already
+	glGenVertexArrays(1, &VAOHex);
+	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &EBO);
 
-			//The upper left position of the rectangle in OpenGL's coordinate system.
-			float xGL = -1.0f + (float)rect->x / windowWidth * 2.0f;
-			float yGL = -1.0f + (float)rect->y / windowHeight * 2.0f;
+	glBindVertexArray(VAOHex);
 
-			//Set the shader program's uniform's.
-			glUniform2f(glGetUniformLocation(shaderProgramID, "posUL"), xGL, yGL);
-			glUniform2f(glGetUniformLocation(shaderProgramID, "scaleWH"), widthGL, heightGL);
-			//The approximate size of a pixel in OpenGL's coordinate system.
-			glUniform1f(glGetUniformLocation(shaderProgramID, "sizePixel"),
-				1.0f / rect->w + 1.0f / rect->h);
-			glUniform1i(glGetUniformLocation(shaderProgramID, "shapeType"), shapeType);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(hexVertices), hexVertices, GL_STATIC_DRAW);
 
-			//Draw the shape.
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-		}
-	}
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(hexIndices), hexIndices, GL_STATIC_DRAW);
+
+	// Position attribute
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0); // Unbind VAO
+
+	// Updating draw call:
+	glBindVertexArray(VAOHex);
+	glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
+
 }
