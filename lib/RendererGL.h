@@ -11,13 +11,14 @@ public:
 	void fillRect(const SDL_Rect* rect);
 	void fillOval(const SDL_Rect* rect);
 
+	void fillShape(const std::vector<float>* polygon, int shapeType);
+
 
 private:
 	void loadShader();
 	bool checkShaderForCompileErrors(GLuint shader, std::string shaderType);
 	bool checkShaderProgramForCompileErrors(GLuint shaderProgram);
 	void loadBuffers();
-	void fillShape(const std::vector<float>* polygon, int shapeType);
 
 
 	SDL_Window* window = nullptr;

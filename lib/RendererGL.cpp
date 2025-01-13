@@ -200,16 +200,13 @@ void RendererGL::fillOval(const SDL_Rect* rect) {
 
 std::vector<unsigned int> RendererGL::generateHexIndices(const std::vector<float>& vertices) {
     std::vector<unsigned int> indices;
-    
     int numVertices = vertices.size() / 2; // Assuming each vertex has x and y components
-
     // Generate indices based on the vertices for hexagon
     for (int i = 0; i < numVertices - 2; ++i) {
         indices.push_back(0);
         indices.push_back(i + 1);
         indices.push_back(i + 2);
     }
-
     return indices;
 }
 
@@ -232,7 +229,7 @@ void RendererGL::fillShape(const std::vector<float>* polygon, int shapeType) {
 	glBufferData(GL_ARRAY_BUFFER, sizeof(polygon), polygon, GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(hexIndices), hexIndices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices, GL_STATIC_DRAW);
 
 	// Position attribute
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);

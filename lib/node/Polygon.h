@@ -6,8 +6,7 @@
 class Polygon : public Node {
     Shape shape;
 
-    void Render() override {
-    }
+    void Render() override;
 };
 
 #endif

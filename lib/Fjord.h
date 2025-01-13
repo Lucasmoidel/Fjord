@@ -31,6 +31,7 @@
 #include "dat/Transform.h"
 #include "node/Node.h"
 #include "dat/shape.h"
+#include "node/Polygon.h"
 
 #include "node/physics/collision_object.h"
 #include "node/physics/static_body.h"

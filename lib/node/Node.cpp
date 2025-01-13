@@ -66,6 +66,7 @@ void Node::kill_child(std::string namein, int killall){
 
 void Node::engine_update_node(){ // Try to find a way that only engine class can call this function. should not be usuable by user
     update_node_position();
+    Render();
     for (int i = 0; i < children.size(); i++){
         children[i]->engine_update_node();
         children[i]->Update();

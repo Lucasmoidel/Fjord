@@ -7,8 +7,9 @@ using namespace Utilities;
 
 int Lscore = 0;
 int Rscore = 0;
-class Paddle : public Node {
+class Paddle : public Polygon {
     public:
+
         using Node::Node;
 
         int direction = 0;
@@ -21,7 +22,7 @@ class Paddle : public Node {
         void Update() override;
         void Input() override;
 };
-class Ball : public Node {
+class Ball : public Polygon {
     public:
         bool can_move = true;
         using Node::Node;
@@ -63,6 +64,9 @@ void Start(){
     createWindow(800, 600, "Pong");
     Paddle* paddle1 = engine.root.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
     Paddle* paddle2 = engine.root.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
+
+    paddle1->shape = {Vector2(0,0),Vector2(30,0),Vector2(30,50),Vector2(0,50)};
+    paddle2->shape = {Vector2(0,0),Vector2(30,0),Vector2(30,50),Vector2(0,50)};
 
     paddle1->side = 0;
     paddle2->side = 1;
