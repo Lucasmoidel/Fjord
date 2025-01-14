@@ -25,7 +25,7 @@ private:
 	GLuint shaderProgramID = 0, VAO = 0, VBO = 0, EBO = 0;
 	GLuint VAOHex = 0;
 
-	std::vector<unsigned int> RendererGL::generateHexIndices(const std::vector<float>& vertices);
+	std::vector<unsigned int> generateHexIndices(const std::vector<float>& vertices);
 
 	static const char* vertexShaderSource;
 	static const char* fragmentShaderSource;
