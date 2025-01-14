@@ -20,7 +20,7 @@ class Node { // game engine that will provide functions
 
         virtual void Update(){}; // Definition of Update Function. Called once every frame
         virtual void Input(){}; // Definition of Input Function. Called once very frame.
-        virtual void Render();
+        virtual void Render(){};
         SDL_Rect rect;
         
         // Children operations

@@ -4,9 +4,11 @@
 #include "../Fjord.h"
 
 class Polygon : public Node {
-    Shape shape;
+    public:
+        using Node::Node;
+        Shape shape;
 
-    void Render() override;
+        void Render() override;
 };
 
 #endif

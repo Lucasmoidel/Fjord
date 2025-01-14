@@ -65,20 +65,14 @@ void Start(){
     Paddle* paddle1 = engine.root.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
     Paddle* paddle2 = engine.root.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
 
-    paddle1->shape = {Vector2(0,0),Vector2(30,0),Vector2(30,50),Vector2(0,50)};
-    paddle2->shape = {Vector2(0,0),Vector2(30,0),Vector2(30,50),Vector2(0,50)};
+    paddle1->shape.shape = {Vector2(0,0),Vector2(30,0),Vector2(30,50),Vector2(0,50)};
+    paddle2->shape.shape = {Vector2(0,0),Vector2(30,0),Vector2(30,50),Vector2(0,50)};
 
     paddle1->side = 0;
     paddle2->side = 1;
     
     //Ball* ball = engine.root.createNode<Ball>(100, 100, 30, 30, "Ball");
-    Ball* ball = engine.root.createNode<Ball>(100, 100, 30, 30, "Ball");
-    Ball* ball2 = ball->createNode<Ball>(-50,10,30,30,"Balls");
-    Ball* ball3 = ball2->createNode<Ball>(100,50,30,30,"Ballsy");
-
-    ball2->can_move = false;
-    ball3->can_move = false;
-
+    //ball->shape.shape = {Vector2(0,0),Vector2(30,0),Vector2(30,30),Vector2(0,30)};
 }
 
 void Paddle::Update(){
