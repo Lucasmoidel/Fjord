@@ -27,14 +27,14 @@ void Engine::render(RendererGL* renderer){ // render objects
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	//Clear the screen.
 	glClear(GL_COLOR_BUFFER_BIT);
-    renderer->setDrawColor(255, 255, 255, 255); // sets object color
-    root.Render();
+    renderer->setDrawColor(0, 255, 255, 255); // sets object color
+    root.engine_update_node();
     SDL_GL_SwapWindow(window); // shows render changes
 }
 
-std::vector<Node*> Engine::getRectColisions(std::string name){
+/*std::vector<Node*> Engine::getRectColisions(std::string name){
 //add plz
-}
+}*/
 
 void Engine::destroyWindow(){ // destroy window when game exits
     SDL_GL_DeleteContext(glContext);
