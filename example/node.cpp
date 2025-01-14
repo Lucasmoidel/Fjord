@@ -10,7 +10,7 @@ int Rscore = 0;
 class Paddle : public Polygon {
     public:
 
-        using Node::Node;
+        using Polygon::Polygon;
 
         int direction = 0;
 
@@ -25,7 +25,7 @@ class Paddle : public Polygon {
 class Ball : public Polygon {
     public:
         bool can_move = true;
-        using Node::Node;
+        using Polygon::Polygon;
         Vector2 direction = Vector2(1, 1);
         int speed = 200;
         int side = 0;
