@@ -13,6 +13,8 @@ public:
 
 	void fillShape(const std::vector<float>* polygon, int shapeType);
 
+	void draw_polygon(const std::vector<float>& points);
+
 
 private:
 	void loadShader();
@@ -20,6 +22,10 @@ private:
 	bool checkShaderProgramForCompileErrors(GLuint shaderProgram);
 	void loadBuffers();
 
+	static void vertexCallback(GLvoid *vertex);
+	void triangulatePolygon(const std::vector<float>& polygonVertices);
+
+	std::vector<GLfloat> triangles;
 
 	SDL_Window* window = nullptr;
 	GLuint shaderProgramID = 0, VAO = 0, VBO = 0, EBO = 0;

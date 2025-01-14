@@ -210,35 +210,61 @@ std::vector<unsigned int> RendererGL::generateHexIndices(const std::vector<float
     return indices;
 }
 
+// Function to handle the vertex callback from the tesselator
+static void RendererGL::vertexCallback(GLvoid *vertex) {
+    const GLfloat *pointer = (GLfloat*)vertex;
+    triangles.push_back(pointer[0]);
+    triangles.push_back(pointer[1]);
+}
+
+// Function to perform triangulation
+void RendererGL::triangulatePolygon(const std::vector<float>& polygonVertices) {
+    GLUtesselator *tesselator = gluNewTess();
+
+    // Define callbacks
+    gluTessCallback(tesselator, GLU_TESS_VERTEX, (GLvoid (*)()) &vertexCallback);
+    gluTessCallback(tesselator, GLU_TESS_BEGIN, NULL);
+    gluTessCallback(tesselator, GLU_TESS_END, NULL);
+
+    gluTessBeginPolygon(tesselator, NULL);
+    gluTessBeginContour(tesselator);
+
+    for (size_t i = 0; i < polygonVertices.size(); i += 2) {
+        GLdouble vertex[3] = { polygonVertices[i], polygonVertices[i+1], 0.0 };
+        gluTessVertex(tesselator, vertex, vertex);
+    }
+
+    gluTessEndContour(tesselator);
+    gluTessEndPolygon(tesselator);
+    gluDeleteTess(tesselator);
+}
+
+// Function to set up OpenGL
+void setupOpenGL() {
+    // Set the clear color and the projection matrix
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0.0, 1.0, 0.0, 1.0);
+}
+
+void RendererGL::draw_polygon(const std::vector<float>& points) {
+    triangles.clear(); // Triangulate the new polygon triangulatePolygon
+
+	triangulatePolygon(points);
 
 
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Draw the triangles
+    glBegin(GL_TRIANGLES);
+    for (size_t i = 0; i < triangles.size(); i += 2) {
+        glVertex2f(triangles[i], triangles[i+1]);
+    }
+    glEnd();
+
+    // Swap buffers - Missing required VAO code make sure it is correctly set up
+}
 
 void RendererGL::fillShape(const std::vector<float>* polygon, int shapeType) {
-	// Hexagon vertices and indices
-
-	std::vector<unsigned int> indices = generateHexIndices(*polygon);
-
-	// Loading data into buffers and setting VAO if not already
-	glGenVertexArrays(1, &VAOHex);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
-
-	glBindVertexArray(VAOHex);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(polygon), polygon, GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices, GL_STATIC_DRAW);
-
-	// Position attribute
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0); // Unbind VAO
-
-	// Updating draw call:
-	glBindVertexArray(VAOHex);
-	glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
-
+	
 }
