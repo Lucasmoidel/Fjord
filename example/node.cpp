@@ -23,13 +23,11 @@ class Paddle : public Node {
 };
 class Ball : public Node {
     public:
-        bool can_move = true;
         using Node::Node;
         Vector2 direction = Vector2(1, 1);
         int speed = 200;
         int side = 0;
         void Update() override{
-            if (!can_move){ return; }
             std::cout << transform.global_position << std::endl;
             if (transform.position.x < 400){
                 side = 0;
@@ -69,11 +67,6 @@ void Start(){
     
     //Ball* ball = engine.root.createNode<Ball>(100, 100, 30, 30, "Ball");
     Ball* ball = engine.root.createNode<Ball>(100, 100, 30, 30, "Ball");
-    Ball* ball2 = ball->createNode<Ball>(-50,10,30,30,"Balls");
-    Ball* ball3 = ball2->createNode<Ball>(100,50,30,30,"Ballsy");
-
-    ball2->can_move = false;
-    ball3->can_move = false;
 
 }
 

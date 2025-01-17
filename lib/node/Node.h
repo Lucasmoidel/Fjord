@@ -29,8 +29,8 @@ class Node { // game engine that will provide functions
         Node* get_node(std::string path);
         void kill_child(std::string namein, int killall = 0);
 
-        template <typename T> T* createNode(int xPos, int yPos, int xSize, int ySize, std::string name){
-            T* node = new T(xPos, yPos, xSize, ySize, name);
+        template <typename T, typename... Types> T* createNode(Types... args){
+            T* node = new T(args...);
             //engine.nodes.push_back(node);
             children.push_back(node);
             node->parent = this;
