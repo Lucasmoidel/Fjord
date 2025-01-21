@@ -29,13 +29,13 @@ Node* Node::get_node(std::string path){
     std::vector<std::string> splitPath = Utilities::SplitString(path,"/");
     std::cout << splitPath[0] << "\n";
     Node* searchPointer = this;
-    for (int i = 0; i<splitPath.size(); i++){
+    for (size_t i = 0; i<splitPath.size(); i++){
         std::cout << searchPointer->name << "\n";
         if (splitPath[i] == ".."){
             searchPointer = parent;
         } else {
             bool found = false;
-            for (int childIndex=0;childIndex<searchPointer->children.size();childIndex++){
+            for (size_t childIndex=0;childIndex<searchPointer->children.size();childIndex++){
                 if (searchPointer->children[childIndex]->name == splitPath[i]){
                     searchPointer = searchPointer->children[childIndex];
                     found = true;
@@ -54,8 +54,8 @@ Node* Node::get_node(std::string path){
 
 void Node::kill_child(std::string namein, int killall){
     Node* child = NULL;
-    for (int i = 0; i < children.size(); i++){
-        if (killall = 1 || children[i]->name == namein){
+    for (size_t i = 0; i < children.size(); i++){
+        if (killall == 1 || children[i]->name == namein){
             child = children[i];
             children.erase(children.begin() + i);
             child->kill_child("", 1);
@@ -65,7 +65,7 @@ void Node::kill_child(std::string namein, int killall){
 }
 
 void Node::Render(RendererGL* renderer){
-    for (int i = 0; i < children.size(); i++){
+    for (size_t i = 0; i < children.size(); i++){
         children[i]->Render(renderer);
         children[i]->Update();
         children[i]->Input();

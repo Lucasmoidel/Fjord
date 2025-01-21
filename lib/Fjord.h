@@ -55,7 +55,7 @@ class Engine{ // game engine that will provide functions
 
         std::vector<Node*> getRectColisions(std::string name);
 
-        int TARGET_FPS = 120;
+        int TARGET_FPS = 240;
         int FRAME_TARGET_TIME = 1000 / TARGET_FPS;
 
 

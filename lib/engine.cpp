@@ -32,10 +32,6 @@ void Engine::render(RendererGL* renderer){ // render objects
     SDL_GL_SwapWindow(window); // shows render changes
 }
 
-std::vector<Node*> Engine::getRectColisions(std::string name){
-//add plz
-}
-
 void Engine::destroyWindow(){ // destroy window when game exits
     SDL_GL_DeleteContext(glContext);
     SDL_DestroyWindow(window);
