@@ -21,4 +21,5 @@ install: compile
 
 clean:
 	-rm -r build
+	clear
 	make
