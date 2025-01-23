@@ -28,7 +28,7 @@ class Ball : public Node {
         int speed = 200;
         int side = 0;
         void Update() override{
-            std::cout << transform.global_position << std::endl;
+            //std::cout << transform.global_position << std::endl;
             if (transform.position.x < 400){
                 side = 0;
             }else{
