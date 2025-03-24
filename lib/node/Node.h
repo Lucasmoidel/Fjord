@@ -21,15 +21,12 @@ class Node { // game engine that will provide functions
         virtual void Update(){}; // Definition of Update Function. Called once every frame
         virtual void Input(){}; // Definition of Input Function. Called once very frame.
         virtual void Render(){};
-        SDL_Rect rect;
         
         // Children operations
         std::vector<Node*> get_children();
         int get_children_count();
         Node* get_node(std::string path);
         void kill_child(std::string namein, int killall = 0);
-
-        void engine_update_node(); // used as alternative for render so render may be overridden
 
         template <typename T> T* createNode(int xPos, int yPos, int xSize, int ySize, std::string name){
             T* node = new T(xPos, yPos, xSize, ySize, name);
@@ -38,6 +35,9 @@ class Node { // game engine that will provide functions
             node->parent = this;
             return node;
         }
+
+        // Improvement: This function should be protected
+        void engine_update_node(); // used as alternative for render so render may be overridden
 };
 
 #endif // MYHEADER_H
