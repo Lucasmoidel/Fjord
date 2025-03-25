@@ -44,7 +44,7 @@ bool Engine::create_window(std::string title, Vector2 size){
     return true;
 }
 
-bool Engine::destroy_window(){
+void Engine::destroy_window(){
     SDL_GL_DestroyContext(glContext);
     SDL_DestroyWindow(window);
     SDL_Quit();

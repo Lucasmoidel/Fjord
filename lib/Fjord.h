@@ -34,7 +34,7 @@ class Engine {
         Renderer renderer;
 
         bool create_window(std::string title, Vector2 size);
-        bool destroy_window();
+        void destroy_window();
 
         bool gameRunning = true;
 
