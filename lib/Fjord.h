@@ -47,6 +47,6 @@ namespace Time {
 
 extern Engine engine;
 
-void Start();
+void Setup();
 
 #endif // MYHEADER_H
