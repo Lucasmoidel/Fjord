@@ -31,7 +31,7 @@ class Engine {
         SDL_Window* window = NULL;
 
         bool create_window(std::string title, Vector2 size);
-        bool Engine::destroy_window();
+        bool destroy_window();
 
     private:
         SDL_GLContext glContext;
