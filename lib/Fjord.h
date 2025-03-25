@@ -24,6 +24,9 @@
 #include "dat/shape.h"
 #include "node/Polygon.h"
 
-
+class Engine {
+    public:
+        bool create_window(std::string title, Vector2 size);
+};
 
 #endif // MYHEADER_H

@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -Wall -O3 -DNDEBUG CMakeFiles/example.dir/example/node.cpp.o -o example  libFjord.a -lSDL2 -lSDL2_ttf -lyaml-cpp -lbox2d -lGL -lGLEW 
