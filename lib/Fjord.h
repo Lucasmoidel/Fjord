@@ -12,10 +12,11 @@
 #include <sstream>
 
 //SDL libs
+#include <GL/glew.h>
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_opengl.h>
 //#include <SDL3/SDL_ttf.h>
-#include <GL/glew.h>
+
 
 //Fjord libs
 #include "utilities.h"

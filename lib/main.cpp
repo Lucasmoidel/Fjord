@@ -8,7 +8,7 @@ float Time::deltaTime = 0;
 int main(){
     engine.create_window("Simple Game",Vector2(800,600));
     input.initKeyMap();
-    Start();
+    Setup();
     while(engine.gameRunning){
         
         //engine.processInput(); // proccess key presses
