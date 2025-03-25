@@ -8,6 +8,11 @@ bool Engine::create_window(std::string title, Vector2 size){
         printf("init sdl failed\n");
         return false;
     }
+    
+    // Set OpenGL attributes for SDL 3
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
     window = SDL_CreateWindow(title.c_str(), size.x, size.y, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
     
@@ -23,10 +28,7 @@ bool Engine::create_window(std::string title, Vector2 size){
         printf ("failed to create glContext\n");
         return false;
     }
-    // Set OpenGL attributes for SDL 3
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
 
 	glewExperimental = GL_TRUE;
 	GLenum glewError = glewInit();
