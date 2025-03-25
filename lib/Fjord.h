@@ -14,6 +14,7 @@
 //SDL libs
 #include <SDL3/SDL.h>
 //#include <SDL3/SDL_ttf.h>
+#include <GL/glew.h>
 
 //Fjord libs
 #include "utilities.h"
@@ -26,7 +27,22 @@
 
 class Engine {
     public:
+        SDL_Window* window = NULL;
+
         bool create_window(std::string title, Vector2 size);
+        bool Engine::destroy_window();
+
+    private:
+        SDL_GLContext glContext;
 };
+
+// Make deltaTime available everywhere. Used in main.cpp
+namespace Time {
+    extern float deltaTime;
+}
+
+extern Engine engine;
+
+void Start();
 
 #endif // MYHEADER_H
