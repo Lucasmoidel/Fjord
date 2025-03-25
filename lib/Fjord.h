@@ -31,7 +31,7 @@
 class Engine {
     public:
         SDL_Window* window = NULL;
-        Renderer renderer = Renderer();
+        Renderer renderer;
 
         bool create_window(std::string title, Vector2 size);
         bool destroy_window();

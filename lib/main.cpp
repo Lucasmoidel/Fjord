@@ -14,7 +14,7 @@ int main(){
         //engine.processInput(); // proccess key presses
         //engine.update(); // update the engine every tick
 
-        engine.render(engine.renderer.get());// render objects and stuff
+        engine.renderer.render();// render objects and stuff
 
         SDL_Event event;
         SDL_PollEvent(&event);
