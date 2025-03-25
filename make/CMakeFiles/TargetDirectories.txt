@@ -1,0 +1,4 @@
+/home/josh/Fjord/make/CMakeFiles/Fjord.dir
+/home/josh/Fjord/make/CMakeFiles/example.dir
+/home/josh/Fjord/make/CMakeFiles/edit_cache.dir
+/home/josh/Fjord/make/CMakeFiles/rebuild_cache.dir
