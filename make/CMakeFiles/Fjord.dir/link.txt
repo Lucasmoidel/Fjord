@@ -1,2 +1,0 @@
-/usr/bin/ar qc libFjord.a CMakeFiles/Fjord.dir/lib/dat/Input.cpp.o CMakeFiles/Fjord.dir/lib/dat/Transform.cpp.o CMakeFiles/Fjord.dir/lib/dat/Vector2.cpp.o CMakeFiles/Fjord.dir/lib/dat/shape.cpp.o CMakeFiles/Fjord.dir/lib/engine.cpp.o CMakeFiles/Fjord.dir/lib/init.cpp.o CMakeFiles/Fjord.dir/lib/main.cpp.o CMakeFiles/Fjord.dir/lib/node/Node.cpp.o CMakeFiles/Fjord.dir/lib/node/Polygon.cpp.o CMakeFiles/Fjord.dir/lib/renderer.cpp.o CMakeFiles/Fjord.dir/lib/utilities.cpp.o
-/usr/bin/ranlib libFjord.a

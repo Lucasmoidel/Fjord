@@ -11,11 +11,17 @@ int main(){
     Start();
     while(engine.gameRunning){
         
-        engine.processInput(); // proccess key presses
-        engine.update(); // update the engine every tick
+        //engine.processInput(); // proccess key presses
+        //engine.update(); // update the engine every tick
 
         //engine.render(engine.renderer.get());// render objects and stuff
+
+        SDL_Event event;
+        SDL_PollEvent(&event);
+        if (event.type == SDL_EVENT_QUIT){
+            engine.gameRunning = false;
+        }
     }
-    engine.destroyWindow();// destroy window
+    engine.destroy_window();// destroy window
     return 0;// exit program
 }

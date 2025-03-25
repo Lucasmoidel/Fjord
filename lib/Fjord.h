@@ -33,6 +33,8 @@ class Engine {
         bool create_window(std::string title, Vector2 size);
         bool destroy_window();
 
+        bool gameRunning = true;
+
     private:
         SDL_GLContext glContext;
 };
