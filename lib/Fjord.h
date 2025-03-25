@@ -20,6 +20,7 @@
 
 //Fjord libs
 #include "utilities.h"
+#include "renderer.h"
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
@@ -30,6 +31,7 @@
 class Engine {
     public:
         SDL_Window* window = NULL;
+        Renderer renderer;
 
         bool create_window(std::string title, Vector2 size);
         bool destroy_window();
