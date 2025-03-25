@@ -6,8 +6,7 @@ bool Engine::create_window(std::string title, Vector2 size){
     SDL_Init(SDL_INIT_VIDEO);
 
     window = SDL_CreateWindow(title.c_str(), size.x, size.y, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
-    std::cout << SDL_GetError() << "\n";
-
+    
     // Create the OpenGL context
     glContext = SDL_GL_CreateContext(window);
 
