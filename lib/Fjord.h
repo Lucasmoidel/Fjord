@@ -13,6 +13,7 @@
 
 //SDL libs
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_opengl.h>
 //#include <SDL3/SDL_ttf.h>
 #include <GL/glew.h>
 
