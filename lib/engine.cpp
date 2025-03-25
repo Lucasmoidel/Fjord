@@ -5,7 +5,8 @@
 bool Engine::create_window(std::string title, Vector2 size){
     SDL_Init(SDL_INIT_VIDEO);
 
-    window = SDL_CreateWindow(title.c_str(), size.x, size.y, SDL_WINDOW_OPENGL);
+    window = SDL_CreateWindow(title.c_str(), size.x, size.y, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
+    std::cout << SDL_GetError() << "\n";
 
     // Create the OpenGL context
     glContext = SDL_GL_CreateContext(window);
@@ -14,8 +15,6 @@ bool Engine::create_window(std::string title, Vector2 size){
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-
-    SDL_SetWindowResizable(window, true);
 
     glewExperimental = GL_TRUE; // Ensure modern OpenGL extensions are loaded
     GLenum err = glewInit();
