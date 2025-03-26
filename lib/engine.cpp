@@ -4,21 +4,21 @@
 // NOTE: Please add error handling later!
 
 bool Engine::create_window(std::string title, Vector2 size){
-    printf("Starting SDL...");
+    printf("Starting SDL...\n");
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         printf("init sdl failed\n");
         return false;
     }
 
-    printf("Configuring SDL...");
+    printf("Configuring SDL...\n");
     
     // Set OpenGL attributes for SDL 3
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
-    printf("Setting up window...");
+    printf("Setting up window...\n");
 
     window = SDL_CreateWindow(title.c_str(), size.x, size.y, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
     
@@ -27,7 +27,7 @@ bool Engine::create_window(std::string title, Vector2 size){
         return false;
     }
 
-    printf("Creating OpenGL context...");
+    printf("Creating OpenGL context...\n");
     // Create the OpenGL context
     glContext = SDL_GL_CreateContext(window);
 
@@ -49,15 +49,15 @@ bool Engine::create_window(std::string title, Vector2 size){
 
     SDL_GL_SetSwapInterval(1);
 
-    printf("Finished seeting up SDL");
+    printf("Finished seeting up SDL\n");
 
-    printf("Starting Shader Compilation...");
+    printf("Starting Shader Compilation...\n");
 
     Shader vertexShader("../lib/shaders/vertex_shader.glsl",GL_VERTEX_SHADER);
     Shader fragmentShader("../lib/shaders/fragment_shader.glsl",GL_FRAGMENT_SHADER);
     shaderManager.LinkShaders({vertexShader,fragmentShader});
 
-    printf("Finished Compiling Shaders!");
+    printf("Finished Compiling Shaders!\n");
 
     return true;
 }
