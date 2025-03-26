@@ -23,7 +23,7 @@
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
 #include "node/Node.h"
-#include "dat/shape.h"
+#include "dat/Shape.h"
 #include "node/Polygon.h"
 
 // Fjord Libs
