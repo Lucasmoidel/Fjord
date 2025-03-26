@@ -10,7 +10,6 @@ class Shader {
         
         Shader(std::string filePath, GLenum type) : shaderType(type) {
             shaderId = CompileShader(filePath, type);
-            printf("GLuint value: %u\n", shaderId);
         }
 
 
