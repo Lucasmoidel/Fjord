@@ -18,15 +18,17 @@
 //#include <SDL3/SDL_ttf.h>
 
 
-//Fjord libs
-#include "utilities.h"
-#include "renderer.h"
+// Data types
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
 #include "node/Node.h"
 #include "dat/shape.h"
 #include "node/Polygon.h"
+
+// Fjord Libs
+#include "utilities.h"
+#include "renderer.h"
 
 class Engine {
     public:
