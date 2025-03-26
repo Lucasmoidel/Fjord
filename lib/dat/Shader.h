@@ -9,8 +9,10 @@ class Shader {
         GLenum shaderType;
         
         Shader(std::string filePath, GLenum type) : shaderType(type) {
-            CompileShader(filePath, type);
+            shaderId = CompileShader(filePath, type);
+            printf("GLuint value: %u\n", shaderId);
         }
+
 
         ~Shader() {
             // Clean up shader resources
