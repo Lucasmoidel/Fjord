@@ -24,5 +24,4 @@ Fjord has been created to present users with an easier way to create graphical p
 
 When we feel Fjord is finished, we plan on creating an graphical editor to improve the usability of our library. Much later, we will attempt to implement 3D graphics and physics. Our ultimate goal with this project is to recreate the Source Engine created by Valve and make our own Half-Life/Portal style game.
 
-
- <span style="color:#1A334D;">btw #1A334D is amazing</span>
+$\textsf{{\color[rgb]{0.2, 0.0, 0.8}c}{\color[rgb]{0.5, 0.0, 0.5}do~ }{\color[rgb]{0.6, 0.0, 0.4}th}{\color[rgb]{0.7, 0.0, 0.3}is~ }{\color[rgb]{0.8, 0.0, 0.2}t}{\color[rgb]{0.9, 0.0, 0.1}o}{\color[rgb]{1.0, 0.0, 0.0}o}}$
