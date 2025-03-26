@@ -22,6 +22,8 @@
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
+#include "dat/Shader.h"
+#include "ShaderManager.h"
 #include "node/Node.h"
 #include "dat/Shape.h"
 #include "node/Polygon.h"
@@ -34,6 +36,7 @@ class Engine {
     public:
         SDL_Window* window = NULL;
         Renderer renderer;
+        ShaderManager shaderManager;
 
         bool create_window(std::string title, Vector2 size);
         void destroy_window();
