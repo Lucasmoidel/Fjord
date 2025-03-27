@@ -48,6 +48,8 @@ class Engine {
 
         bool gameRunning = true;
 
+        GLuint shaderProgram;
+
     private:
         SDL_GLContext glContext;
 };
@@ -59,6 +61,6 @@ namespace Time {
 
 extern Engine engine;
 
-void Setup();
+void Start();
 
 #endif // MYHEADER_H

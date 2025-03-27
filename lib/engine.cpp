@@ -55,7 +55,7 @@ bool Engine::create_window(std::string title, Vector2 size){
 
     Shader vertexShader("../lib/shaders/vertex_shader.glsl",GL_VERTEX_SHADER);
     Shader fragmentShader("../lib/shaders/fragment_shader.glsl",GL_FRAGMENT_SHADER);
-    shaderManager.LinkShaders({vertexShader,fragmentShader});
+    shaderProgram = shaderManager.LinkShaders({vertexShader,fragmentShader});
 
     printf("Finished Compiling Shaders!\n");
 

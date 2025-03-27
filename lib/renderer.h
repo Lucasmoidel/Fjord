@@ -16,7 +16,7 @@ struct RenderCall {
 class Renderer {
     public:
         GLuint compileShaders();
-        void render(std::vector<RenderCall> *renderCalls);
+        void render(std::vector<RenderCall> &renderCalls);
 };
 
 #endif

@@ -6,9 +6,9 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
-    engine.create_window("Simple Game",Vector2(800,600));
+    engine.create_window("Simple Game",Vector2(800,800));
     input.initKeyMap();
-    //Setup();
+    Start();
     while(engine.gameRunning){
 
         //engine.processInput(); // proccess key presses
@@ -20,8 +20,8 @@ int main(){
             engine.gameRunning = false;
         }
         std::swap(engine.front_buffer,engine.back_buffer); // Swap the buffers
+        engine.renderer.render(engine.front_buffer);
         engine.back_buffer.clear(); // Clear the back buffer
-        engine.renderer.render(&engine.front_buffer);
     }
     engine.destroy_window();// destroy window
     return 0;// exit program
