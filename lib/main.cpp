@@ -10,17 +10,18 @@ int main(){
     input.initKeyMap();
     //Setup();
     while(engine.gameRunning){
-        
-        //engine.processInput(); // proccess key presses
-        //engine.update(); // update the engine every tick
 
-        engine.renderer.render();// render objects and stuff
+        //engine.processInput(); // proccess key presses
+        engine.root.engine_update_node(); // update the engine every tick
 
         SDL_Event event;
         SDL_PollEvent(&event);
         if (event.type == SDL_EVENT_QUIT){
             engine.gameRunning = false;
         }
+        std::swap(engine.front_buffer,engine.back_buffer); // Swap the buffers
+        engine.back_buffer.clear(); // Clear the back buffer
+        engine.renderer.render(&engine.front_buffer);
     }
     engine.destroy_window();// destroy window
     return 0;// exit program

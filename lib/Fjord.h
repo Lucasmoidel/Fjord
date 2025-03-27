@@ -34,6 +34,11 @@
 
 class Engine {
     public:
+        Node root = Node(0,0,1,1,"root");
+
+        std::vector<RenderCall> front_buffer;
+        std::vector<RenderCall> back_buffer;
+
         SDL_Window* window = NULL;
         Renderer renderer;
         ShaderManager shaderManager;

@@ -9,14 +9,14 @@ struct RenderCall {
     enum RenderType { POLYGON };
     RenderType type;
 
-    Transform transform;
-    std::vector<Shape> vertices;
+    //Transform transform;
+    std::vector<float>* vertices;
 };
 
 class Renderer {
     public:
         GLuint compileShaders();
-        void render();
+        void render(std::vector<RenderCall> *renderCalls);
 };
 
 #endif

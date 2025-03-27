@@ -6,7 +6,6 @@
 using namespace Utilities;
 
 void Start(){
-    std::cout << "pool" << std::endl;
 }
 
 void Setup(){
