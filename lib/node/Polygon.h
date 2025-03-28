@@ -9,6 +9,9 @@ class Polygon : public Node {
         Shape shape;
 
         void Render() override;
+    
+    private:
+        void _rotate_points();
 };
 
 #endif
