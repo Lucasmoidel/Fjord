@@ -22,7 +22,11 @@ class Node { // game engine that will provide functions
         virtual void Input(){}; // Definition of Input Function. Called once very frame.
         virtual void Render(){};
         
-        // Children operations
+        // Transform Functions
+
+        void rotate(float degrees);
+
+        // Dealing with Children
         std::vector<Node*> get_children();
         int get_children_count();
         Node* get_node(std::string path);

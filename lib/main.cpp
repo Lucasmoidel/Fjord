@@ -6,7 +6,6 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
-
     engine.create_window("Simple Game",Vector2(800,800));
     input.initKeyMap();
     Start();
@@ -29,7 +28,7 @@ int main(){
             engine.gameRunning = false;
         }
         std::swap(engine.front_buffer,engine.back_buffer); // Swap the buffers
-        engine.renderer.render(engine.front_buffer);
+        
         engine.back_buffer.clear(); // Clear the back buffer
     }
     engine.destroy_window();// destroy window

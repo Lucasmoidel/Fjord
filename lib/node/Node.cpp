@@ -20,7 +20,12 @@ int Node::get_children_count(){
 void Node::update_node_position(){
     if (parent != NULL){
         transform.global_position = parent->transform.global_position + transform.position;
+        transform.global_rotation = parent->transform.global_rotation + transform.rotation;
     }
+}
+
+void Node::rotate(float degrees){
+    transform.rotation += degrees;
 }
 
 // "../../hello/path"
