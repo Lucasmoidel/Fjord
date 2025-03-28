@@ -51,6 +51,7 @@ class Engine {
         GLuint shaderProgram;
 
     private:
+    
         SDL_GLContext glContext;
 };
 
