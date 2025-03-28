@@ -24,4 +24,16 @@ namespace Utilities
         res.push_back (input.substr (pos_start));
         return res;
     }
+
+    float wrapRotation(float angle) {
+        // Ensure the angle is within 0 to 360
+        while (angle < 0.0f) {
+            angle += 360.0f;
+        }
+        while (angle >= 360.0f) {
+            angle -= 360.0f;
+        }
+        return angle;
+    }
+
 }

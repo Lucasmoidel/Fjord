@@ -1,5 +1,9 @@
 #include "../Fjord.h"
 
+void Shape::setShape(std::vector<Vector2> shape){
+    shape = shape;
+    originalShape = shape;
+}
 
 std::vector<float>* Shape::GetGLPointArray(Vector2 global_position){
     std::vector<float>* glPoints = new std::vector<float>();

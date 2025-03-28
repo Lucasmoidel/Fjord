@@ -11,7 +11,7 @@ class Polygon : public Node {
         void Render() override;
     
     private:
-        void _rotate_points();
+        std::vector<Vector2> _rotate_points();
 };
 
 #endif

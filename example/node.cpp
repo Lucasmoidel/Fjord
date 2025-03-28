@@ -13,18 +13,31 @@ class Box : public Polygon {
 };
 
 void Box::Update() {
-    transform.rotation += 100 * Time::deltaTime;
+    transform.rotation += 10 * Time::deltaTime;
+    //get_node("Box2")->transform.rotation += 25 * Time::deltaTime;
 }
 
 void Start(){
     //printf("\n\n\nStarted!!\n\n\n");
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
-    square->transform.position = Vector2(0,0.2);
-    square->shape.shape = {Vector2(0,0),Vector2(0.1,0),Vector2(0.1,0.1),Vector2(0,0.1)};
+    square->transform.position = Vector2(0,0.3);
+    square->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
 
-    Polygon *second_box = square->createNode<Polygon>(0,0,1,1,"Box2");
-    second_box->transform.position = Vector2(0,0.2);
-    second_box->shape.shape = {Vector2(0,0),Vector2(0.1,0),Vector2(0.1,0.1),Vector2(0,0.1)};
+    Box *square2 = square->createNode<Box>(0,0,1,1,"Box1");
+    square2->transform.position = Vector2(0,0.2);
+    square2->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+    
+    Box *square3 = square2->createNode<Box>(0,0,1,1,"Box2");
+    square3->transform.position = Vector2(0,0.2);
+    square3->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+    
+    Box *square4 = square3->createNode<Box>(0,0,1,1,"Box3");
+    square4->transform.position = Vector2(0,0.2);
+    square4->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+    
+    Polygon *second_box = square4->createNode<Polygon>(0,0,1,1,"Box4");
+    second_box->transform.position = Vector2(0,0.1);
+    second_box->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
 }
 
 void Setup(){
