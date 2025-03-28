@@ -15,7 +15,8 @@ class Box : public Polygon {
 };
 
 void Box::Update() {
-    transform.rotation += 10 * Time::deltaTime;
+    transform.rotation += 100 * Time::deltaTime;
+    /*
     if (transform.position.x < 0.5){
         direction.x = 1;
     } else if (transform.position.x > 0.5) {
@@ -26,8 +27,8 @@ void Box::Update() {
     } else if (transform.position.y > 0.5) {
         direction.y = -1;
     }
-    transform.position += direction * Time::deltaTime;
-
+    transform.position += direction * 10 * Time::deltaTime;
+    */
     //get_node("Box2")->transform.rotation += 25 * Time::deltaTime;
 }
 
