@@ -9,11 +9,25 @@ class Box : public Polygon {
     public:
         using Polygon::Polygon;
 
+        Vector2 direction = Vector2(0,0);
+
         void Update() override;
 };
 
 void Box::Update() {
     transform.rotation += 10 * Time::deltaTime;
+    if (transform.position.x < 0.5){
+        direction.x = 1;
+    } else if (transform.position.x > 0.5) {
+        direction.x = -1;
+    }
+    if (transform.position.y < 0.5){
+        direction.y = 1;
+    } else if (transform.position.y > 0.5) {
+        direction.y = -1;
+    }
+    transform.position += direction * Time::deltaTime;
+
     //get_node("Box2")->transform.rotation += 25 * Time::deltaTime;
 }
 
