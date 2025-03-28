@@ -23,30 +23,27 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
     const std::vector<RenderCall> rcs = renderCalls;
 
     for (const RenderCall& rc : rcs) {
-        if (rc.vertices && !rc.vertices->empty()) { // Check if the pointer is valid and not empty
-            std::cout << "Vertices:" << std::endl;
-            for (size_t i = 0; i < rc.vertices->size(); i += 2) { // Assuming vertices contain (x, y) pairs
-                std::cout << "Point " << i / 2 << ": (" 
-                    << (*rc.vertices)[i] << ", " 
-                    << (*rc.vertices)[i + 1] << ")" << std::endl;
+        switch (rc.type)
+        {
+        case RenderCall::POLYGON:
+            if (rc.vertices->size() > 0) {
+                //printf("RenderTime");
+                // Upload vertex data to the GPU
+                glVertexAttrib4f(1, 1.0f, 1.0f, 1.0f, 1.0f); // Set color to white (RGBA)
+                glBufferData(GL_ARRAY_BUFFER, rc.vertices->size() * sizeof(float), rc.vertices->data(), GL_STATIC_DRAW);
+                // Enable vertex attribute array
+                glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+                glEnableVertexAttribArray(0);
+
+                // Draw the convex polygon using GL_TRIANGLE_FAN
+                glDrawArrays(GL_TRIANGLE_FAN, 0, rc.vertices->size() / 2);
+
+                // Disable attribute array after use (optional cleanup)
+                glDisableVertexAttribArray(0);
             }
-        } else {
-            std::cout << "No vertices in RenderCall!" << std::endl;
-        }
-        if (rc.vertices->size() > 0) {
-            printf("RenderTime");
-            // Upload vertex data to the GPU
-            glVertexAttrib4f(1, 1.0f, 1.0f, 1.0f, 1.0f); // Set color to white (RGBA)
-            glBufferData(GL_ARRAY_BUFFER, rc.vertices->size() * sizeof(float), rc.vertices->data(), GL_STATIC_DRAW);
-            // Enable vertex attribute array
-            glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-            glEnableVertexAttribArray(0);
-
-            // Draw the convex polygon using GL_TRIANGLE_FAN
-            glDrawArrays(GL_TRIANGLE_FAN, 0, rc.vertices->size() / 2);
-
-            // Disable attribute array after use (optional cleanup)
-            glDisableVertexAttribArray(0);
+            break;
+        default:
+            break;
         }
     }
 

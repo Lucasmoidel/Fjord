@@ -5,7 +5,6 @@
 
 class Node { // game engine that will provide functions    
     public:
-        Node() = default;
         Node(int xVar=0, int yVar=0, int xSize=1, int ySize=1, std::string name = "Node2D");
 
         std::string name = "NONAME";
