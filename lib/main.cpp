@@ -28,7 +28,7 @@ int main(){
             engine.gameRunning = false;
         }
         std::swap(engine.front_buffer,engine.back_buffer); // Swap the buffers
-        
+        engine.renderer.render(engine.front_buffer);
         engine.back_buffer.clear(); // Clear the back buffer
     }
     engine.destroy_window();// destroy window
