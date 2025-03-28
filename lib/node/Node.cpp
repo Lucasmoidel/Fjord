@@ -69,11 +69,11 @@ void Node::kill_child(std::string namein){
     }
 }
 
-void Node::engine_update_node(){ // Try to find a way that only engine class can call this function. should not be usuable by user
+void Node::_engine_update_node(){ // Try to find a way that only engine class can call this function. should not be usuable by user
     update_node_position();
     Render();
     for (size_t i = 0; i < children.size(); i++){
-        children[i]->engine_update_node();
+        children[i]->_engine_update_node();
         children[i]->Update();
         children[i]->Input();
     }

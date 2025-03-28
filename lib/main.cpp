@@ -20,7 +20,7 @@ int main(){
         previousTime = currentTime;
 
         //engine.processInput(); // proccess key presses
-        engine.root.engine_update_node(); // update the engine every tick
+        engine.root._engine_update_node(); // update the engine every tick
 
         SDL_Event event;
         SDL_PollEvent(&event);

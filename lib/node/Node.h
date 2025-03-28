@@ -41,7 +41,7 @@ class Node { // game engine that will provide functions
         }
 
         // Improvement: This function should be protected
-        void engine_update_node(); // used as alternative for render so render may be overridden
+        void _engine_update_node(); // used as alternative for render so render may be overridden
 };
 
 #endif // MYHEADER_H
