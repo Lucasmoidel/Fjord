@@ -6,10 +6,19 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
+
     engine.create_window("Simple Game",Vector2(800,800));
     input.initKeyMap();
     Start();
+
+    Uint64 previousTime = SDL_GetTicks();
+    Uint64 currentTime;
+
     while(engine.gameRunning){
+
+        currentTime = SDL_GetTicks();
+        Time::deltaTime = (currentTime - previousTime) / 1000.0f; // Convert to seconds
+        previousTime = currentTime;
 
         //engine.processInput(); // proccess key presses
         engine.root.engine_update_node(); // update the engine every tick
