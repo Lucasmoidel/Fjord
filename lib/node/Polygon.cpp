@@ -14,11 +14,12 @@ std::vector<Vector2> Polygon::_rotate_points() {
 
     for (const Vector2& point : shape.originalShape) { // Use the original unrotated points
         // Apply rotation relative to the node's local (0, 0)
+        //point * transform.scale;
         float rotated_x = point.x * cos(radians) - point.y * sin(radians);
         float rotated_y = point.x * sin(radians) + point.y * cos(radians);
 
         // Store the rotated points
-        rotatedPoints.emplace_back(rotated_x, rotated_y);
+        rotatedPoints.emplace_back(rotated_x*transform.scale.x, rotated_y*transform.scale.y);
     }
 
     return rotatedPoints; // Return rotated points
