@@ -37,20 +37,22 @@ void Start(){
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
     square->transform.position = Vector2(0,0.3);
     square->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
-    square->transform.scale = 0.5;
+    square->transform.scale = Vector2(0.5,0.5);
     
-
     Box *square2 = square->createNode<Box>(0,0,1,1,"Box1");
     square2->transform.position = Vector2(0,0.2);
     square2->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
-    
+    square2->transform.scale = Vector2(0.75,0.75);
+
     Box *square3 = square2->createNode<Box>(0,0,1,1,"Box2");
     square3->transform.position = Vector2(0,0.2);
     square3->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
-    
+    square3->transform.scale = Vector2(0.9,0.9);
+
     Box *square4 = square3->createNode<Box>(0,0,1,1,"Box3");
     square4->transform.position = Vector2(0,0.2);
     square4->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+    square4->transform.scale = Vector2(0.95,0.95);
     
     Polygon *second_box = square4->createNode<Polygon>(0,0,1,1,"Box4");
     second_box->transform.position = Vector2(0,0.1);
