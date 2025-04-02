@@ -16,33 +16,40 @@ std::vector<Node*> Node::get_children(){
 int Node::get_children_count(){
     return children.size();
 }
-
 void Node::update_node_position() {
     if (parent != nullptr) {
 
-        // 1. Calculate the child's global position based on parent's global position and rotation
-        float radians = parent->transform.global_rotation * (M_PI / 180.0f); // Convert parent rotation to radians
+        // Convert parent rotation to radians
+        float radians = parent->transform.global_rotation * (M_PI / 180.0f);
 
-        // Rotate the child's local position around the parent
+        // Apply rotation to child's local position
         float x_orbit = transform.position.x * cos(radians) - transform.position.y * sin(radians);
         float y_orbit = transform.position.x * sin(radians) + transform.position.y * cos(radians);
 
-        transform.global_position.x = parent->transform.global_position.x + x_orbit;
-        transform.global_position.y = parent->transform.global_position.y + y_orbit;
+        // Adjust position based on parent's scale (move outward/inward dynamically)
+        float scaled_x = x_orbit * parent->transform.global_scale.x;
+        float scaled_y = y_orbit * parent->transform.global_scale.y;
 
-        // 2. Calculate the child's global rotation
-        transform.global_rotation = parent->transform.global_rotation + transform.rotation; // Combine rotations
+        transform.global_position.x = parent->transform.global_position.x + scaled_x;
+        transform.global_position.y = parent->transform.global_position.y + scaled_y;
+
+        // Correct hierarchical scaling (multiplicative)
+        transform.global_scale.x = parent->transform.global_scale.x * transform.scale.x;
+        transform.global_scale.y = parent->transform.global_scale.y * transform.scale.y;
+
+        // Combine rotations
+        transform.global_rotation = parent->transform.global_rotation + transform.rotation;
     }
     else {
-        // If no parent, global position and rotation are the same as local
+        // No parent: global and local properties are the same
         transform.global_position = transform.position;
         transform.global_rotation = transform.rotation;
+        transform.global_scale = transform.scale;
     }
+
+    // Ensure rotation stays within valid bounds
     transform.rotation = Utilities::wrapRotation(transform.rotation);
     transform.global_rotation = Utilities::wrapRotation(transform.global_rotation);
-
-
-    // Additional logic for child nodes (e.g., rendering, rotating points, etc.)
 }
 
 void Node::rotate(float degrees){

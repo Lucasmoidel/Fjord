@@ -9,13 +9,19 @@ class Box : public Polygon {
     public:
         using Polygon::Polygon;
 
-        Vector2 direction = Vector2(0,0);
+        int direction = 1;
 
         void Update() override;
 };
 
 void Box::Update() {
-    transform.rotation += 100 * Time::deltaTime;
+    transform.scale += Vector2(0.5,0.5) * Time::deltaTime * direction;
+    rotate(15*Time::deltaTime);
+    if (transform.scale.x > 3 && direction == 1){
+        direction = -1;
+    } else if (transform.scale.x < 0.5 && direction == -1){
+        direction = 1;
+    }
     /*
     if (transform.position.x < 0.5){
         direction.x = 1;
@@ -42,21 +48,6 @@ void Start(){
     Box *square2 = square->createNode<Box>(0,0,1,1,"Box1");
     square2->transform.position = Vector2(0,0.2);
     square2->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
-    square2->transform.scale = Vector2(0.75,0.75);
-
-    Box *square3 = square2->createNode<Box>(0,0,1,1,"Box2");
-    square3->transform.position = Vector2(0,0.2);
-    square3->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
-    square3->transform.scale = Vector2(0.9,0.9);
-
-    Box *square4 = square3->createNode<Box>(0,0,1,1,"Box3");
-    square4->transform.position = Vector2(0,0.2);
-    square4->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
-    square4->transform.scale = Vector2(0.95,0.95);
-    
-    Polygon *second_box = square4->createNode<Polygon>(0,0,1,1,"Box4");
-    second_box->transform.position = Vector2(0,0.1);
-    second_box->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
 }
 
 void Setup(){
