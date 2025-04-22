@@ -68,7 +68,7 @@ std::vector<float> Renderer::combinePointsAndColors(std::vector<float>* points, 
         finalArray.push_back(colors->at(x).at(0));
         finalArray.push_back(colors->at(x).at(1));
         finalArray.push_back(colors->at(x).at(2));
-        finalArray.push_back(1);
+        finalArray.push_back(0);
     }
     return finalArray;
 }

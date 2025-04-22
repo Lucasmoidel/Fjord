@@ -50,6 +50,8 @@ void Start(){
     Box *square2 = square->createNode<Box>(0,0,1,1,"Box1");
     square2->transform.position = Vector2(0,0.2);
     square2->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+
+    square2->shape.colors = {{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1}};
 }
 
 void Setup(){
