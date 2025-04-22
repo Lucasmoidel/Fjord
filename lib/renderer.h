@@ -11,12 +11,17 @@ struct RenderCall {
 
     //Transform transform;
     std::vector<float>* vertices;
+    std::vector<std::vector<float>>* colors;
 };
 
 class Renderer {
     public:
         GLuint compileShaders();
+
         void render(std::vector<RenderCall> &renderCalls);
+
+    private:
+        std::vector<float> combinePointsAndColors(std::vector<float>* points, std::vector<std::vector<float>>* colors);
 };
 
 #endif

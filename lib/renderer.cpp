@@ -30,7 +30,10 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
                 //printf("RenderTime");
                 // Upload vertex data to the GPU
                 glVertexAttrib4f(1, 1.0f, 1.0f, 1.0f, 1.0f); // Set color to white (RGBA)
-                glBufferData(GL_ARRAY_BUFFER, rc.vertices->size() * sizeof(float), rc.vertices->data(), GL_STATIC_DRAW);
+
+                std::vector<float> finalVB = combinePointsAndColors(rc.vertices,rc.colors);
+                
+                glBufferData(GL_ARRAY_BUFFER, finalVB.size() * sizeof(float), finalVB.data(), GL_STATIC_DRAW);
                 // Enable vertex attribute array
                 glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
                 glEnableVertexAttribArray(0);
@@ -55,4 +58,17 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
 
     // Swap the buffers to present the rendered frame
     SDL_GL_SwapWindow(engine.window);
+}
+
+std::vector<float> Renderer::combinePointsAndColors(std::vector<float>* points, std::vector<std::vector<float>>* colors){
+    std::vector<float> finalArray;
+    for (int x=0;x<points->size()/2;x++){
+        finalArray.push_back(points->at(0));
+        finalArray.push_back(points->at(1));
+        finalArray.push_back(colors->at(x).at(0));
+        finalArray.push_back(colors->at(x).at(1));
+        finalArray.push_back(colors->at(x).at(2));
+        finalArray.push_back(1);
+    }
+    return finalArray;
 }

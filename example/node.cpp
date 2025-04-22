@@ -44,6 +44,8 @@ void Start(){
     square->transform.position = Vector2(0,0.3);
     square->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
     square->transform.scale = Vector2(0.5,0.5);
+
+    square->shape.colors = {{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1}};
     
     Box *square2 = square->createNode<Box>(0,0,1,1,"Box1");
     square2->transform.position = Vector2(0,0.2);

@@ -7,6 +7,7 @@
 class Shape {
     public:
         std::vector<Vector2> shape;
+        std::vector<std::vector<float>> colors;
         std::vector<Vector2> originalShape;
 
         void setShape(std::vector<Vector2> shape);
