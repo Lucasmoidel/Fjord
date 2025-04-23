@@ -3,9 +3,9 @@
 
 #include "../Fjord.h"
 
-class Label : public Node { // game engine that will provide functions    
+class Label : public Polygon { // game engine that will provide functions    
     public:
-        using Node::Node;
+        using Polygon::Polygon;
 
         std::string fontName;
         std::string text;

@@ -42,7 +42,38 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
                 glDisableVertexAttribArray(0);
             }
             break;
-        default:
+        case RenderCall::TEXT:
+            SDL_Surface* textSurface = TTF_RenderText_Blended(rc.font, rc.text.c_str(), rc.text.length(), (SDL_Color){255, 255, 255, 255});
+
+            GLuint textTexture;
+            glGenTextures(1, &textTexture);
+            glBindTexture(GL_TEXTURE_2D, textTexture);
+            
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textSurface->w, textSurface->h, 0, GL_BGRA, GL_UNSIGNED_BYTE, textSurface->pixels);
+            
+            // Set texture parameters
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            int width = textSurface->w;
+            int height = textSurface->h;
+            SDL_DestroySurface(textSurface);
+            glEnable(GL_TEXTURE_2D);
+            glBindTexture(GL_TEXTURE_2D, textTexture);
+
+            // Draw quad
+            glBegin(GL_QUADS);
+            glTexCoord2f(0, 0); glVertex2f(0, 0);
+            glTexCoord2f(1, 0); glVertex2f(0 + width, 0);
+            glTexCoord2f(1, 1); glVertex2f(0 + width, 0 + height);
+            glTexCoord2f(0, 1); glVertex2f(0, 0 + height);
+            glEnd();
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glOrtho(0, 800, 800, 0, -1, 1);
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+            glDeleteTextures(1, &textTexture);
+            std::cout << SDL_GetError() << glGetError() << "\n";
             break;
         }
     }
