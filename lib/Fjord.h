@@ -10,11 +10,12 @@
 #include <fstream>
 #include <stdexcept>
 #include <sstream>
-
+#include <assert.h>
 //SDL libs
 #include <GL/glew.h>
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_opengl.h>
+#include <SDL3/SDL_ttf.h>
 //#include <SDL3/SDL_ttf.h>
 
 
@@ -27,6 +28,7 @@
 #include "node/Node.h"
 #include "dat/Shape.h"
 #include "node/Polygon.h"
+#include "node/Label.h"
 
 // Fjord Libs
 #include "utilities.h"

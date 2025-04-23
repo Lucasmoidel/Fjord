@@ -11,6 +11,11 @@ bool Engine::create_window(std::string title, Vector2 size){
         return false;
     }
 
+    if (!TTF_Init()) {
+        printf("init sdl_ttf failed\n");
+        return false;
+    }
+
     printf("Configuring SDL...\n");
     
     // Set OpenGL attributes for SDL 3
