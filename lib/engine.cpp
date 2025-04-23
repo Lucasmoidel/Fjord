@@ -47,6 +47,8 @@ bool Engine::create_window(std::string title, Vector2 size){
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    glViewport(0, 0, size.x, size.y);
+
     SDL_GL_SetSwapInterval(1);
 
     printf("Finished seeting up SDL\n");
@@ -58,6 +60,11 @@ bool Engine::create_window(std::string title, Vector2 size){
     shaderProgram = shaderManager.LinkShaders({vertexShader,fragmentShader});
 
     printf("Finished Compiling Shaders!\n");
+
+    
+    float aspectRatio = static_cast<float>(size.x) / size.y;
+    glOrtho(-aspectRatio, aspectRatio, -1.0f, 1.0f, -1.0f, 1.0f);
+    glMatrixMode(GL_MODELVIEW);
 
     return true;
 }
