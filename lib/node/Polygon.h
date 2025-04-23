@@ -7,6 +7,7 @@ class Polygon : public Node {
     public:
         using Node::Node;
         Shape shape;
+        Color color;
 
         void Render() override;
     

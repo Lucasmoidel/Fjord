@@ -19,6 +19,7 @@
 
 
 // Data types
+#include "dat/Color.h"
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"

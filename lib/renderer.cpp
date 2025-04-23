@@ -29,7 +29,7 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
             if (rc.vertices->size() > 0) {
                 //printf("RenderTime");
                 // Upload vertex data to the GPU
-                glVertexAttrib4f(1, 1.0f, 1.0f, 1.0f, 1.0f); // Set color to white (RGBA)
+                glVertexAttrib4f(1, rc.color.r, rc.color.g, rc.color.b, rc.color.a); // Set color to white (RGBA)
                 glBufferData(GL_ARRAY_BUFFER, rc.vertices->size() * sizeof(float), rc.vertices->data(), GL_STATIC_DRAW);
                 // Enable vertex attribute array
                 glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
