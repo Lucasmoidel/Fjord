@@ -44,10 +44,18 @@ void Start(){
     square->transform.position = Vector2(0,0.3);
     square->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
     square->transform.scale = Vector2(0.5,0.5);
+    engine.root.addChild(square);
     
     Box *square2 = square->createNode<Box>(0,0,1,1,"Box1");
     square2->transform.position = Vector2(0,0.2);
     square2->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+    square->addChild(square2);
+
+    Label *text = engine.root.createNode<Label>(0, 0, 0, 0, "text");
+    text->setFont("../NotoSansMono-Regular.ttf", 12);
+    text->setText("asdsdfhasdfjadjh");
+    engine.root.addChild(text);
+
 }
 
 void Setup(){

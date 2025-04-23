@@ -16,10 +16,12 @@ void Label::Render(){
 
     SDL_DestroySurface(textSurface);
 
-    
-
 }
 
-Label::Label(int xPos, int yPos, int xSize, int ySize, std::string nameIn) : Node(xPos, yPos, xSize, ySize, nameIn){
+void Label::setText(std::string intext){
+    text = intext;
+}
 
+void Label::setFont(std::string fontname, int size){
+    font = TTF_OpenFont(fontname.c_str(), size);
 }

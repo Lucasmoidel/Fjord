@@ -5,11 +5,14 @@
 
 class Label : public Node { // game engine that will provide functions    
     public:
-        Label(int xPos, int yPos, int xSize, int ySize, std::string nameIn);
+        using Node::Node;
 
         std::string fontName;
         std::string text;
         void Render() override;
+
+        void setText(std::string intext);
+        void setFont(std::string fontname, int size);
 
         TTF_Font* font;
 };
