@@ -13,6 +13,9 @@
 
 //SDL libs
 #include <GL/glew.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_opengl.h>
 //#include <SDL3/SDL_ttf.h>
@@ -50,6 +53,11 @@ class Engine {
         bool gameRunning = true;
 
         GLuint shaderProgram;
+        Vector2 screen_size;
+
+        void updateWindowSize();
+
+        glm::mat4 projection;
 
     private:
     
