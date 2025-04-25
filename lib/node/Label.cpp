@@ -2,7 +2,7 @@
 
 void Label::Render(){
     std::vector<float>* vertexes = shape.GetGLPointArray(transform.global_position);
-    RenderCall rc = {RenderCall::TEXT, vertexes, font, text};
+    RenderCall rc = {RenderCall::TEXT, vertexes, {1.0, 1.0, 1.0, 1.0}, font, text};
     engine.back_buffer.push_back(rc);
 }
 
