@@ -52,6 +52,9 @@ bool Engine::create_window(std::string title, Vector2 size){
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    glViewport(0, 0, size.x, size.y);
+    screen_size = size;
+
     SDL_GL_SetSwapInterval(1);
 
     printf("Finished seeting up SDL\n");
@@ -64,7 +67,22 @@ bool Engine::create_window(std::string title, Vector2 size){
 
     printf("Finished Compiling Shaders!\n");
 
+    updateWindowSize();
+
     return true;
+}
+
+void Engine::updateWindowSize() {
+    // Update viewport
+    glViewport(0, 0, screen_size.x, screen_size.y);
+
+    // Calculate orthographic projection matrix
+    float aspectRatio = (float)screen_size.x / (float)screen_size.y;
+    float orthoSize = 1.0f; // Base size of view
+    float width = orthoSize * std::max(aspectRatio, 1.0f);
+    float height = orthoSize * std::max(1.0f / aspectRatio, 1.0f);
+
+    projection = glm::ortho(-width, width, -height, height, -1.0f, 1.0f);
 }
 
 void Engine::destroy_window(){

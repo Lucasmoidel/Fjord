@@ -6,7 +6,7 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
-    engine.create_window("Simple Game",Vector2(800,800));
+    engine.create_window("Simple Game",Vector2(1280,720));
     input.initKeyMap();
     Start();
 
@@ -26,6 +26,11 @@ int main(){
         SDL_PollEvent(&event);
         if (event.type == SDL_EVENT_QUIT){
             engine.gameRunning = false;
+        }
+        if (event.type == SDL_EVENT_WINDOW_RESIZED) {
+            engine.screen_size.x = event.window.data1;
+            engine.screen_size.y = event.window.data2;
+            engine.updateWindowSize();
         }
         std::swap(engine.front_buffer,engine.back_buffer); // Swap the buffers
         engine.renderer.render(engine.front_buffer);

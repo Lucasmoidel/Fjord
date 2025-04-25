@@ -11,6 +11,7 @@ struct RenderCall {
 
     //Transform transform;
     std::vector<float>* vertices;
+    Color color;
 
     TTF_Font* font;
     std::string text;

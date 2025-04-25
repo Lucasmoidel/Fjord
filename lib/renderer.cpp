@@ -8,6 +8,10 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
 
     glUseProgram(engine.shaderProgram);
     // Clear the screen
+
+    GLint projectionLoc = glGetUniformLocation(engine.shaderProgram, "projection");
+    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(engine.projection));
+
     glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -29,7 +33,7 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
             if (rc.vertices->size() > 0) {
                 //printf("RenderTime");
                 // Upload vertex data to the GPU
-                glVertexAttrib4f(1, 1.0f, 1.0f, 1.0f, 1.0f); // Set color to white (RGBA)
+                glVertexAttrib4f(1, rc.color.r, rc.color.g, rc.color.b, rc.color.a); // Set color to white (RGBA)
                 glBufferData(GL_ARRAY_BUFFER, rc.vertices->size() * sizeof(float), rc.vertices->data(), GL_STATIC_DRAW);
                 // Enable vertex attribute array
                 glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);

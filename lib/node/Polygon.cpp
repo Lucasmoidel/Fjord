@@ -4,7 +4,7 @@ void Polygon::Render() {
     //printf("Made it here\n");
     shape.shape = _rotate_points();
     std::vector<float>* vertexes = shape.GetGLPointArray(transform.global_position);
-    RenderCall rc = {RenderCall::POLYGON, vertexes};
+    RenderCall rc = {RenderCall::POLYGON, vertexes, color};
     engine.back_buffer.push_back(rc);
 }
 
