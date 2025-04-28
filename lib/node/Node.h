@@ -12,7 +12,7 @@ class Node { // game engine that will provide functions
         Transform transform;
         std::string type;
 
-        Script AttachedScript; // Create an empty script
+        Script AttachedScript(); // Create an empty script
 
         Node* parent = NULL;
 
