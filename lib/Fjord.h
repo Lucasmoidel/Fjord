@@ -48,6 +48,7 @@ class Engine {
         SDL_Window* window = NULL;
         Renderer renderer;
         ShaderManager shaderManager;
+        
 
         bool create_window(std::string title, Vector2 size);
         void destroy_window();
@@ -55,6 +56,8 @@ class Engine {
         bool gameRunning = true;
 
         GLuint shaderProgram;
+        GLuint texShaderProgram;
+        
         Vector2 screen_size;
 
         void updateWindowSize();

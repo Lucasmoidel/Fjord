@@ -63,8 +63,10 @@ bool Engine::create_window(std::string title, Vector2 size){
 
     Shader vertexShader("../lib/shaders/vertex_shader.glsl",GL_VERTEX_SHADER);
     Shader fragmentShader("../lib/shaders/fragment_shader.glsl",GL_FRAGMENT_SHADER);
+    Shader texVertexShader("../lib/shaders/vertex_shader_texture.glsl",GL_VERTEX_SHADER);
+    Shader texFragmentShader("../lib/shaders/fragment_shader_texture.glsl",GL_FRAGMENT_SHADER);
     shaderProgram = shaderManager.LinkShaders({vertexShader,fragmentShader});
-
+    texShaderProgram = shaderManager.LinkShaders({texVertexShader,texFragmentShader});
     printf("Finished Compiling Shaders!\n");
 
     updateWindowSize();
