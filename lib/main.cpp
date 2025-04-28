@@ -6,6 +6,7 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
+    engine.luaHandler.bindToLuaState(&engine.lua);
     engine.create_window("Simple Game",Vector2(1280,720));
     input.initKeyMap();
     Start();

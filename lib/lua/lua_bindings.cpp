@@ -2,6 +2,8 @@
 
 void LuaHandler::bindToLuaState(sol::state *lua){
 
+    lua->open_libraries(sol::lib::base, sol::lib::math, sol::lib::table, sol::lib::string, sol::lib::io);
+
     // Bind Vector2 Enums
     sol::table vector_enum = lua->create_named_table("VectorEnum");
     vector_enum["ZERO"] = VectorEnum::ZERO;

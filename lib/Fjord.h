@@ -42,6 +42,7 @@
 class Engine {
     public:
         //Engine();
+        LuaHandler luaHandler;
         sol::state lua; // The lua state. All scripts will use this
 
         Node root = Node(0,0,1,1,"root");

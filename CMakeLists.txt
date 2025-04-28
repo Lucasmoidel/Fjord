@@ -20,7 +20,7 @@ set(glm_DIR usr/lib/cmake/glm) # if necessary
 find_package(glm REQUIRED)
 
 #--------------------------------------------------------------------------
-file(GLOB Fjord_src "lib/dat/*.cpp" "lib/*.cpp" "lib/node/*.cpp")
+file(GLOB Fjord_src "lib/dat/*.cpp" "lib/*.cpp" "lib/node/*.cpp" "lib/lua/*.cpp")
 file(GLOB example_src "example/*.cpp")
 
 add_library(Fjord STATIC ${Fjord_src})

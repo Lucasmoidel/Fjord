@@ -4,7 +4,7 @@
 #include "../Fjord.h"
 
 struct Script {
-    bool ScriptEmpty = false;
+    bool ScriptEmpty = true;
     sol::environment env;
     std::string filePath;
 
@@ -12,7 +12,7 @@ struct Script {
 
     // Constructor for filePath
     Script(const std::string& path, const sol::state* lua) : ScriptEmpty(false), filePath(path) {
-        env = sol::environment(*lua, sol::create);
+        env = sol::environment(*lua, sol::create, lua->globals());
     }
 };
 

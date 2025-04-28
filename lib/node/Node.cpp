@@ -9,7 +9,7 @@ Node::Node(int xPos, int yPos, int xSize, int ySize, std::string nameIn){
 }
 
 void Node::AttachScript(std::string filePath){
-    Script AttachedScript = Script(filePath, &engine.lua);
+    AttachedScript = Script(filePath, &engine.lua);
     InitializeScript();
 }
 
@@ -91,10 +91,13 @@ Node* Node::get_node(std::string path){
 }
 
 void Node::InitializeScript(){
+    std::cout << "Init Script..." << AttachedScript.filePath << std::endl;
     if (AttachedScript.ScriptEmpty){
+        std::cout << "Exiting Init..." << std::endl;
         return;
     }
-    auto result = engine.lua.script_file(AttachedScript.filePath,sol::script_pass_on_error);
+    auto result = engine.lua.script_file(AttachedScript.filePath,AttachedScript.env,sol::script_pass_on_error);
+    std::cout << "Read File" << std::endl;
     if (!result.valid()){
         sol::error err = result;
         std::cerr << "[Script Error](" << AttachedScript.filePath << ") " << err.what() << std::endl;
@@ -103,8 +106,14 @@ void Node::InitializeScript(){
 
     sol::function initFunc = sol::protected_function(AttachedScript.env["Init"]);
 
+    std::cout << initFunc.valid() << std::endl;
     if (initFunc.valid()){
-        initFunc(this);
+        std::cout << "Executing..." << std::endl;
+        auto initResult = initFunc(this);
+        if (!initResult.valid()) {
+            sol::error err = initResult;
+            std::cerr << "[Script Error] Init failed (" << AttachedScript.filePath << "): " << err.what() << std::endl;
+        }
     }
 }
 
