@@ -63,6 +63,7 @@ class Engine {
         void updateWindowSize();
 
         glm::mat4 projection;
+        glm::mat4 texProjection;
 
     private:
     

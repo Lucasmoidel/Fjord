@@ -31,6 +31,9 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
     GLint projectionLoc = glGetUniformLocation(engine.shaderProgram, "projection");
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(engine.projection));
 
+    GLint texProjectionLoc = glGetUniformLocation(engine.texShaderProgram, "projection");
+    glUniformMatrix4fv(texProjectionLoc, 1, GL_FALSE, glm::value_ptr(engine.texProjection));
+
     glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
