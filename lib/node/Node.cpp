@@ -9,7 +9,7 @@ Node::Node(int xPos, int yPos, int xSize, int ySize, std::string nameIn){
 }
 
 void Node::AttachScript(std::string filePath){
-    Script AttachedScript = Script(filePath);
+    Script AttachedScript = Script(filePath, &engine.lua);
     InitializeScript();
 }
 

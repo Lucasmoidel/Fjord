@@ -11,8 +11,8 @@ struct Script {
     Script() : ScriptEmpty(true), filePath("") {}
 
     // Constructor for filePath
-    Script(const std::string& path) : ScriptEmpty(false), filePath(path) {
-        env = sol::environment(engine.lua, sol::create);
+    Script(const std::string& path, const sol::state* lua) : ScriptEmpty(false), filePath(path) {
+        env = sol::environment(*lua, sol::create);
     }
 };
 
