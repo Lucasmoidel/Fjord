@@ -64,6 +64,8 @@ bool Engine::create_window(std::string title, Vector2 size){
 
     updateWindowSize();
 
+	//return 0;
+
     return true;
 }
 

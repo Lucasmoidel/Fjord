@@ -12,6 +12,8 @@ class Node { // game engine that will provide functions
         Transform transform;
         std::string type;
 
+        Script AttachedScript; // Create an empty script
+
         Node* parent = NULL;
 
         std::vector<Node*> children;
@@ -21,6 +23,10 @@ class Node { // game engine that will provide functions
         virtual void Update(){}; // Definition of Update Function. Called once every frame
         virtual void Input(){}; // Definition of Input Function. Called once very frame.
         virtual void Render(){};
+
+        void AttachScript(std::string filePath);
+
+        void InitializeScript();
         
         // Transform Functions
 

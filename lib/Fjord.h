@@ -11,6 +11,9 @@
 #include <stdexcept>
 #include <sstream>
 
+// Lua Libs
+#include <sol/sol.hpp>
+
 //SDL libs
 #include <GL/glew.h>
 #include <glm/glm.hpp>
@@ -20,8 +23,9 @@
 #include <SDL3/SDL_opengl.h>
 //#include <SDL3/SDL_ttf.h>
 
+#include "lua/lua_bindings.h"
 
-// Data types
+#include "dat/Script.h" // Safe to include early
 #include "dat/Color.h"
 #include "dat/Input.h"
 #include "dat/Vector2.h"
@@ -32,12 +36,14 @@
 #include "dat/Shape.h"
 #include "node/Polygon.h"
 
-// Fjord Libs
 #include "utilities.h"
 #include "renderer.h"
 
 class Engine {
     public:
+        Engine();
+        sol::state lua; // The lua state. All scripts will use this
+
         Node root = Node(0,0,1,1,"root");
 
         std::vector<RenderCall> front_buffer;

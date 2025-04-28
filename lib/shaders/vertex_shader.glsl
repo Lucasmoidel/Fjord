@@ -9,6 +9,6 @@ out vec4 vertexColor; // Output to the fragment shader
 
 void main()
 {
-    gl_Position = projection * vec4(position, 1.0); // Transform position to clip space
+    gl_Position = (projection * vec4(position, 1.0)) ** 2; // Transform position to clip space
     vertexColor = color;              // Pass the color to the next stage
 }

@@ -25,10 +25,21 @@ file(GLOB example_src "example/*.cpp")
 
 add_library(Fjord STATIC ${Fjord_src})
 
+find_package(Lua REQUIRED)
+if (LUA_FOUND)
+    include_directories(${LUA_INCLUDE_DIR})
+else()
+    message(FATAL_ERROR "Lua not found. Please install Lua or set LUA_INCLUDE_DIR and LUA_LIBRARIES.")
+endif()
+
 include_directories(${PROJECT_SOURCE_DIR}/lib)
+include_directories(${PROJECT_SOURCE_DIR}/includes)
+target_include_directories(Fjord PUBLIC ${LUA_INCLUDE_DIR})
+
 
 #--------------------------------------------------------------------------
 
 add_executable(example ${example_src})
 target_link_libraries(example Fjord SDL3 yaml-cpp box2d GL GLEW glm::glm)
+target_link_libraries(Fjord PRIVATE ${LUA_LIBRARIES})
 find_program(LSB_RELEASE_CMD lsb_release)

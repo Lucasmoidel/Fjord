@@ -8,6 +8,11 @@ Node::Node(int xPos, int yPos, int xSize, int ySize, std::string nameIn){
     transform.scale.y = ySize;
 }
 
+void Node::AttachScript(std::string filePath){
+    Script AttachedScript = Script(filePath);
+    InitializeScript();
+}
+
 std::vector<Node*> Node::get_children(){
     std::cout << name << "\n";
     return children;
@@ -83,6 +88,24 @@ Node* Node::get_node(std::string path){
     }
     std::cout << "Returning\n";
     return searchPointer;
+}
+
+void Node::InitializeScript(){
+    if (AttachedScript.ScriptEmpty){
+        return;
+    }
+    auto result = engine.lua.script_file(AttachedScript.filePath,sol::script_pass_on_error);
+    if (!result.valid()){
+        sol::error err = result;
+        std::cerr << "[Script Error](" << AttachedScript.filePath << ") " << err.what() << std::endl;
+        return;
+    }
+
+    sol::function initFunc = sol::protected_function(AttachedScript.env["Init"]);
+
+    if (initFunc.valid()){
+        initFunc(this);
+    }
 }
 
 void Node::kill_child(std::string namein){
