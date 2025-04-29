@@ -21,6 +21,25 @@ void LuaHandler::bindToLuaState(sol::state *lua){
         "ZERO", sol::var(Vector2::ZERO)
     );
 
+    lua->new_usertype<Color>("Color",
+
+        sol::constructors<
+            Color(float,float,float,float)
+        >(),
+
+        "r", &Color::r,
+        "g", &Color::g,
+        "b", &Color::b,
+        "a", &Color::b
+    );
+
+    lua->new_usertype<Shape>("Shape",
+
+        "shape", &Shape::shape,
+        // Shape Functions
+        "setShape", &Shape::setShape
+    );
+
     lua->new_usertype<Transform>("Transform",
         "position", &Transform::position,
         "global_position", &Transform::global_position,
@@ -34,5 +53,12 @@ void LuaHandler::bindToLuaState(sol::state *lua){
 
     lua->new_usertype<Node>("Node",
         "transform", &Node::transform
+    );
+
+    lua->new_usertype<Polygon>("Polygon",
+        //sol::constructors<Polygon()>(),
+        "color", &Polygon::color,
+        "shape", &Polygon::shape,
+        sol::bases<Node>()
     );
 }

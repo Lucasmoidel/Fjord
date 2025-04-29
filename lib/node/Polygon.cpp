@@ -26,6 +26,8 @@ std::vector<Vector2> Polygon::_rotate_points() {
 }
 
 void Polygon::RegisterProperties() {
+    AttachedScript.env["color"] = &color;
+    AttachedScript.env["shape"] = &shape;
     Node::RegisterProperties();
 }
 
