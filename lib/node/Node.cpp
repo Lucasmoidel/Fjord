@@ -78,7 +78,7 @@ Node* Node::get_node(std::string path){
                     searchPointer = searchPointer->children[childIndex];
                     found = true;
                     break;
-                }
+               }
             }
             if (!found){
                 printf("null ptr !!!!!!!!!");
@@ -105,6 +105,7 @@ void Node::InitializeScript(){
     }
 
     sol::function initFunc = sol::protected_function(AttachedScript.env["Init"]);
+    AttachedScript.UpdateFunc = AttachedScript.env["Update"];
 
     std::cout << initFunc.valid() << std::endl;
     if (initFunc.valid()){
@@ -114,6 +115,18 @@ void Node::InitializeScript(){
             sol::error err = initResult;
             std::cerr << "[Script Error] Init failed (" << AttachedScript.filePath << "): " << err.what() << std::endl;
         }
+    }
+
+    RegisterProperties();
+}
+
+void Node::RegisterProperties() {
+    AttachedScript.env["transform"] = &transform;
+}
+
+void Node::RunUpdateFunction(){
+    if (AttachedScript.UpdateFunc.valid()){
+        auto updateResult = AttachedScript.UpdateFunc(Time::deltaTime);
     }
 }
 
@@ -130,6 +143,9 @@ void Node::kill_child(std::string namein){
 }
 
 void Node::_engine_update_node(){ // Try to find a way that only engine class can call this function. should not be usuable by user
+    if (!AttachedScript.ScriptEmpty){
+        RunUpdateFunction();
+    }
     update_node_position();
     Render();
     for (size_t i = 0; i < children.size(); i++){

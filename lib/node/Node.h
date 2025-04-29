@@ -26,7 +26,11 @@ class Node { // game engine that will provide functions
 
         void AttachScript(std::string filePath);
 
+        virtual void RegisterProperties();
+
         void InitializeScript();
+
+        void RunUpdateFunction();
         
         // Transform Functions
 

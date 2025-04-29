@@ -20,4 +20,19 @@ void LuaHandler::bindToLuaState(sol::state *lua){
 
         "ZERO", sol::var(Vector2::ZERO)
     );
+
+    lua->new_usertype<Transform>("Transform",
+        "position", &Transform::position,
+        "global_position", &Transform::global_position,
+
+        "scale", &Transform::scale,
+        "global_scale", &Transform::global_scale,
+
+        "rotation", &Transform::rotation,
+        "global_rotation", &Transform::global_rotation
+    );
+
+    lua->new_usertype<Node>("Node",
+        "transform", &Node::transform
+    );
 }

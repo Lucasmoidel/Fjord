@@ -10,6 +10,8 @@ class Polygon : public Node {
         Color color;
 
         void Render() override;
+
+        void RegisterProperties() override;
     
     private:
         std::vector<Vector2> _rotate_points();

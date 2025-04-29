@@ -23,7 +23,7 @@ void Box::Update() {
     color.b += bDir * Time::deltaTime;
 
     transform.scale += Vector2(0.5,0.5) * Time::deltaTime * direction;
-    rotate(15*Time::deltaTime);
+    //rotate(15*Time::deltaTime);
     if (transform.scale.x > 3 && direction == 1){
         direction = -1;
     } else if (transform.scale.x < 0.5 && direction == -1){

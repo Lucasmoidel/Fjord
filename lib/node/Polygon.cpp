@@ -25,6 +25,9 @@ std::vector<Vector2> Polygon::_rotate_points() {
     return rotatedPoints; // Return rotated points
 }
 
+void Polygon::RegisterProperties() {
+    Node::RegisterProperties();
+}
 
 
 

@@ -8,6 +8,8 @@ struct Script {
     sol::environment env;
     std::string filePath;
 
+    sol::function UpdateFunc;
+
     Script() : ScriptEmpty(true), filePath("") {}
 
     // Constructor for filePath
