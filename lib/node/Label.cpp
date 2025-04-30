@@ -4,7 +4,7 @@ void Label::Render() {
     //printf("Made it here\n");
     shape.shape = _rotate_points();
     std::vector<float>* vertexes = shape.GetGLPointArray(transform.global_position);
-    RenderCall rc = {RenderCall::POLYGON, vertexes, color, font, "test"};
+    RenderCall rc = {RenderCall::TEXT, vertexes, color, font, text};
     engine.back_buffer.push_back(rc);
 }
 
