@@ -1,20 +1,21 @@
-#ifndef Label_H
-#define Label_H
+#ifndef LABEL_H
+#define LABEL_H
 
 #include "../Fjord.h"
 
-class Label : public Polygon { // game engine that will provide functions    
+class Label : public Node {
     public:
-        using Polygon::Polygon;
-
-        std::string fontName;
-        std::string text;
-        void Render() override;
-
+        using Node::Node;
+        Shape shape;
+        Color color;
         void setText(std::string intext);
         void setFont(std::string fontname, int size);
-
+        void Render() override;
         TTF_Font* font;
+        std::string text;
+    
+    private:
+        std::vector<Vector2> _rotate_points();
 };
 
 #endif

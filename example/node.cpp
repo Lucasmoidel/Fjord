@@ -50,7 +50,7 @@ void Box::Update() {
 
 void Start(){
     //printf("\n\n\nStarted!!\n\n\n");
-    
+    #if 0
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
     square->transform.position = Vector2(0,0.3);
     square->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
@@ -64,11 +64,15 @@ void Start(){
     square2->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
     square2->color = Color(0.8,0.6,0.2,1);
     square->addChild(square2);
+    #endif
     
 #if 1
-    Label *text = engine.root.createNode<Label>(0, 0, 0, 0, "text");
+    Label *text = engine.root.createNode<Label>(0,0,1,1,"text");
+    text->transform.position = Vector2(0,0.2);
+    text->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+    text->color = Color(0.8,0.6,0.2,1);
     text->setFont("../NotoSansMono-Regular.ttf", 12);
-    text->setText("asdsdfhasdfjadjh");
+    text->setText("test");
     engine.root.addChild(text);
 #endif
     

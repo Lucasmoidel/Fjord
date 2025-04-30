@@ -5,5 +5,6 @@ compile:
 run:
 	cd build && ./example
 clean:
+	clear
 	-rm -r build
 	make
