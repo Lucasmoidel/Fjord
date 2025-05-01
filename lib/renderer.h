@@ -13,8 +13,7 @@ struct RenderCall {
     std::vector<float>* vertices;
     Color color;
 
-    TTF_Font* font;
-    std::string text;
+    SDL_Surface* surface;
 };
 
 class Renderer {

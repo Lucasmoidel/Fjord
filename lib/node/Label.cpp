@@ -1,11 +1,14 @@
 #include "../Fjord.h"
 
 void Label::Render() {
-    //printf("Made it here\n");
+    SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), text.length(), {255, 255, 255, 255});
+    surface = SDL_ConvertSurface(surface, SDL_PIXELFORMAT_RGBA32);
+    
     shape.shape = _rotate_points();
     std::vector<float>* vertexes = shape.GetGLPointArray(transform.global_position);
-    RenderCall rc = {RenderCall::TEXT, vertexes, color, font, text};
+    RenderCall rc = {RenderCall::TEXT, vertexes, color, surface};
     engine.back_buffer.push_back(rc);
+    
 }
 
 std::vector<Vector2> Label::_rotate_points() {
