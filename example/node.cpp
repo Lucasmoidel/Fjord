@@ -69,7 +69,7 @@ void Start(){
 #if 1
     Label *text = engine.root.createNode<Label>(0,0,1,1,"text");
     text->transform.position = Vector2(0,0.2);
-    text->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+    text->shape.setShape({Vector2(-0.5,0.5),Vector2(0.5,0.5),Vector2(0.5,-0.5),Vector2(-0.5,-0.5)});
     text->color = Color(0.8,0.6,0.2,1);
     text->setFont("../NotoSansMono-Regular.ttf", 12);
     text->setText("test");
