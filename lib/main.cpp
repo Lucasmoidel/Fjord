@@ -6,7 +6,7 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
-    engine.create_window("Simple Game",Vector2(1280,720));
+    engine.create_window("Simple Game",Vector2(720,720));
     input.initKeyMap();
     Start();
 

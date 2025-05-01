@@ -131,10 +131,10 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
 
                 stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
                 int width, height, nrChannels;
-                unsigned char *data = stbi_load("/home/lucas/Documents/Fjord/wall.jpg", &width, &height, &nrChannels, 0);
+                unsigned char *data = stbi_load("/home/lucas/Documents/Fjord/fjord_logo.png", &width, &height, &nrChannels, 0);
                 if (data)
                 {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
                     glGenerateMipmap(GL_TEXTURE_2D);
                 }
                 else
