@@ -1,6 +1,6 @@
 #include "./Fjord.h"
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+// #define STB_IMAGE_IMPLEMENTATION
+// #include "stb_image.h"
 GLuint Renderer::compileShaders(){
     
 }
@@ -77,10 +77,10 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
 
                 float vertices[] = {
                     // positions          // colors           // texture coords
-                     0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-                     0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
-                    -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
-                    -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
+                    0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // top right
+                    0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
+                   -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
+                   -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
                 };
                 unsigned int indices[] = {
                     0, 1, 3, // first triangle
@@ -126,10 +126,10 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
 
                 //SDL_DestroySurface(surface);
 
-                stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-                int width, height, nrChannels;
-                unsigned char *data = stbi_load("/home/lucas/Documents/Fjord/fjord_logo.png", &width, &height, &nrChannels, 0);
-                if (data)
+                //stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
+                //int width, height, nrChannels;
+                //unsigned char *data = stbi_load("/home/lucas/Documents/Fjord/fjord_logo.png", &width, &height, &nrChannels, 0);
+                if (rc.surface!=NULL)
                 {
 
                     //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -140,7 +140,7 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
                 {
                     std::cout << "Failed to load texture" << std::endl;
                 }
-                stbi_image_free(data);
+                //stbi_image_free(data);
 
                 glUniform1i(glGetUniformLocation(engine.texShaderProgram, "texture1"), 0);
 
