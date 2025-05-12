@@ -22,16 +22,31 @@ void Box::Update() {
     color.g += gDir * Time::deltaTime;
     color.b += bDir * Time::deltaTime;
 
-    transform.scale += Vector2(0.5,0.5) * Time::deltaTime * direction;
-    rotate(15*Time::deltaTime);
+    transform.scale = Vector2(2,2);
+    /*
     if (transform.scale.x > 3 && direction == 1){
         direction = -1;
     } else if (transform.scale.x < 0.5 && direction == -1){
         direction = 1;
-    }
+    }*/
     if (color.r > 1 || color.r < 0){rDir = rDir * -1;}
     if (color.g > 1 || color.g < 0){gDir = rDir * -1;}
     if (color.b > 1 || color.b < 0){bDir = bDir * -1;}
+    if (input.isDown("Up")){
+        transform.position.y += 2*Time::deltaTime;
+    } else if (input.isDown("Down")){
+        transform.position.y -= 2*Time::deltaTime;
+    } if (input.isDown("Left")){
+        transform.position.x -= 2*Time::deltaTime;
+    } else if (input.isDown("Right")){
+        transform.position.x += 2*Time::deltaTime;
+    }
+
+    if (input.isDown("RRight")){
+        rotate(-180*Time::deltaTime);
+    } else if (input.isDown("RLeft")){
+        rotate(180*Time::deltaTime);
+    }
     /*
     if (transform.position.x < 0.5){
         direction.x = 1;

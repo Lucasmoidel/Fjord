@@ -20,6 +20,14 @@ int main(){
         previousTime = currentTime;
 
         //engine.processInput(); // proccess key presses
+        engine.timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - engine.last_frame_time);
+
+        if (engine.timeToWait > 0 && engine.timeToWait <= engine.FRAME_TARGET_TIME){
+            SDL_Delay(engine.timeToWait);
+        }
+
+        engine.last_frame_time = SDL_GetTicks();
+
         engine.root._engine_update_node(); // update the engine every tick
 
         SDL_Event event;

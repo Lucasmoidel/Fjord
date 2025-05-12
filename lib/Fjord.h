@@ -49,10 +49,14 @@ class Engine {
         Renderer renderer;
         ShaderManager shaderManager;
         
+        int TARGET_FPS = 240;
+        int FRAME_TARGET_TIME = 1000 / TARGET_FPS;
+        int timeToWait;
+        int last_frame_time = 0;
 
         bool create_window(std::string title, Vector2 size);
         void destroy_window();
-
+        void delayExecution();
         bool gameRunning = true;
 
         GLuint shaderProgram;
@@ -76,7 +80,7 @@ namespace Time {
 }
 
 extern Engine engine;
-
+extern Input input;
 void Start();
 
 #endif // MYHEADER_H
