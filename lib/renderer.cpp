@@ -38,8 +38,9 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
     glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    GLuint VBO, VAO;
+    GLuint VBO, VAO, EBO;
     glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
 
@@ -53,6 +54,7 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
         switch (rc.type)
         {
             case RenderCall::POLYGON:
+                glUseProgram(engine.shaderProgram);
                 if (rc.vertices->size() > 0) {
                     //printf("RenderTime");
                     // Upload vertex data to the GPU
@@ -69,8 +71,7 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
                     glDisableVertexAttribArray(0);
                 }
                 break;
-            case RenderCall::TEXT:      
-
+            case RenderCall::TEXT:  
                 glUseProgram(engine.texShaderProgram);  
                 
 
@@ -86,12 +87,6 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
                     0, 1, 3, // first triangle
                     1, 2, 3  // second triangle
                 };
-                unsigned int VBO, VAO, EBO;
-                glGenVertexArrays(1, &VAO);
-                glGenBuffers(1, &VBO);
-                glGenBuffers(1, &EBO);
-            
-                glBindVertexArray(VAO);
             
                 glBindBuffer(GL_ARRAY_BUFFER, VBO);
                 glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -118,6 +113,7 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+                
                 // load image, create texture and generate mipmaps
                 //int width, height, nrChannels;
 
@@ -129,25 +125,26 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
                 //stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
                 //int width, height, nrChannels;
                 //unsigned char *data = stbi_load("/home/lucas/Documents/Fjord/fjord_logo.png", &width, &height, &nrChannels, 0);
+                
                 if (rc.surface!=NULL)
                 {
 
                     //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, rc.surface->w, rc.surface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, rc.surface->pixels);
-                    glGenerateMipmap(GL_TEXTURE_2D);
+                    //glGenerateMipmap(GL_TEXTURE_2D);
                 }
                 else
                 {
                     std::cout << "Failed to load texture" << std::endl;
                 }
                 //stbi_image_free(data);
-
+                
                 glUniform1i(glGetUniformLocation(engine.texShaderProgram, "texture1"), 0);
-
+                
                 //glBindTexture(GL_TEXTURE_2D, texture);
-                glBindVertexArray(VAO);
                 glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
                 SDL_DestroySurface(rc.surface);
+                glDeleteTextures(1, &texture);
                 glUseProgram(engine.shaderProgram);      
 
                 break;
@@ -159,6 +156,8 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
     glBindVertexArray(0);
     glDeleteBuffers(1, &VBO);
     glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &EBO);
+
 
     // Swap the buffers to present the rendered frame
     SDL_GL_SwapWindow(engine.window);
