@@ -15,6 +15,9 @@ function Update(dt)
     transform.rotation = transform.rotation + 50 * dt
     print("Position: " .. tostring(transform.position.x))
 
-    color.a = 0.5
+    local other_node = get_node("Box1") -- Line 18: Error, get_node is not global
+    other_node.color.a = 0.2
+
+    color.a = 1
 
 end

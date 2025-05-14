@@ -122,6 +122,7 @@ void Node::InitializeScript(){
 
 void Node::RegisterProperties() {
     AttachedScript.env["transform"] = &transform;
+    AttachedScript.env["get_node"] = &get_node();
 }
 
 void Node::RunUpdateFunction(){
