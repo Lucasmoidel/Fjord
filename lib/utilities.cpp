@@ -36,4 +36,8 @@ namespace Utilities
         return angle;
     }
 
+    float lerp(float start, float end, float easing) {
+        return start + easing * (end - start);
+    }
+
 }
