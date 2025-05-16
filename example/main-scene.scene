@@ -1,0 +1,13 @@
+{
+    "name":"root-node",
+    "type":"Node",
+    "transform":{
+        "x":0,
+        "y":0,
+        "gX":0,
+        "gY":0,
+        "rotX":0,
+        "gRotX":0,
+        "sX":1,
+        "xY":1
+    }
