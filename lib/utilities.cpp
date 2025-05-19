@@ -40,4 +40,12 @@ namespace Utilities
         return start + easing * (end - start);
     }
 
+    float toNDC_X(float x) {
+    return (x / engine.screen_size.x) * 2.0f - 1.0f;
+    }
+
+    float toNDC_Y(float y) {
+        return 1.0f - (y / engine.screen_size.y) * 2.0f;
+    }
+
 }

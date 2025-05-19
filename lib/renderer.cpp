@@ -53,6 +53,7 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
     for (const RenderCall& rc : rcs) {
         switch (rc.type)
         {
+
             case RenderCall::POLYGON:
                 glUseProgram(engine.shaderProgram);
                 if (rc.vertices->size() > 0) {
@@ -78,10 +79,10 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
 
                 float vertices[] = {
                     // positions          // colors           // texture coords
-                    0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // top right
-                    0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
-                   -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
-                   -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
+                    Utilities::toNDC_X(rc.vertices->at(0)),  Utilities::toNDC_Y(rc.vertices->at(1)), 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // top right
+                    Utilities::toNDC_X(rc.vertices->at(2)),  Utilities::toNDC_Y(rc.vertices->at(3)), 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
+                    Utilities::toNDC_X(rc.vertices->at(4)),  Utilities::toNDC_Y(rc.vertices->at(5)), 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
+                    Utilities::toNDC_X(rc.vertices->at(6)),  Utilities::toNDC_Y(rc.vertices->at(7)), 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
                 };
                 unsigned int indices[] = {
                     0, 1, 3, // first triangle

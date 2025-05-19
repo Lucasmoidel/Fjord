@@ -70,7 +70,7 @@ void Start(){
     std::cout << Vector2(50, 20).normalized().x << "\n";
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
     square->transform.position = Vector2(0,0.3);
-    square->shape.setShape({Vector2(-10,10),Vector2(10,10),Vector2(10,-10),Vector2(-10,-10)});
+    square->shape.setShape({Vector2(-20,20),Vector2(20,20),Vector2(20,-20),Vector2(-20,-20)});
     square->transform.scale = Vector2(0.5,0.5);
     square->color = Color(0.2,0.8,0.6,1);
     engine.root.addChild(square);

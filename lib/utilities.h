@@ -12,6 +12,9 @@ namespace Utilities {
     float wrapRotation(float angle);
 
     float lerp(float start,float end,float easing);
+
+    float toNDC_X(float x);
+    float toNDC_Y(float y);
 }
 
 #endif
