@@ -66,6 +66,7 @@ void Box::Update() {
 void Start(){
     //printf("\n\n\nStarted!!\n\n\n");
 
+    std::cout << Vector2(50, 20).normalized().x << "\n";
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
     square->transform.position = Vector2(0,0.3);
     square->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
@@ -78,7 +79,7 @@ void Start(){
     text->shape.setShape({Vector2(-0.5,0.5),Vector2(0.5,0.5),Vector2(0.5,-0.5),Vector2(-0.5,-0.5)});
     text->color = Color(0.8,0.6,0.2,1);
     text->setFont("../comic.ttf", 150);
-    text->setText("Fjord");
+    text->setText("19  |  20");
     engine.root.addChild(text);
 }
 
