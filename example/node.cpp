@@ -32,14 +32,15 @@ void Box::Update() {
     if (color.r > 1 || color.r < 0){rDir = rDir * -1;}
     if (color.g > 1 || color.g < 0){gDir = rDir * -1;}
     if (color.b > 1 || color.b < 0){bDir = bDir * -1;}
-    if (input.isDown("Up")){
-        transform.position.y += 2*Time::deltaTime;
-    } else if (input.isDown("Down")){
-        transform.position.y -= 2*Time::deltaTime;
+    
+    if (input.isDown("Down")){
+        transform.position.y += 500*Time::deltaTime;
+    } else if (input.isDown("Up")){
+        transform.position.y -= 500*Time::deltaTime;
     } if (input.isDown("Left")){
-        transform.position.x -= 2*Time::deltaTime;
+        transform.position.x -= 500*Time::deltaTime;
     } else if (input.isDown("Right")){
-        transform.position.x += 2*Time::deltaTime;
+        transform.position.x += 500*Time::deltaTime;
     }
 
     if (input.isDown("RRight")){
@@ -69,7 +70,7 @@ void Start(){
     std::cout << Vector2(50, 20).normalized().x << "\n";
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
     square->transform.position = Vector2(0,0.3);
-    square->shape.setShape({Vector2(-0.1,0.1),Vector2(0.1,0.1),Vector2(0.1,-0.1),Vector2(-0.1,-0.1)});
+    square->shape.setShape({Vector2(-10,10),Vector2(10,10),Vector2(10,-10),Vector2(-10,-10)});
     square->transform.scale = Vector2(0.5,0.5);
     square->color = Color(0.2,0.8,0.6,1);
     engine.root.addChild(square);
