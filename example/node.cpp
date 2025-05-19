@@ -75,12 +75,13 @@ void Start(){
     square->color = Color(0.2,0.8,0.6,1);
     engine.root.addChild(square);
 
-    Label *text = engine.root.createNode<Label>(0,0,1,1,"text");
-    text->transform.position = Vector2(0,0.2);
-    text->shape.setShape({Vector2(-0.5,0.5),Vector2(0.5,0.5),Vector2(0.5,-0.5),Vector2(-0.5,-0.5)});
+    Label *text = engine.root.createNode<Label>(0, 0,1,1,"text");
+    text->transform.position = Vector2((engine.screen_size.x -300)/2,-40);
+    text->shape.setShape({Vector2(300,0),Vector2(300,200),Vector2(0,200),Vector2(0,0)});
     text->color = Color(0.8,0.6,0.2,1);
     text->setFont("../comic.ttf", 150);
     text->setText("19  |  20");
+    //text->rotate(180);
     engine.root.addChild(text);
 }
 
