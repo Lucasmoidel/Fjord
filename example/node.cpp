@@ -36,6 +36,8 @@ class Ball : public Polygon {
         int speed = 200;
         int side = 0;
         void Update() override{
+            transform.position.x = ClampF(transform.position.x, 0, engine.screen_size.x-30);
+            transform.position.y = ClampF(transform.position.y, 0, engine.screen_size.y-30);
             //std::cout << transform.global_position << std::endl;
             if (transform.position.x < 400){
                 side = 0;
