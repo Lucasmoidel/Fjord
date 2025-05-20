@@ -69,6 +69,7 @@ class Engine {
         glm::mat4 projection;
         glm::mat4 texProjection;
 
+
     private:
     
         SDL_GLContext glContext;

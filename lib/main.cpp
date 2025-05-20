@@ -27,7 +27,7 @@ int main(){
         }
 
         engine.last_frame_time = SDL_GetTicks();
-
+        Utilities::engineUpdate();
         engine.root._engine_update_node(); // update the engine every tick
 
         SDL_Event event;

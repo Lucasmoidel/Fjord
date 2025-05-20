@@ -15,6 +15,8 @@ namespace Utilities {
 
     float toNDC_X(float x);
     float toNDC_Y(float y);
+
+    void engineUpdate();
 }
 
 #endif
