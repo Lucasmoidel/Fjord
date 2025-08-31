@@ -16,8 +16,6 @@ class Paddle : public Polygon {
         int side = 0;
         int speed = 200;
 
-        Vector2 testing = Vector2(5,3);
-
         void Update() override;
         void Input() override;
 };
@@ -88,7 +86,6 @@ void Paddle::Input(){ // Please keep updating the transform out of the input fun
             direction = 1;
         } else {
             direction = 0;
-            testing.x += 1;
         }
     } if(side==1){
         if(input.isDown("Player2_Up")){
