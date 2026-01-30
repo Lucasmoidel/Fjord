@@ -14,7 +14,7 @@ class Paddle : public Polygon {
         int direction = 0;
 
         int side = 0;
-        int speed = 200;
+        int speed = 400;
 
         void Update() override;
         void Input() override;
@@ -31,7 +31,7 @@ class Ball : public Polygon {
     public:
         using Polygon::Polygon;
         Vector2 direction = Vector2(1, 1);
-        int speed = 200;
+        int speed = 400;
         int side = 0;
         void Update() override{
             transform.position.x = ClampF(transform.position.x, 0, engine.screen_size.x-30);
