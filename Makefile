@@ -1,10 +1,10 @@
 all: compile run
+clean: del compile run
 compile:
 	-mkdir build
-	cd build && cmake .. && make -j$(nproc) && cp ../example/keyMap.json .	
+	cd build && cmake .. && make -j$(nproc) SYSTEM=linux-egl && cp ../example/keyMap.json .	
 run:
 	cd build && ./example
-clean:
+del:
 	clear
 	-rm -r build
-	make -j$(nproc)

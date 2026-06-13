@@ -48,4 +48,14 @@ namespace Utilities
         return 1.0f - (y / engine.screen_size.y) * 2.0f;
     }
 
+
+    std::vector<Vector2> rect(int w, int h){
+        std::vector<Vector2> points;
+        points.push_back(Vector2(w, 0));
+        points.push_back(Vector2(w, h));
+        points.push_back(Vector2(0, h));
+        points.push_back(Vector2(0, 0));
+
+        return points;
+    }
 }

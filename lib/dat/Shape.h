@@ -11,7 +11,6 @@ class Shape {
         std::vector<Vector2> originalShape;
 
         void setShape(std::vector<Vector2> shape);
-
         std::vector<float>* GetGLPointArray(Vector2 global_positon);
 };
 

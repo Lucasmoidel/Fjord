@@ -44,44 +44,31 @@ void Box::Update() {
     }
 
     if (input.isDown("RRight")){
-        rotate(-180*Time::deltaTime);
-    } else if (input.isDown("RLeft")){
         rotate(180*Time::deltaTime);
+    } else if (input.isDown("RLeft")){
+        rotate(-180*Time::deltaTime);
     }
-    /*
-    if (transform.position.x < 0.5){
-        direction.x = 1;
-    } else if (transform.position.x > 0.5) {
-        direction.x = -1;
-    }
-    if (transform.position.y < 0.5){
-        direction.y = 1;
-    } else if (transform.position.y > 0.5) {
-        direction.y = -1;
-    }
-    transform.position += direction * 10 * Time::deltaTime;
-    */
-    //get_node("Box2")->transform.rotation += 25 * Time::deltaTime;
+
 }
 
 void Start(){
-    //printf("\n\n\nStarted!!\n\n\n");
 
     std::cout << Vector2(50, 20).normalized().x << "\n";
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
-    square->transform.position = Vector2(0,0.3);
+    square->transform.position = Vector2((engine.screen_size.x /2 )-10, (engine.screen_size.y /2 )-10);
     square->shape.setShape({Vector2(-20,20),Vector2(20,20),Vector2(20,-20),Vector2(-20,-20)});
     square->transform.scale = Vector2(0.5,0.5);
     square->color = Color(0.2,0.8,0.6,1);
     engine.root.addChild(square);
 
+    std::string s = "19  |  20";
+
     Label *text = engine.root.createNode<Label>(0, 0,1,1,"text");
-    text->transform.position = Vector2((engine.screen_size.x -300)/2,-40);
-    text->shape.setShape({Vector2(300,0),Vector2(300,200),Vector2(0,200),Vector2(0,0)});
+    text->transform.position = Vector2((engine.screen_size.x -300)/2,-400);
+    text->shape.setShape(Utilities::rect(s.length()*((3/5)*200), 200));
     text->color = Color(0.8,0.6,0.2,1);
-    text->setFont("../comic.ttf", 150);
-    text->setText("19  |  20");
-    //text->rotate(180);
+    text->setFont("../comic.ttf", 200);
+    text->setText(s);
     engine.root.addChild(text);
 }
 
