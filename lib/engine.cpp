@@ -42,13 +42,12 @@ bool Engine::create_window(std::string title, Vector2 size){
         return false;
     }
 
-
-	glewExperimental = GL_TRUE;
-	GLenum glewError = glewInit();
-    if (glewInit() != GLEW_OK) {
-		std::cout << "Error initializing GLEW = " << glewGetErrorString(glewError) << std::endl;
-		return false;
-	}
+    
+    if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress))
+    {
+        printf("Failed to load OpenGL via GLAD\n");
+        return -1;
+    }
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

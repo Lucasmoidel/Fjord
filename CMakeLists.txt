@@ -13,13 +13,17 @@ find_package(glm REQUIRED)
 #--------------------------------------------------------------------------
 file(GLOB Fjord_src "lib/dat/*.cpp" "lib/*.cpp" "lib/node/*.cpp")
 file(GLOB example_src "example/*.cpp")
+file(GLOB glad_src "glad/src/glad.c")
 
 add_library(Fjord STATIC ${Fjord_src})
+add_library(glad STATIC ${glad_src})
 
-include_directories(${PROJECT_SOURCE_DIR}/lib)
+
+
+include_directories(${PROJECT_SOURCE_DIR}/lib ${PROJECT_SOURCE_DIR}/glad/include/)
 
 #--------------------------------------------------------------------------
 
 add_executable(example ${example_src})
-target_link_libraries(example Fjord SDL3 SDL3_ttf yaml-cpp box2d GL GLEW glm::glm)
+target_link_libraries(example Fjord SDL3 SDL3_ttf yaml-cpp box2d GL glad glm::glm)
 find_program(LSB_RELEASE_CMD lsb_release)
