@@ -16,8 +16,6 @@ class Vector2 {
 
         Vector2(float xPos=0,float yPos=0);
 
-        b2Vec2 box();
-
         Vector2(VectorEnum VectorEnum);
 
         static const Vector2 ZERO;
@@ -40,6 +38,7 @@ class Vector2 {
         Vector2& operator-=(const Vector2& other);
         
         friend std::ostream& operator<<(std::ostream& os, const Vector2& vec);
+        Vector2 normalized();
 };
 
 #endif

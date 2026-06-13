@@ -10,74 +10,77 @@
 #include <fstream>
 #include <stdexcept>
 #include <sstream>
-
+#include <assert.h>
 //SDL libs
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-
-//opengl libs
 #include <GL/glew.h>
-#include <SDL2/SDL_opengl.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_opengl.h>
+#include <SDL3_ttf/SDL_ttf.h>
+//#include <SDL3/SDL_ttf.h>
 
-//box libs
-#include <yaml-cpp/yaml.h>
-#include <box2d/box2d.h>
 
-//Fjord libs
-#include "RendererGL.h"
-#include "utilities.h"
+// Data types
+#include "dat/Color.h"
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
+#include "dat/Shader.h"
+#include "ShaderManager.h"
 #include "node/Node.h"
+#include "dat/Shape.h"
+#include "node/Polygon.h"
+#include "node/Label.h"
 
-#include "node/physics/collision_object.h"
-#include "node/physics/static_body.h"
-#include "dat/shape.h"
+// Fjord Libs
+#include "utilities.h"
+#include "renderer.h"
 
-
-class Engine{ // game engine that will provide functions    
+class Engine {
     public:
-        Node root;
+        Node root = Node(0,0,1,1,"root");
 
-        void update();
+        std::vector<RenderCall> front_buffer;
+        std::vector<RenderCall> back_buffer;
 
-        //void crateNode(Node* node);
-        bool gameRuning = false; // keeps tract of weather the game is running
-        b2WorldId worldId;
-
-        void Initialize();
-
-        bool initWin(int Win_width, int Win_height, std::string name); //intitilize sdl2 window with the width, height, and name of window
-        void processInput(); // proccess user input
-        void render(RendererGL* renderer); // render objects
-        void destroyWindow(); // destroy window when game exits
-
-        std::vector<Node*> getRectColisions(std::string name);
-
+        SDL_Window* window = NULL;
+        Renderer renderer;
+        ShaderManager shaderManager;
+        
         int TARGET_FPS = 240;
         int FRAME_TARGET_TIME = 1000 / TARGET_FPS;
-
-
-        std::unique_ptr<RendererGL> rendererGL;
-        SDL_Window* window = NULL; // SDL window object
-    private:
-
         int timeToWait;
-        
-        
-        SDL_GLContext glContext; //SDL renderer object
-
         int last_frame_time = 0;
 
+        bool create_window(std::string title, Vector2 size);
+        void destroy_window();
+        void delayExecution();
+        bool gameRunning = true;
+
+        GLuint shaderProgram;
+        GLuint texShaderProgram;
+        
+        Vector2 screen_size;
+
+        void updateWindowSize();
+
+        glm::mat4 projection;
+        glm::mat4 texProjection;
+
+    private:
+    
+        SDL_GLContext glContext;
 };
+
+// Make deltaTime available everywhere. Used in main.cpp
 namespace Time {
     extern float deltaTime;
 }
-extern Engine engine; // makes the engine object available globaly part1 see main.cpp for part 2
-extern Input input;
 
+extern Engine engine;
+extern Input input;
 void Start();
-void createWindow(int x, int y, std::string winName);
 
 #endif // MYHEADER_H

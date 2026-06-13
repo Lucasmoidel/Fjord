@@ -5,95 +5,85 @@
 
 using namespace Utilities;
 
-int Lscore = 0;
-int Rscore = 0;
-class Paddle : public Node {
+class Box : public Polygon {
     public:
-        using Node::Node;
+        using Polygon::Polygon;
 
-        int direction = 0;
-
-        int side = 0;
-        int speed = 200;
-
-        Vector2 testing = Vector2(5,3);
+        int direction = 1;
+        int rDir = 1;
+        int gDir = 1;
+        int bDir = 1;
 
         void Update() override;
-        void Input() override;
 };
-class Ball : public Node {
-    public:
-        using Node::Node;
-        Vector2 direction = Vector2(1, 1);
-        int speed = 200;
-        int side = 0;
-        void Update() override{
-            //std::cout << transform.global_position << std::endl;
-            if (transform.position.x < 400){
-                side = 0;
-            }else{
-                side = 1;
-            }
-            transform.position.x += direction.x * speed * Time::deltaTime;
-            transform.position.y += direction.y * speed * Time::deltaTime;
-            if(transform.position.y <= 0 || transform.position.y >= 600-transform.size.y){
-                direction.y *= -1;
-            }
-            if(transform.position.x <= 0 || transform.position.x >= 800-transform.size.x){
-                direction.x *= -1;
-                if (side == 1 ){
-                    Lscore++;
-                   //engine.root.kill_child("Lpaddle");
-                } else {
-                    Rscore++;
-                    //engine.root.kill_child("Lpaddle");
-                    //engine.root.kill_child("Ball");
-                }
-            }
-            //if (get_node("../Lpaddle") != NULL){
-            //get_node("../Lpaddle")->transform.position.y += direction.y * Time::deltaTime * speed;
-            //}
-            //std::cout << Lscore << ", " << Rscore << std::endl;
-        }
-};
+
+void Box::Update() {
+    color.r += rDir * Time::deltaTime;
+    color.g += gDir * Time::deltaTime;
+    color.b += bDir * Time::deltaTime;
+
+    transform.scale = Vector2(2,2);
+    /*
+    if (transform.scale.x > 3 && direction == 1){
+        direction = -1;
+    } else if (transform.scale.x < 0.5 && direction == -1){
+        direction = 1;
+    }*/
+    if (color.r > 1 || color.r < 0){rDir = rDir * -1;}
+    if (color.g > 1 || color.g < 0){gDir = rDir * -1;}
+    if (color.b > 1 || color.b < 0){bDir = bDir * -1;}
+    
+    if (input.isDown("Down")){
+        transform.position.y += 500*Time::deltaTime;
+    } else if (input.isDown("Up")){
+        transform.position.y -= 500*Time::deltaTime;
+    } if (input.isDown("Left")){
+        transform.position.x -= 500*Time::deltaTime;
+    } else if (input.isDown("Right")){
+        transform.position.x += 500*Time::deltaTime;
+    }
+
+    if (input.isDown("RRight")){
+        rotate(-180*Time::deltaTime);
+    } else if (input.isDown("RLeft")){
+        rotate(180*Time::deltaTime);
+    }
+    /*
+    if (transform.position.x < 0.5){
+        direction.x = 1;
+    } else if (transform.position.x > 0.5) {
+        direction.x = -1;
+    }
+    if (transform.position.y < 0.5){
+        direction.y = 1;
+    } else if (transform.position.y > 0.5) {
+        direction.y = -1;
+    }
+    transform.position += direction * 10 * Time::deltaTime;
+    */
+    //get_node("Box2")->transform.rotation += 25 * Time::deltaTime;
+}
 
 void Start(){
-    createWindow(800, 600, "Pong");
-    Paddle* paddle1 = engine.root.createNode<Paddle>(10,50, 30, 150, "Lpaddle"); // Create a new node
-    Paddle* paddle2 = engine.root.createNode<Paddle>(760,50, 30, 150, "Rpaddle"); // Create a new node
+    //printf("\n\n\nStarted!!\n\n\n");
 
-    paddle1->side = 0;
-    paddle2->side = 1;
-    
-    //Ball* ball = engine.root.createNode<Ball>(100, 100, 30, 30, "Ball");
-    Ball* ball = engine.root.createNode<Ball>(100, 100, 30, 30, "Ball");
+    std::cout << Vector2(50, 20).normalized().x << "\n";
+    Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
+    square->transform.position = Vector2(0,0.3);
+    square->shape.setShape({Vector2(-20,20),Vector2(20,20),Vector2(20,-20),Vector2(-20,-20)});
+    square->transform.scale = Vector2(0.5,0.5);
+    square->color = Color(0.2,0.8,0.6,1);
+    engine.root.addChild(square);
 
+    Label *text = engine.root.createNode<Label>(0, 0,1,1,"text");
+    text->transform.position = Vector2((engine.screen_size.x -300)/2,-40);
+    text->shape.setShape({Vector2(300,0),Vector2(300,200),Vector2(0,200),Vector2(0,0)});
+    text->color = Color(0.8,0.6,0.2,1);
+    text->setFont("../comic.ttf", 150);
+    text->setText("19  |  20");
+    //text->rotate(180);
+    engine.root.addChild(text);
 }
 
-void Paddle::Update(){
-    transform.position.y += speed * direction * Time::deltaTime; // Update the position
-    transform.position.y = ClampF(transform.position.y, 0, 600-transform.size.y); // No need to use Utilities::ClampF. Utilities is being used at the top of the file
-}
-
-
-void Paddle::Input(){ // Please keep updating the transform out of the input function
-    if(side==0){
-        if(input.isDown("Player1_Up")){
-            direction = -1;
-        } else if(input.isDown("Player1_Down")){
-            //std::cout << testing.BOX.x << "\n";
-            direction = 1;
-        } else {
-            direction = 0;
-            testing.x += 1;
-        }
-    } if(side==1){
-        if(input.isDown("Player2_Up")){
-            direction = -1;
-        } else if(input.isDown("Player2_Down")){
-            direction = 1;
-        } else {
-            direction = 0;
-        }
-    }
+void Setup(){
 }

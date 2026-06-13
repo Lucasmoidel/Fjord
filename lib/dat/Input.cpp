@@ -16,7 +16,7 @@ bool Input::isDown(const std::string actionName){
     bool down = false;
     std::vector<SDL_Keycode> keycodes = getAction(actionName);
     for (size_t i = 0; i < keycodes.size(); i++){
-        if (keystates[SDL_GetScancodeFromKey(keycodes[i])]){
+        if (keystates[SDL_GetScancodeFromKey(keycodes[i], SDL_KMOD_NONE)]){
             down = true;
             break;
         }

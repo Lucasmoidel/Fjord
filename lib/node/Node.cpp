@@ -4,8 +4,8 @@ Node::Node(int xPos, int yPos, int xSize, int ySize, std::string nameIn){
     name = nameIn;
     transform.position.x = xPos;
     transform.position.y = yPos;
-    transform.size.x = xSize;
-    transform.size.y = ySize;
+    transform.scale.x = xSize;
+    transform.scale.y = ySize;
 }
 
 std::vector<Node*> Node::get_children(){
@@ -16,11 +16,44 @@ std::vector<Node*> Node::get_children(){
 int Node::get_children_count(){
     return children.size();
 }
+void Node::update_node_position() {
+    if (parent != nullptr) {
 
-void Node::update_node_position(){
-    if (parent != NULL){
-        transform.global_position = parent->transform.global_position + transform.position;
+        // Convert parent rotation to radians
+        float radians = parent->transform.global_rotation * (M_PI / 180.0f);
+
+        // Apply rotation to child's local position
+        float x_orbit = transform.position.x * cos(radians) - transform.position.y * sin(radians);
+        float y_orbit = transform.position.x * sin(radians) + transform.position.y * cos(radians);
+
+        // Adjust position based on parent's scale (move outward/inward dynamically)
+        float scaled_x = x_orbit * parent->transform.global_scale.x;
+        float scaled_y = y_orbit * parent->transform.global_scale.y;
+
+        transform.global_position.x = parent->transform.global_position.x + scaled_x;
+        transform.global_position.y = parent->transform.global_position.y + scaled_y;
+
+        // Correct hierarchical scaling (multiplicative)
+        transform.global_scale.x = parent->transform.global_scale.x * transform.scale.x;
+        transform.global_scale.y = parent->transform.global_scale.y * transform.scale.y;
+
+        // Combine rotations
+        transform.global_rotation = parent->transform.global_rotation + transform.rotation;
     }
+    else {
+        // No parent: global and local properties are the same
+        transform.global_position = transform.position;
+        transform.global_rotation = transform.rotation;
+        transform.global_scale = transform.scale;
+    }
+
+    // Ensure rotation stays within valid bounds
+    transform.rotation = Utilities::wrapRotation(transform.rotation);
+    transform.global_rotation = Utilities::wrapRotation(transform.global_rotation);
+}
+
+void Node::rotate(float degrees){
+    transform.rotation += degrees;
 }
 
 // "../../hello/path"
@@ -52,28 +85,28 @@ Node* Node::get_node(std::string path){
     return searchPointer;
 }
 
-void Node::kill_child(std::string namein, int killall){
+void Node::kill_child(std::string namein){
     Node* child = NULL;
     for (size_t i = 0; i < children.size(); i++){
-        if (killall == 1 || children[i]->name == namein){
+        if ( namein == "" || children[i]->name == namein){
             child = children[i];
             children.erase(children.begin() + i);
-            child->kill_child("", 1);
+            child->kill_child("");
             delete child;// sus
         }
     }
 }
 
-void Node::Render(RendererGL* renderer){
+void Node::_engine_update_node(){ // Try to find a way that only engine class can call this function. should not be usuable by user
+    update_node_position();
+    Render();
     for (size_t i = 0; i < children.size(); i++){
-        children[i]->Render(renderer);
+        children[i]->_engine_update_node();
         children[i]->Update();
         children[i]->Input();
     }
-    update_node_position();
-    rect.x = transform.global_position.x;
-    rect.y = transform.global_position.y;
-    rect.w = transform.size.x;
-    rect.h = transform.size.y;
-    renderer->fillRect(&rect);
+}
+
+void Node::addChild(Node* node){
+    children.push_back(node);
 }

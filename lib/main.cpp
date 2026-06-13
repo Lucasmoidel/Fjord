@@ -6,20 +6,44 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
-    engine.Initialize();
+    engine.create_window("Simple Game",Vector2(720,720));
     input.initKeyMap();
     Start();
-    while(engine.gameRuning){
-        
-        engine.processInput(); // proccess key presses
-        engine.update(); // update the engine every tick
 
-        engine.render(engine.rendererGL.get());// render objects and stuff
+    Uint64 previousTime = SDL_GetTicks();
+    Uint64 currentTime;
+
+    while(engine.gameRunning){
+
+        currentTime = SDL_GetTicks();
+        Time::deltaTime = (currentTime - previousTime) / 1000.0f; // Convert to seconds
+        previousTime = currentTime;
+
+        //engine.processInput(); // proccess key presses
+        engine.timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - engine.last_frame_time);
+
+        if (engine.timeToWait > 0 && engine.timeToWait <= engine.FRAME_TARGET_TIME){
+            SDL_Delay(engine.timeToWait);
+        }
+
+        engine.last_frame_time = SDL_GetTicks();
+
+        engine.root._engine_update_node(); // update the engine every tick
+
+        SDL_Event event;
+        SDL_PollEvent(&event);
+        if (event.type == SDL_EVENT_QUIT){
+            engine.gameRunning = false;
+        }
+        if (event.type == SDL_EVENT_WINDOW_RESIZED) {
+            engine.screen_size.x = event.window.data1;
+            engine.screen_size.y = event.window.data2;
+            engine.updateWindowSize();
+        }
+        std::swap(engine.front_buffer,engine.back_buffer); // Swap the buffers
+        engine.renderer.render(engine.front_buffer);
+        engine.back_buffer.clear(); // Clear the back buffer
     }
-    engine.destroyWindow();// destroy window
+    engine.destroy_window();// destroy window
     return 0;// exit program
-}
-
-void createWindow(int x, int y, std::string winName){
-    if (engine.initWin(x, y, winName)){engine.gameRuning = true;}// check if everything initilizing ojects and SDL2 succeded and store that in gameRunning
 }

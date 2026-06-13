@@ -12,9 +12,9 @@ Vector2::Vector2(VectorEnum vecEnum){
 
 const Vector2 Vector2::ZERO(Vector2::ZERO);
 
-b2Vec2 Vector2::box() {
+/*b2Vec2 Vector2::box() {
     return (b2Vec2){x,y};
-}
+}*/
 
 Vector2 Vector2::operator+(const Vector2& other) const { // Vector2 Add Operation
     return Vector2(x+other.x, y+other.y);
@@ -59,4 +59,10 @@ Vector2& Vector2::operator-=(const Vector2& other) { // Vector2 Subtract Equals 
 std::ostream& operator<<(std::ostream& os, const Vector2& vec) { // Vector2 STD::Cout Operation
      os << "Vector2(" << vec.x << ", " << vec.y << ")"; 
      return os;
+}
+Vector2 Vector2::normalized(){
+    float newx, newy;
+    newx = (x / engine.screen_size.x) * 2.0f - 1.0f;
+    newy = (1.0f - (y / engine.screen_size.y) * 2.0f);
+    return Vector2(newx, newy);
 }

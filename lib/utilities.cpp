@@ -24,4 +24,28 @@ namespace Utilities
         res.push_back (input.substr (pos_start));
         return res;
     }
+
+    float wrapRotation(float angle) {
+        // Ensure the angle is within 0 to 360
+        while (angle < 0.0f) {
+            angle += 360.0f;
+        }
+        while (angle >= 360.0f) {
+            angle -= 360.0f;
+        }
+        return angle;
+    }
+
+    float lerp(float start, float end, float easing) {
+        return start + easing * (end - start);
+    }
+
+    float toNDC_X(float x) {
+    return (x / engine.screen_size.x) * 2.0f - 1.0f;
+    }
+
+    float toNDC_Y(float y) {
+        return 1.0f - (y / engine.screen_size.y) * 2.0f;
+    }
+
 }
