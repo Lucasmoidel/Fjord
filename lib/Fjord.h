@@ -10,15 +10,20 @@
 #include <fstream>
 #include <stdexcept>
 #include <sstream>
-
+#include <assert.h>
 //SDL libs
 #include <GL/glew.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_opengl.h>
+#include <SDL3_ttf/SDL_ttf.h>
 //#include <SDL3/SDL_ttf.h>
 
 
 // Data types
+#include "dat/Color.h"
 #include "dat/Input.h"
 #include "dat/Vector2.h"
 #include "dat/Transform.h"
@@ -27,6 +32,7 @@
 #include "node/Node.h"
 #include "dat/Shape.h"
 #include "node/Polygon.h"
+#include "node/Label.h"
 
 // Fjord Libs
 #include "utilities.h"
@@ -42,13 +48,26 @@ class Engine {
         SDL_Window* window = NULL;
         Renderer renderer;
         ShaderManager shaderManager;
+        
+        int TARGET_FPS = 240;
+        int FRAME_TARGET_TIME = 1000 / TARGET_FPS;
+        int timeToWait;
+        int last_frame_time = 0;
 
         bool create_window(std::string title, Vector2 size);
         void destroy_window();
-
+        void delayExecution();
         bool gameRunning = true;
 
         GLuint shaderProgram;
+        GLuint texShaderProgram;
+        
+        Vector2 screen_size;
+
+        void updateWindowSize();
+
+        glm::mat4 projection;
+        glm::mat4 texProjection;
 
     private:
     
@@ -61,7 +80,7 @@ namespace Time {
 }
 
 extern Engine engine;
-
+extern Input input;
 void Start();
 
 #endif // MYHEADER_H

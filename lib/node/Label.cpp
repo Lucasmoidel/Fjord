@@ -1,14 +1,18 @@
 #include "../Fjord.h"
 
-void Polygon::Render() {
-    //printf("Made it here\n");
+void Label::Render() {
+    SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), text.length(), {255, 255, 255, 255});
+    SDL_Surface* newsurface = SDL_ConvertSurface(surface, SDL_PIXELFORMAT_RGBA32);
+    SDL_DestroySurface(surface);
+    
     shape.shape = _rotate_points();
     std::vector<float>* vertexes = shape.GetGLPointArray(transform.global_position);
-    RenderCall rc = {RenderCall::POLYGON, vertexes, color};
+    RenderCall rc = {RenderCall::TEXT, vertexes, color, newsurface};
     engine.back_buffer.push_back(rc);
+    
 }
 
-std::vector<Vector2> Polygon::_rotate_points() {
+std::vector<Vector2> Label::_rotate_points() {
     float radians = transform.global_rotation * (M_PI / 180.0f); // Use the node's own rotation (local or global)
     std::vector<Vector2> rotatedPoints;
 
@@ -25,6 +29,11 @@ std::vector<Vector2> Polygon::_rotate_points() {
     return rotatedPoints; // Return rotated points
 }
 
+void Label::setText(std::string intext){
+    text = intext;
+}
 
-
+void Label::setFont(std::string fontname, int size){
+    font = TTF_OpenFont(fontname.c_str(), size);
+}
 

@@ -11,6 +11,11 @@ bool Engine::create_window(std::string title, Vector2 size){
         return false;
     }
 
+    if (!TTF_Init()) {
+        printf("init sdl_ttf failed\n");
+        return false;
+    }
+
     printf("Configuring SDL...\n");
     
     // Set OpenGL attributes for SDL 3
@@ -47,6 +52,9 @@ bool Engine::create_window(std::string title, Vector2 size){
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    glViewport(0, 0, size.x, size.y);
+    screen_size = size;
+
     SDL_GL_SetSwapInterval(1);
 
     printf("Finished seeting up SDL\n");
@@ -55,11 +63,30 @@ bool Engine::create_window(std::string title, Vector2 size){
 
     Shader vertexShader("../lib/shaders/vertex_shader.glsl",GL_VERTEX_SHADER);
     Shader fragmentShader("../lib/shaders/fragment_shader.glsl",GL_FRAGMENT_SHADER);
+    Shader texVertexShader("../lib/shaders/vertex_shader_texture.glsl",GL_VERTEX_SHADER);
+    Shader texFragmentShader("../lib/shaders/fragment_shader_texture.glsl",GL_FRAGMENT_SHADER);
     shaderProgram = shaderManager.LinkShaders({vertexShader,fragmentShader});
-
+    texShaderProgram = shaderManager.LinkShaders({texVertexShader,texFragmentShader});
     printf("Finished Compiling Shaders!\n");
 
+    updateWindowSize();
+
     return true;
+}
+
+void Engine::updateWindowSize() {
+    // Update viewport
+    glViewport(0, 0, screen_size.x, screen_size.y);
+
+    // Set up orthographic projection for pixel coordinates
+    // (0, 0) at top-left, (screen_size.x, screen_size.y) at bottom-right
+    projection = glm::ortho(0.0f, (float)screen_size.x, (float)screen_size.y, 0.0f, -1.0f, 1.0f);
+
+    // If you have a shader program, update the projection matrix uniform
+    // Example: Assuming you have a shader program and uniform location
+    glUseProgram(shaderProgram); // Replace with your shader program ID
+    GLint projMatrixLocation = glGetUniformLocation(shaderProgram, "projection");
+    glUniformMatrix4fv(projMatrixLocation, 1, GL_FALSE, glm::value_ptr(projection));
 }
 
 void Engine::destroy_window(){

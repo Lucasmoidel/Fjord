@@ -6,7 +6,7 @@ Input input;
 float Time::deltaTime = 0;
 
 int main(){
-    engine.create_window("Simple Game",Vector2(800,800));
+    engine.create_window("Simple Game",Vector2(720,720));
     input.initKeyMap();
     Start();
 
@@ -20,12 +20,25 @@ int main(){
         previousTime = currentTime;
 
         //engine.processInput(); // proccess key presses
+        engine.timeToWait = engine.TARGET_FPS - (SDL_GetTicks() - engine.last_frame_time);
+
+        if (engine.timeToWait > 0 && engine.timeToWait <= engine.FRAME_TARGET_TIME){
+            SDL_Delay(engine.timeToWait);
+        }
+
+        engine.last_frame_time = SDL_GetTicks();
+
         engine.root._engine_update_node(); // update the engine every tick
 
         SDL_Event event;
         SDL_PollEvent(&event);
         if (event.type == SDL_EVENT_QUIT){
             engine.gameRunning = false;
+        }
+        if (event.type == SDL_EVENT_WINDOW_RESIZED) {
+            engine.screen_size.x = event.window.data1;
+            engine.screen_size.y = event.window.data2;
+            engine.updateWindowSize();
         }
         std::swap(engine.front_buffer,engine.back_buffer); // Swap the buffers
         engine.renderer.render(engine.front_buffer);

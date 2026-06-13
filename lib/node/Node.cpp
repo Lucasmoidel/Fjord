@@ -106,3 +106,7 @@ void Node::_engine_update_node(){ // Try to find a way that only engine class ca
         children[i]->Input();
     }
 }
+
+void Node::addChild(Node* node){
+    children.push_back(node);
+}

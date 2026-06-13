@@ -10,6 +10,11 @@ namespace Utilities {
     std::vector<std::string> SplitString(std::string input, std::string delimiter);
 
     float wrapRotation(float angle);
+
+    float lerp(float start,float end,float easing);
+
+    float toNDC_X(float x);
+    float toNDC_Y(float y);
 }
 
 #endif

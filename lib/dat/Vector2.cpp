@@ -60,3 +60,9 @@ std::ostream& operator<<(std::ostream& os, const Vector2& vec) { // Vector2 STD:
      os << "Vector2(" << vec.x << ", " << vec.y << ")"; 
      return os;
 }
+Vector2 Vector2::normalized(){
+    float newx, newy;
+    newx = (x / engine.screen_size.x) * 2.0f - 1.0f;
+    newy = (1.0f - (y / engine.screen_size.y) * 2.0f);
+    return Vector2(newx, newy);
+}
