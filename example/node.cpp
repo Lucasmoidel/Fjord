@@ -56,18 +56,18 @@ void Start(){
     std::cout << Vector2(50, 20).normalized().x << "\n";
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
     square->transform.position = Vector2((engine.screen_size.x /2 )-10, (engine.screen_size.y /2 )-10);
-    square->shape.setShape({Vector2(-20,20),Vector2(20,20),Vector2(20,-20),Vector2(-20,-20)});
+    square->shape.setShape(Utilities::rect(true, 40, 40));
     square->transform.scale = Vector2(0.5,0.5);
     square->color = Color(0.2,0.8,0.6,1);
     engine.root.addChild(square);
 
-    std::string s = "19  |  20";
-
+    std::string s = "19 | 20";
+    int textSize = 160;
     Label *text = engine.root.createNode<Label>(0, 0,1,1,"text");
-    text->transform.position = Vector2((engine.screen_size.x -300)/2,-400);
-    text->shape.setShape(Utilities::rect(s.length()*((3/5)*200), 200));
+    text->transform.position = Vector2((engine.screen_size.x/2)-(s.length()*(textSize*0.3))/2,20);
+    text->shape.setShape(Utilities::rect(false, s.length()*(textSize*0.3), textSize));
     text->color = Color(0.8,0.6,0.2,1);
-    text->setFont("../comic.ttf", 200);
+    text->setFont("../comic.ttf", textSize);
     text->setText(s);
     engine.root.addChild(text);
 }

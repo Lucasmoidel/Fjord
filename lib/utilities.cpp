@@ -49,12 +49,19 @@ namespace Utilities
     }
 
 
-    std::vector<Vector2> rect(int w, int h){
+    std::vector<Vector2> rect(bool center_origin, int w, int h){
         std::vector<Vector2> points;
-        points.push_back(Vector2(w, 0));
-        points.push_back(Vector2(w, h));
-        points.push_back(Vector2(0, h));
-        points.push_back(Vector2(0, 0));
+        if(!center_origin){
+            points.push_back(Vector2(0, h));
+            points.push_back(Vector2(w, h));
+            points.push_back(Vector2(w, 0));
+            points.push_back(Vector2(0, 0));
+        } else {
+            points.push_back(Vector2(-(w/2), h-(h/2)));
+            points.push_back(Vector2(w-(w/2), h-(h/2)));
+            points.push_back(Vector2(w-(w/2), -(h/2)));
+            points.push_back(Vector2(-(w/2), -(h/2)));
+        }
 
         return points;
     }

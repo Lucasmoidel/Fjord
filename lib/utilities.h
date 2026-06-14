@@ -16,7 +16,7 @@ namespace Utilities {
     float toNDC_X(float x);
     float toNDC_Y(float y);
 
-    std::vector<Vector2> rect(int w, int h);
+    std::vector<Vector2> rect(bool center_origin, int w, int h);
 
 }
 
