@@ -48,8 +48,8 @@ void Node::update_node_position() {
     }
 
     // Ensure rotation stays within valid bounds
-    transform.rotation = Utilities::wrapRotation(transform.rotation);
-    transform.global_rotation = Utilities::wrapRotation(transform.global_rotation);
+    transform.rotation = Util::wrapRotation(transform.rotation);
+    transform.global_rotation = Util::wrapRotation(transform.global_rotation);
 }
 
 void Node::rotate(float degrees){
@@ -59,7 +59,7 @@ void Node::rotate(float degrees){
 // "../../hello/path"
 
 Node* Node::get_node(std::string path){
-    std::vector<std::string> splitPath = Utilities::SplitString(path,"/");
+    std::vector<std::string> splitPath = Util::SplitString(path,"/");
     std::cout << splitPath[0] << "\n";
     Node* searchPointer = this;
     for (size_t i = 0; i<splitPath.size(); i++){

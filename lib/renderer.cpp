@@ -79,10 +79,10 @@ void Renderer::render(std::vector<RenderCall> &renderCalls) {
 
                 float vertices[] = {
                     // positions          // colors           // texture coords
-                    Utilities::toNDC_X(rc.vertices->at(0)),  Utilities::toNDC_Y(rc.vertices->at(1)), 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // top right
-                    Utilities::toNDC_X(rc.vertices->at(2)),  Utilities::toNDC_Y(rc.vertices->at(3)), 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
-                    Utilities::toNDC_X(rc.vertices->at(4)),  Utilities::toNDC_Y(rc.vertices->at(5)), 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // bottom left
-                    Utilities::toNDC_X(rc.vertices->at(6)),  Utilities::toNDC_Y(rc.vertices->at(7)), 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
+                    Util::toNDC_X(rc.vertices->at(0)),  Util::toNDC_Y(rc.vertices->at(1)), 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // top right
+                    Util::toNDC_X(rc.vertices->at(2)),  Util::toNDC_Y(rc.vertices->at(3)), 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
+                    Util::toNDC_X(rc.vertices->at(4)),  Util::toNDC_Y(rc.vertices->at(5)), 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // bottom left
+                    Util::toNDC_X(rc.vertices->at(6)),  Util::toNDC_Y(rc.vertices->at(7)), 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
                 };
                 unsigned int indices[] = {
                     0, 1, 3, // first triangle

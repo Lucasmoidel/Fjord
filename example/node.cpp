@@ -3,7 +3,7 @@
 #include <ctime>
 #include "../lib/Fjord.h"
 
-using namespace Utilities;
+using namespace Util;
 
 class Box : public Polygon {
     public:
@@ -56,7 +56,7 @@ void Start(){
     std::cout << Vector2(50, 20).normalized().x << "\n";
     Box *square = engine.root.createNode<Box>(0,0,1,1,"Box");
     square->transform.position = Vector2((engine.screen_size.x /2 )-10, (engine.screen_size.y /2 )-10);
-    square->shape.setShape(Utilities::rect(true, 40, 40));
+    square->shape.setShape(Util::rect(true, 40, 40));
     square->transform.scale = Vector2(0.5,0.5);
     square->color = Color(0.2,0.8,0.6,1);
     engine.root.addChild(square);
@@ -64,8 +64,8 @@ void Start(){
     std::string s = "19 | 20";
     int textSize = 160;
     Label *text = engine.root.createNode<Label>(0, 0,1,1,"text");
-    text->transform.position = Vector2((engine.screen_size.x/2)-(s.length()*(textSize*0.3))/2,20);
-    text->shape.setShape(Utilities::rect(false, s.length()*(textSize*0.3), textSize));
+    text->transform.position = Vector2(Util::center(engine.screen_size.x,(s.length()*(textSize*0.3))),Util::center(engine.screen_size.y,textSize));
+    text->shape.setShape(Util::rect(false, s.length()*(textSize*0.3), textSize));
     text->color = Color(0.8,0.6,0.2,1);
     text->setFont("../comic.ttf", textSize);
     text->setText(s);

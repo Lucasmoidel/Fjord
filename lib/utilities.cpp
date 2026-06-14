@@ -1,6 +1,6 @@
 #include "Fjord.h"
 
-namespace Utilities
+namespace Util
 {
     int ClampI(int numberToClamp,int minValue, int maxValue){
         if ( numberToClamp < minValue){ return minValue; } else if ( numberToClamp > maxValue){ return maxValue;} else {  return numberToClamp; }
@@ -64,5 +64,9 @@ namespace Utilities
         }
 
         return points;
+    }
+
+    int center(int a, int b){
+        return (a/2)-(b/2);
     }
 }

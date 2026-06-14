@@ -3,7 +3,7 @@
 
 #include "Fjord.h"
 
-namespace Utilities {
+namespace Util {
     int ClampI(int numberToClamp,int minValue, int maxValue);
     float ClampF(float numberToClamp,float minValue, float maxValue);
 
@@ -17,6 +17,8 @@ namespace Utilities {
     float toNDC_Y(float y);
 
     std::vector<Vector2> rect(bool center_origin, int w, int h);
+
+    int center(int a, int b);
 
 }
 
