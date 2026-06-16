@@ -7,7 +7,7 @@
 
             ]
         ,
-        "layers": [1]
+        "layers":[{"name":"main"}]
         },
         "Down" : {
             "binds": [
@@ -16,7 +16,7 @@
 
             ]
         ,
-        "layers": [1]
+        "layers":[{"name":"main"}]
         },
         "Left" : {
             "binds": [
@@ -24,7 +24,7 @@
 
             ]
         ,
-        "layers": [1]
+        "layers":[{"name":"main"}]
         },
         "Right" : {
             "binds": [
@@ -32,7 +32,7 @@
 
             ]
         ,
-        "layers": [1]
+        "layers":[{"name":"main"}]
         },
         "RRight" : {
             "binds": [
@@ -40,7 +40,7 @@
 
             ]
         ,
-        "layers": [1]
+        "layers":[{"name":"main"}]
         },
         "RLeft" : {
             "binds": [
@@ -48,7 +48,7 @@
 
             ]
         ,
-        "layers": [1]
+        "layers":[{"name":"main"}]
         }
     }
 }
