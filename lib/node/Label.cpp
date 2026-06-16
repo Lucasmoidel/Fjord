@@ -2,12 +2,12 @@
 
 void Label::Render() {
     SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), text.length(), {(Uint8)(color.r*255.0), (Uint8)(color.g*255.0), (Uint8)(color.b*255.0), (Uint8)(color.a*255.0)});
-    SDL_Surface* newsurface = SDL_ConvertSurface(surface, SDL_PIXELFORMAT_RGBA32);
+    SDL_Surface* newSurface = SDL_ConvertSurface(surface, SDL_PIXELFORMAT_RGBA32);
     SDL_DestroySurface(surface);
     
     shape.shape = _rotate_points();
     std::vector<float>* vertexes = shape.GetGLPointArray(transform.global_position);
-    RenderCall rc = {RenderCall::TEXT, vertexes, color, newsurface};
+    RenderCall rc = {RenderCall::TEXT, vertexes, color, newSurface};
     engine.back_buffer.push_back(rc);
     
 }
