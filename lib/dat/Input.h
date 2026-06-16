@@ -13,6 +13,9 @@ class Input{
         bool isDown(const std::string actionName);
         bool isUp(const std::string actionName);
         const bool* keystates = SDL_GetKeyboardState(NULL);
-        std::vector<SDL_Keycode> getAction(const std::string actionName);
+        std::vector<std::vector<SDL_Keycode>> getAction(const std::string actionName);
+        void addActiveLayer(std::string name);
+        void removeActiveLayer(std::string name);
+        std::vector<std::string> activeLayers;
 };
 #endif

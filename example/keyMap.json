@@ -1,10 +1,54 @@
 {
-    "actions":{
-        "Up":["W"],
-        "Down":["S"],
-        "Left":["A"],
-        "Right":["D"],
-        "RLeft": ["Left"],
-        "RRight": ["Right"]
+    "actions": {
+        "Up" : {
+            "binds": [
+                { "keys": ["W"] },
+                { "keys": ["Up"]}
+
+            ]
+        ,
+        "layers": [1]
+        },
+        "Down" : {
+            "binds": [
+                { "keys": ["S", "Down"] }
+
+
+            ]
+        ,
+        "layers": [1]
+        },
+        "Left" : {
+            "binds": [
+                { "keys": ["A"] }
+
+            ]
+        ,
+        "layers": [1]
+        },
+        "Right" : {
+            "binds": [
+                { "keys": ["D"] }
+
+            ]
+        ,
+        "layers": [1]
+        },
+        "RRight" : {
+            "binds": [
+                { "keys": ["Right"] }
+
+            ]
+        ,
+        "layers": [1]
+        },
+        "RLeft" : {
+            "binds": [
+                { "keys": ["Left"] }
+
+            ]
+        ,
+        "layers": [1]
+        }
     }
 }

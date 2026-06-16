@@ -1,7 +1,7 @@
 #include "../Fjord.h"
 
 void Label::Render() {
-    SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), text.length(), {255, 255, 255, 255});
+    SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), text.length(), {(Uint8)(color.r*255.0), (Uint8)(color.g*255.0), (Uint8)(color.b*255.0), (Uint8)(color.a*255.0)});
     SDL_Surface* newsurface = SDL_ConvertSurface(surface, SDL_PIXELFORMAT_RGBA32);
     SDL_DestroySurface(surface);
     
@@ -31,9 +31,12 @@ std::vector<Vector2> Label::_rotate_points() {
 
 void Label::setText(std::string intext){
     text = intext;
+    shape.setShape(Util::rect(false, text.length()*(textSize*0.3), textSize));
+
 }
 
-void Label::setFont(std::string fontname, int size){
-    font = TTF_OpenFont(fontname.c_str(), size);
+void Label::setFont(std::string fontName, int size){
+    textSize = size;
+    font = TTF_OpenFont(fontName.c_str(), size);
 }
 

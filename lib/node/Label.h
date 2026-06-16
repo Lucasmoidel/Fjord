@@ -7,12 +7,13 @@ class Label : public Node {
     public:
         using Node::Node;
         Shape shape;
-        Color color;
+        Color color = Color(1.0,1.0,1.0,1.0);
         void setText(std::string intext);
-        void setFont(std::string fontname, int size);
+        void setFont(std::string fontName, int size);
         void Render() override;
+        int textSize = 50;
         TTF_Font* font;
-        std::string text;
+        std::string text = "TEXT";
     
     private:
         std::vector<Vector2> _rotate_points();

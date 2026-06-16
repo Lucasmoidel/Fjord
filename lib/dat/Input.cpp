@@ -14,22 +14,57 @@ nlohmann::json Input::initKeyMap(){
 
 bool Input::isDown(const std::string actionName){
     bool down = false;
-    std::vector<SDL_Keycode> keycodes = getAction(actionName);
+    bool group = true;
+    std::vector<std::vector<SDL_Keycode>> keycodes = getAction(actionName);
     for (size_t i = 0; i < keycodes.size(); i++){
-        if (keystates[SDL_GetScancodeFromKey(keycodes[i], SDL_KMOD_NONE)]){
+        group = true;
+        for (size_t x = 0; x < keycodes.at(i).size(); x++){
+            if (!keystates[SDL_GetScancodeFromKey(keycodes[i][x], SDL_KMOD_NONE)]){
+                group = false;
+            }
+        }
+        if(group){
             down = true;
-            break;
         }
     }
     return down;
 }
 
-std::vector<SDL_Keycode> Input::getAction(const std::string actionName) {
-    nlohmann::json keys = keyMap["actions"][actionName];
-    std::vector<SDL_Keycode> keycodes;
-    for (size_t i=0; i<keys.size();i++){
-        std::string keyName = keys[i].get<std::string>();
-        keycodes.push_back(SDL_GetKeyFromName(keyName.c_str()));
+std::vector<std::vector<SDL_Keycode>> Input::getAction(const std::string actionName) {
+    nlohmann::json action = keyMap["actions"][actionName]["binds"];
+    std::vector<std::vector<SDL_Keycode>> keycodes;
+    std::vector<SDL_Keycode> codes;
+    nlohmann::json binds;
+    for (size_t i=0; i<action.size(); i++){
+        binds = action[i]["keys"];
+        for (size_t x = 0; x < binds.size(); x++){
+            std::string keyName = binds[x].get<std::string>();
+            codes.push_back(SDL_GetKeyFromName(keyName.c_str()));
+        }
+        keycodes.push_back(codes);
+        codes.clear();
+
     }
     return keycodes;
+}
+
+void Input::addActiveLayer(std::string name){
+    bool can = true;
+    for (size_t i = 0; i < activeLayers.size(); i++){
+        if (name == activeLayers.at(i)){
+            can = false;
+        }
+    }
+    if (can){
+        activeLayers.push_back(name);
+    }
+}
+
+void Input::removeActiveLayer(std::string name){
+    for (size_t i = 0; i < activeLayers.size(); i++){
+        if (name == activeLayers.at(i)){
+            activeLayers.erase(activeLayers.begin()+i);
+            break;
+        }
+    }
 }
