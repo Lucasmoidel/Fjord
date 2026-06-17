@@ -52,7 +52,7 @@ void Box::Update() {
 }
 
 void Start(){
-
+    input.enableLayer("main");
     std::cout << Vector2(50, 20).normalized().x << "\n";
     Box *square = engine.root.createNode<Box>((engine.screen_size.x /2 )-10, (engine.screen_size.y /2 )-10,1,1,"Box");
     square->shape.setShape(Util::rect(true, 40, 40));

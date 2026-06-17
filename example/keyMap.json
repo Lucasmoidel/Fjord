@@ -1,54 +1,94 @@
 {
-    "actions": {
-        "Up" : {
-            "binds": [
-                { "keys": ["W"] },
-                { "keys": ["Up"]}
-
-            ]
-        ,
-        "layers":[{"name":"main"}]
+  "actions": {
+    "Up": {
+      "binds": [
+        {
+          "keys": [
+            "W"
+          ]
         },
-        "Down" : {
-            "binds": [
-                { "keys": ["S", "Down"] }
-
-
-            ]
-        ,
-        "layers":[{"name":"main"}]
-        },
-        "Left" : {
-            "binds": [
-                { "keys": ["A"] }
-
-            ]
-        ,
-        "layers":[{"name":"main"}]
-        },
-        "Right" : {
-            "binds": [
-                { "keys": ["D"] }
-
-            ]
-        ,
-        "layers":[{"name":"main"}]
-        },
-        "RRight" : {
-            "binds": [
-                { "keys": ["Right"] }
-
-            ]
-        ,
-        "layers":[{"name":"main"}]
-        },
-        "RLeft" : {
-            "binds": [
-                { "keys": ["Left"] }
-
-            ]
-        ,
-        "layers":[{"name":"main"}]
+        {
+          "keys": [
+            "Up"
+          ]
         }
+      ],
+      "layers": [
+        {
+          "name": "main"
+        }
+      ]
+    },
+    "Down": {
+      "binds": [
+        {
+          "keys": [
+            "S",
+            "Down"
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "name": "main"
+        }
+      ]
+    },
+    "Left": {
+      "binds": [
+        {
+          "keys": [
+            "A"
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "name": "main"
+        }
+      ]
+    },
+    "Right": {
+      "binds": [
+        {
+          "keys": [
+            "D"
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "name": "main"
+        }
+      ]
+    },
+    "RRight": {
+      "binds": [
+        {
+          "keys": [
+            "Right"
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "name": "a"
+        }
+      ]
+    },
+    "RLeft": {
+      "binds": [
+        {
+          "keys": [
+            "Left"
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "name": "main"
+        }
+      ]
     }
+  }
 }
